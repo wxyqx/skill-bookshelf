@@ -10,13 +10,14 @@
 
 ## 目录总览
 
-**3 本书 · 27 个 skills**（最后更新：2026-08-18）
+**4 本书 · 42 个 skills**（最后更新：2026-08-20）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 仓库 |
 |---|---|---:|---|
 | 《心流》*Flow* | 米哈里·契克森米哈赖 · 1990 | 心流 / 注意力 / 意义 | 8 | [flow-skills](https://github.com/wxyqx/flow-skills) |
 | *Ready, Fire, Aim* | Michael Masterson · 2008 | 创业 / 销售 / 营销 | 11 | [ready-fire-aim-skills](https://github.com/wxyqx/ready-fire-aim-skills) |
 | 《人性的弱点》 | 戴尔·卡耐基 · 1936 | 人际关系 / 说服 | 8 | [how-to-win-friends-skills](https://github.com/wxyqx/how-to-win-friends-skills) |
+| 《洛克菲勒留给儿子的38封信》 | 约翰·D·洛克菲勒 · 19 世纪末–20 世纪初 | 商业哲学 / 领导 / 行动 | 15 | [rockefeller-38-letters-skills](https://github.com/wxyqx/rockefeller-38-letters-skills) |
 
 ---
 
@@ -42,6 +43,13 @@
 - **仓库**：[how-to-win-friends-skills](https://github.com/wxyqx/how-to-win-friends-skills) · 8 个 skills
 - **一句话**：人是被「重要感」驱动的生物——你能让别人感到自己重要，就能赢得合作；你打击别人的自尊，就永远树敌。
 - **Skills**：`listening-as-persuasion` · `bait-the-fish-thinking` · `argument-avoidance` · `yes-ladder-socratic` · `preemptive-self-criticism` · `face-saving-feedback` · `micro-progress-praise` · `reputation-anchoring`
+
+### 4. 《洛克菲勒留给儿子的38封信》
+
+- **作者**：约翰·D·洛克菲勒（John D. Rockefeller）· 原信写于 19 世纪末至 20 世纪初
+- **仓库**：[rockefeller-38-letters-skills](https://github.com/wxyqx/rockefeller-38-letters-skills) · 15 个 skills
+- **一句话**：一个白手起家者如何通过态度、行动、谋略、合作与责任，持续创造财富并掌控命运的完整心智体系。
+- **Skills**：`attitude-reframe` · `deliberate-hardship` · `impulse-control` · `low-profile-wisdom` · `no-excuse-action` · `action-first` · `time-money-planning` · `planned-luck` · `calculated-risk` · `negotiation-preparation` · `competitive-weakness-strike` · `purpose-driven-leadership` · `no-blame-leadership` · `strength-based-management` · `employees-first`
 
 ---
 
