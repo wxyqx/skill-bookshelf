@@ -1,0 +1,58 @@
+{
+  "skill": "reputation-anchoring",
+  "version": "0.1.0",
+  "all_skills_context": [
+    {"name": "bait-the-fish-thinking", "description": "用户想说服别人但效果不好、问'怎么让对方同意'、沟通时只从自己角度出发时激活。"},
+    {"name": "argument-avoidance", "description": "用户想纠正别人、即将或正在争辩、说'我要证明他对不了'时激活。"},
+    {"name": "preemptive-self-criticism", "description": "用户面临冲突、即将被指责、问'怎么化解矛盾'时激活。"},
+    {"name": "yes-ladder-socratic", "description": "用户需要说服他人接受观点、提出提案怕被拒、说'他肯定会说不'时激活。"},
+    {"name": "listening-as-persuasion", "description": "用户说服他人但总在说不停、急于表达、说'他不听我说'时激活。"},
+    {"name": "face-saving-feedback", "description": "用户需要批评/纠正他人、给反馈怕伤关系时激活。"},
+    {"name": "micro-progress-praise", "description": "用户想改变他人行为/习惯、管教孩子、问'为什么他总没进步'时激活。"},
+    {"name": "reputation-anchoring", "description": "用户想改变他人行为但直接批评无效、想激发对方潜力时激活。"}
+  ],
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "接手了一个团队，其中一个成员被标记为'摸鱼王'，怎么改变他？",
+      "expected_behavior": "调用 reputation-anchoring，引导用户赋予'有创造力的人'等正面身份标签而非指出问题",
+      "notes": "正面场景：直接批评无效需间接影响"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么激发团队潜力？直接批评没用",
+      "expected_behavior": "调用 reputation-anchoring，引导用户设计正面身份标签并公开赋予",
+      "notes": "正面场景：批评无效需换策略"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么让他变成想要的样子？",
+      "expected_behavior": "调用 reputation-anchoring，引导用户设计与目标行为关联的正面身份标签",
+      "notes": "正面场景：期望改变对方行为"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我写一个邮件模板",
+      "expected_behavior": "纯任务请求，不应调用任何行为改变类 skill",
+      "notes": "诱饵：非行为改变场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "下属交的报告数据有几处错误，需要指出",
+      "expected_behavior": "应调用 face-saving-feedback（纠正具体问题），不应调用 reputation-anchoring（那是赋予身份标签用的）",
+      "notes": "跨skill混淆：都涉及改变行为，但这里需要纠正具体错误而非赋予新身份"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "对方的行为已经严重到需要直接纠正，还能用声誉锚定吗？",
+      "expected_behavior": "不应调用 reputation-anchoring——严重行为需直接纠正，声誉锚定太慢且标签会与当前行为矛盾太多",
+      "notes": "边界：行为严重到需直接干预，声誉锚定不适用"
+    }
+  ]
+}

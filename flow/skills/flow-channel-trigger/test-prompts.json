@@ -1,0 +1,48 @@
+{
+  "skill": "flow-channel-trigger",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我做了五年的数据分析师，工作内容越来越熟练，但现在每天上班都觉得好无聊，太简单了，完全提不起劲。以前很喜欢这份工作，现在就是机械地完成任务。怎么才能让工作重新有意思起来？想找到那种 flow state 的感觉。",
+      "expected_behavior": "调用 flow-channel-trigger，诊断用户当前处于'挑战<技巧'的无聊状态，引导用户提升挑战难度（设定更高标准、引入进阶技巧），并检查心流八要素是否齐全。",
+      "notes": "正面场景: 工作太简单导致无聊，典型挑战-技巧失衡，含英文 trigger 'flow state'。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我最近开始学网球，但每次跟教练对打都觉得太难了，球根本接不住，越打越焦虑，完全不想去了。有没有什么办法能让我进入状态？how to get in the zone？",
+      "expected_behavior": "调用 flow-channel-trigger，诊断用户处于'挑战>技巧'的焦虑状态，建议降低挑战（拆分动作、先练基本功、暂时降低对打标准），逐步回到心流通道。",
+      "notes": "正面场景: 新技能学习时挑战远超技巧导致焦虑，含英文 trigger 'how to get in the zone'。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我带一个十人团队，最近给大家分配任务后发现有人觉得太简单没动力、有人觉得太难压力大。challenge and skill balance 应该怎么把握？我想让每个人都能在工作中体验到心流。",
+      "expected_behavior": "调用 flow-channel-trigger，帮助用户为不同水平的成员动态校准挑战-技巧比例，诊断无聊者提升挑战、焦虑者拆分任务，并检查目标明确性和即时反馈两个最常见缺口。",
+      "notes": "正面场景: 团队管理中的挑战-技巧动态匹配，含英文 trigger 'challenge and skill balance'。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "上周末花了三千块去高档餐厅吃饭、做了SPA、还买了名牌包，当时挺开心的，但第二天醒来还是觉得特别空虚，感觉花钱买快乐根本没用。hedonic treadmill 是不是真的？",
+      "expected_behavior": "不应调用 flow-channel-trigger，应调用 pleasure-vs-enjoyment；用户描述的是被动消费后的空虚感，核心问题是享乐与乐趣的区分，而非某个活动的挑战-技巧失衡。",
+      "notes": "跨 skill 混淆测试: 明显应触发 pleasure-vs-enjoyment（同书相邻 skill）。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "请帮我查一下米哈里·契克森米哈赖的《心流》这本书第三章的主要内容是什么，讲一下心流八要素分别是什么。",
+      "expected_behavior": "不应调用 flow-channel-trigger，也不应调用本书任何 skill；这是纯信息查询（书籍内容摘要），用户没有体验品质问题需要诊断。",
+      "notes": "诱饵: 纯信息查询，虽然提到心流概念但不涉及个人体验。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我刚被裁员，房租快交不起了，每天都在投简历但没回音。现在做什么事都提不起劲，连以前喜欢的跑步都觉得没意思。能不能用 flow state 帮我找回状态？",
+      "expected_behavior": "不应调用 flow-channel-trigger；用户面临的是生存/经济危机，基本需求未满足，谈心流是奢侈。应优先解决生存问题（求职、经济支持），而非优化体验品质。",
+      "notes": "边界: 基本需求未满足时，体验品质优化不在适用范围内。"
+    }
+  ]
+}

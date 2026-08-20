@@ -1,0 +1,55 @@
+{
+  "skill": "incremental-degradation",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们产品每次改动都通过了 A/B 测试，但 overall 体验就是变差了。客户成功支持减少了， onboarding 改成全自助，单次看都没问题，但 18 个月后留存率大幅下降。",
+      "expected_behavior": "调用 incremental-degradation，建立'原始基准版本'并定义 USP 关键指标，将当前版本与原始基准做整体对照，识别单次无害但累积有害的退化源，制定持续小改进计划。",
+      "notes": "正面场景: 多次小改动后整体体验变差，典型渐进退化。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "客户反馈说我们和竞品越来越像，以前的独特卖点现在听起来很普通。团队为了降本增效做了很多小改动，单次影响不大，但累积起来产品变了味。",
+      "expected_behavior": "调用 incremental-degradation，对照原始基准检查 USP 关键指标是否退化，制定让产品保持独特卖点的小改进计划，并设立季度复盘机制。",
+      "notes": "正面场景: USP 随时间弱化，需要防止渐进退化。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队把'维持现状'当作目标，KPI 只关注不出现故障，不关注是否还在领先。畅销产品很久没有主动改进，但竞品一直在进步。",
+      "expected_behavior": "调用 incremental-degradation，重新定义'维护'为持续小改进，为畅销产品建立原始基准和季度对照机制，防止相对市场退化。",
+      "notes": "正面场景: 团队以'没坏就不修'为目标，导致产品相对退化。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "现有产品增长放缓，需要找到下一款能接力的增长品。我们想在已有趋势上做点微创新，但不确定进场时机。",
+      "expected_behavior": "不应调用 incremental-degradation，应调用 tipping-point-innovation；用户需要推出新的微创新产品来创造增长曲线，而不是维护现有产品不退化。",
+      "notes": "跨 skill 混淆测试: 明显应触发 tipping-point-innovation。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "产品功能和竞品差不多，客户总在问'你们和 XX 有什么区别'，我们需要找到一个差异化定位。",
+      "expected_behavior": "不应调用 incremental-degradation，应调用 unique-selling-proposition；用户需要先找到/重建 USP，而不是防止已有 USP 退化。",
+      "notes": "跨 skill 混淆测试: 明显应触发 unique-selling-proposition。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "系统昨晚崩溃了，影响了大量用户，我们需要紧急排查并修复这个故障。",
+      "expected_behavior": "不应调用 incremental-degradation，也不应调用本书任何 skill；这是单一重大事故/危机处理，不是渐进退化机制。",
+      "notes": "诱饵: 单一重大事故不属于渐进退化。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们的产品还没上市，目前只有原型和早期测试数据。我担心上市后会遇到渐进退化，想提前建立基准对照机制。",
+      "expected_behavior": "不应调用 incremental-degradation；产品尚未上市或尚未找到付费客户时，问题不是退化而是市场验证，应先用 ready-fire-aim 或 USP skill。",
+      "notes": "边界: 未上市产品无法谈渐进退化，需先验证市场。"
+    }
+  ]
+}

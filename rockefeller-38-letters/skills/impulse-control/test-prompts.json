@@ -1,0 +1,52 @@
+{
+  "skill": "impulse-control",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我刚刚被客户当众羞辱，气得想立刻在群里发消息怼回去，怎么办？",
+      "expected_behavior": "应激活 impulse-control，引导用户按下暂停键、回到目标利益、设计冷静回应",
+      "notes": "典型被激怒后冲动回应场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "每次和合伙人吵架我都事后后悔，怎么改掉冲动决策的毛病？",
+      "expected_behavior": "应激活 impulse-control，帮助用户识别触发器并建立决策缓冲机制",
+      "notes": "反复后悔冲动言行的场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "impulse control 在商务谈判里怎么用？",
+      "expected_behavior": "应激活 impulse-control，用中文解释控制冲动决策的步骤与谈判场景应用",
+      "notes": "英文 trigger 场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我今天心情不好，想找人倾诉一下，你能陪我聊聊吗？",
+      "expected_behavior": "不应激活本 skill，因为用户需要情绪宣泄而非决策帮助",
+      "notes": "诱饵: 情绪宣泄场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我被对手公开羞辱了，该立刻反击还是忍耐等待时机？",
+      "expected_behavior": "不应激活本 skill，应激活 patience-as-strategy 或 insult-to-fuel",
+      "notes": "跨 skill 混淆诱饵: 受辱后的战略忍耐与动力转化场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我老板刚才在会议上抢了我的功劳，我特别想当场揭穿他，但他是我的直属上级，怎么办？",
+      "expected_behavior": "可激活 impulse-control，帮助用户区分「当场揭穿」与「事后沟通」的收益成本；若权益受损严重，可建议冷静地记录事实并选择合适时机反馈",
+      "notes": "边界: 冲动与正当维权之间的平衡"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中 1 条为同书兄弟 skill 的忍耐/受辱转化场景。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "attitude-reframe",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我每天上班像上坟，工作一点意义都感觉不到，怎么才能不那么痛苦？",
+      "expected_behavior": "应激活 attitude-reframe，帮助用户识别当前态度模式，并将工作重新框定为成长与贡献的机会。",
+      "notes": "典型场景：职业倦怠，对工作失去意义感。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "团队最近士气很低，大家抱怨加班多、工资低，作为主管怎么重新调动大家的热情？",
+      "expected_behavior": "应激活 attitude-reframe，帮助管理者从意义感、成长与贡献角度重新激发团队投入。",
+      "notes": "典型场景：团队士气低落，需要态度层面的激励。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我失业半年刚找到一份工作，但觉得职位比以前低，心里有落差，怎么调整心态？",
+      "expected_behavior": "应激活 attitude-reframe，帮助用户重新框定当前工作的价值与长期意义。",
+      "notes": "典型场景：失业后重返职场，需要重建工作意义感。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们公司长期拖欠工资，还经常要求无偿加班，我该怎么维权？",
+      "expected_behavior": "不应激活本 skill，因为用户面临的是劳动权益侵害问题，需要法律或维权建议。",
+      "notes": "诱饵：严重不公的劳动环境，不是心态调整能解决。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我有很多创业想法，但总是拖延不开始，怎么才能动起来？",
+      "expected_behavior": "不应激活本 skill，应激活 action-first，帮助用户克服完美主义拖延、采取当下行动。",
+      "notes": "跨 skill 混淆诱饵：行动拖延问题，不是工作态度问题。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我工作三年薪水没涨，但岗位确实让我学到很多，我到底是该调整心态继续干，还是跳槽争取更高收入？",
+      "expected_behavior": "可调用 attitude-reframe，但需先评估：如果薪酬问题严重且市场价值被低估，应优先解决实际问题；如果只是短期情绪，可通过态度重塑找回动力。",
+      "notes": "边界：态度问题与实际利益问题交织，需要先厘清主次。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

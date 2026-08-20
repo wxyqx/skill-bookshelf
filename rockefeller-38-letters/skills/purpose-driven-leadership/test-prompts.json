@@ -1,0 +1,52 @@
+{
+  "skill": "purpose-driven-leadership",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我刚晋升部门经理，团队士气一般，怎么用清晰的目的带动大家？",
+      "expected_behavior": "应激活 purpose-driven-leadership，帮助用户澄清目的并设计团队沟通方案",
+      "notes": "典型新领导需要目的驱动场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "每次开会员工都不知道我到底想达成什么，执行总是走样，怎么办？",
+      "expected_behavior": "应激活 purpose-driven-leadership，引导用户把目的坦诚沟通给团队",
+      "notes": "目的不透明导致执行偏差的场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "purpose-driven leadership 怎么落地到中国团队？",
+      "expected_behavior": "应激活 purpose-driven-leadership，用中文解释目的驱动领导的步骤与注意事项",
+      "notes": "英文 trigger 词场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我个人在纠结要不要辞职创业，该怎么决定？",
+      "expected_behavior": "不应激活本 skill，因为属于个人决策而非团队领导",
+      "notes": "诱饵: 个人决策场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "项目失败后团队互相指责，我作为领导该怎么处理？",
+      "expected_behavior": "不应激活本 skill，应激活 no-blame-leadership",
+      "notes": "跨 skill 混淆诱饵: 失败后的责任文化修复应归属反责难领导法"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想让团队加班赶进度，但又不好意思明说，能不能包装成‘共同梦想’来激励？",
+      "expected_behavior": "可激活 purpose-driven-leadership，但必须先识别并制止操控性包装；引导用户坦诚沟通真实目的与对团队的回报",
+      "notes": "边界: 目的真实性问题，不能借目的之名行操控之实"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中 1 条为同书兄弟 skill 的反责难领导场景。"
+}

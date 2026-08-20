@@ -1,0 +1,48 @@
+{
+  "skill": "action-reflection-balance",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我有三个创业方向都不错，反复做了市场分析、财务模型、竞品调研，分析了三个月还是无法决定。我知道再拖下去三个都做不成，但就是下不了决心。analysis paralysis 怎么破？",
+      "expected_behavior": "调用 action-reflection-balance，诊断用户偏向反省型（分析过度→决心衰退），对三个方向跑投入前五问，检查自由悖论（选项过多导致方向摇摆），产出最小投入承诺和评估时间点。",
+      "notes": "正面场景: 多个好选项犹豫不决、反复分析无法行动，典型行动反省平衡法触发情境，包含 trigger 词 'analysis paralysis'。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我一直在犹豫要不要读博。导师说我的研究能力没问题，但我总觉得还没想清楚值不值得投入四五年。行动还是再想想？commitment vs deliberation，怎么判断什么时候该停止分析直接行动？",
+      "expected_behavior": "调用 action-reflection-balance，诊断用户的决策模式偏向（反省型），对读博目标跑投入前五问（真心想做？有乐趣？可持续？代价值得？还喜欢自己？），确认后设定最小投入承诺。",
+      "notes": "正面场景: 面临重大投入决策犹豫不决，包含 trigger 词 '行动还是再想想' 和 'commitment vs deliberation'。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "手里有两个投资人都愿意投的项目方向，都是好选项，但我只能全力做一个。分析了很久还是无法决定哪个更值得投入。怎么知道哪个值得我全力 commit？",
+      "expected_behavior": "调用 action-reflection-balance，对两个方向跑投入前五问做横向对比，检查自由悖论（两个好选项产生机会成本焦虑），建议主动设限选定一个全力投入而非继续寻找'最好的'。",
+      "notes": "正面场景: 多个好选项无法决定哪个值得投入，包含 trigger 词 '值得投入' 和 'commit'。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我物质条件已经不错了，基本生存完全不是问题。但我总在想自己到底处于人生的哪个阶段，是该继续追求个人成就，还是该开始为更大的事业投入？what stage of life am I in？",
+      "expected_behavior": "不应调用 action-reflection-balance，应调用 meaning-spiral-assessor；用户问的是人生整体处于哪个意义发展阶段（发展性诊断），而非'是否该投入某个具体目标'（投入前检查）。用户没有表达对某个具体选项的犹豫不决。",
+      "notes": "跨 skill 混淆测试: 明显应触发 meaning-spiral-assessor。关键区分——平衡法判断'是否该投入某个具体目标'，评估器判断'人生整体处于哪个发展阶段'。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "今晚吃火锅还是日料？朋友让我定，我一直选不出来。怎么克服选择困难？",
+      "expected_behavior": "不应调用 action-reflection-balance，也不应调用本书任何 skill；这是一个不涉及重大承诺投入的日常简单选择，五问法等工具不适用于此类低 stakes 决策。",
+      "notes": "非触发: 不涉及承诺投入的简单选择。SKILL.md 明确边界——'不涉及承诺投入的简单选择'不属于行动反省平衡法的适用范围。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我在犹豫要不要接受一个高薪但需要做灰色地带业务的 offer。从职业发展看很不错，但心里总觉得不太对。能用五问法帮我分析一下值不值得投入吗？",
+      "expected_behavior": "不应调用 action-reflection-balance 做常规五问分析；选项中涉及灰色地带业务，五问中第(5)问'做完后还喜欢自己'的道德自检应直接触发否决。SKILL.md 明确——'面临的选项中包含不道德/违法的内容，第(5)问应直接否决'，无需继续跑完整五问流程。",
+      "notes": "边界: 用户使用了 trigger 词（'五问法'、'值不值得投入'），但选项涉及道德/合规问题。SKILL.md 明确——不道德选项应被第(5)问直接否决，不进入常规分析流程。"
+    }
+  ]
+}

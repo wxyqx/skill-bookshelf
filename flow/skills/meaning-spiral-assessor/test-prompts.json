@@ -1,0 +1,48 @@
+{
+  "skill": "meaning-spiral-assessor",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我现在收入还不错，基本生活完全没问题。但我一直在纠结：是该继续专注赚钱，还是开始追求自己真正想做的事？我到底处于什么阶段，有没有资格谈理想？",
+      "expected_behavior": "调用 meaning-spiral-assessor，进行四阶段定位（逐一检查求生、社群、个人主义、超越的完成度），执行跳级风险检查，确认当前阶段是否已完成以判断是否有资格追理想。",
+      "notes": "正面场景: '先赚钱还是先追理想'的经典选择困境，典型意义螺旋评估器触发情境，包含 trigger 词 '什么阶段' 和 '先赚钱还是先追理想'。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我刚毕业两年，工作稳定了，但对人生下一步很迷茫。按照马斯洛需求层次或者 developmental stage 来看，我大概在哪个阶段？下一个方向应该是什么？",
+      "expected_behavior": "调用 meaning-spiral-assessor，定位用户在四阶段中的位置（可能处于阶段1到阶段2的过渡），检查是否存在跳级风险，给出前进方向（如从求生到社群认同需要做什么）。",
+      "notes": "正面场景: 青年阶段的方向迷茫，包含 trigger 词 '马斯洛'、'developmental stage' 和 '哪个阶段'。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "孩子大了不需要我操心了，退休金也够用。但感觉人生失去了方向，不知道下一步该追求什么。我的人生阶段是不是该升级了？meaning spiral 的下一站是什么？",
+      "expected_behavior": "调用 meaning-spiral-assessor，定位用户可能处于阶段2或3的完成期，检查是否有跳级风险（是否跳过了个人主义反省），给出从当前阶段到下一阶段的前进方向，并提醒自由悖论。",
+      "notes": "正面场景: 人生过渡期的阶段诊断需求，包含 trigger 词 '人生阶段'、'meaning spiral' 和 '下一步方向'。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我事业有成，但越来越觉得生活碎片化，各个领域的心流互不衔接。我想找到一个能统一所有目标的人生主题，构建属于自己的 life theme。怎么把工作和生活的意义串起来？",
+      "expected_behavior": "不应调用 meaning-spiral-assessor，应调用 life-theme-builder；用户的核心需求是构建一个统一的人生主题（建造），而非诊断自己处于哪个意义发展阶段（诊断）。用户已有明确的方向感建构意图，不需要阶段定位。",
+      "notes": "跨 skill 混淆测试: 明显应触发 life-theme-builder。关键区分——评估器诊断'你处于哪个阶段'，构建器帮助'构建人生主题本身'。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我是做前端开发的，想转行做产品经理。帮我分析一下这个转行合不合理，需要补哪些技能，职业规划怎么走？",
+      "expected_behavior": "不应调用 meaning-spiral-assessor，也不应调用本书任何 skill 做阶段诊断；用户需要的是具体的职业规划建议，不涉及人生发展阶段判断或'先赚钱还是先追理想'的选择。",
+      "notes": "非触发: 纯职业规划咨询。SKILL.md 明确边界——'用户需要的是具体的职业/生活选择建议，这是 action-reflection-balance 的范围'。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我感觉自己的人生停滞了，不知道处于什么阶段。但同时我刚经历了一次重大手术，还在恢复期，情绪很不稳定。能帮我诊断一下意义阶段吗？",
+      "expected_behavior": "不应直接调用 meaning-spiral-assessor 做阶段诊断；用户正处于重大手术后的恢复期，情绪不稳定，属于非稳定状态。SKILL.md 明确——'发展阶段诊断需要稳定状态'。应建议用户先恢复身心稳定（可考虑 adversity-converter 处理手术打击），状态稳定后再做阶段诊断。",
+      "notes": "边界: 用户使用了 trigger 词（'什么阶段'、'意义阶段'），但处于急性恢复期/心理不稳定状态。阶段诊断需要稳定的前提条件不满足。"
+    }
+  ]
+}

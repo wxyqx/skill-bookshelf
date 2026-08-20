@@ -1,0 +1,58 @@
+{
+  "skill": "preemptive-self-criticism",
+  "version": "0.1.0",
+  "all_skills_context": [
+    {"name": "bait-the-fish-thinking", "description": "用户想说服别人但效果不好、问'怎么让对方同意'、沟通时只从自己角度出发时激活。"},
+    {"name": "argument-avoidance", "description": "用户想纠正别人、即将或正在争辩、说'我要证明他对不了'时激活。"},
+    {"name": "preemptive-self-criticism", "description": "用户面临冲突、即将被指责、问'怎么化解矛盾'时激活。"},
+    {"name": "yes-ladder-socratic", "description": "用户需要说服他人接受观点、提出提案怕被拒、说'他肯定会说不'时激活。"},
+    {"name": "listening-as-persuasion", "description": "用户说服他人但总在说不停、急于表达、说'他不听我说'时激活。"},
+    {"name": "face-saving-feedback", "description": "用户需要批评/纠正他人、给反馈怕伤关系时激活。"},
+    {"name": "micro-progress-praise", "description": "用户想改变他人行为/习惯、管教孩子、问'为什么他总没进步'时激活。"},
+    {"name": "reputation-anchoring", "description": "用户想改变他人行为但直接批评无效、想激发对方潜力时激活。"}
+  ],
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "项目延期了，客户很生气，我不知道第一句话该说什么",
+      "expected_behavior": "调用 preemptive-self-criticism，引导用户在客户指责前先主动认错",
+      "notes": "正面场景：面临即将到来的指责"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我做错了一件事，怎么道歉才能让对方接受？",
+      "expected_behavior": "调用 preemptive-self-criticism，引导用户具体认错+提出改进方案+询问如何弥补",
+      "notes": "正面场景：需要主动认错"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "老板约我谈话，我觉得他要批评我，怎么办？",
+      "expected_behavior": "调用 preemptive-self-criticism，引导用户在老板开口前先承认自己的不足",
+      "notes": "正面场景：预感即将被批评"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我看看这段代码有什么bug",
+      "expected_behavior": "纯技术问题，不应调用任何冲突/沟通类 skill",
+      "notes": "诱饵：非冲突场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "同事在会上说了明显错误的方案，我想纠正他",
+      "expected_behavior": "应调用 argument-avoidance（对方有错需避免争辩），不应调用 preemptive-self-criticism（那是自己有错时用的）",
+      "notes": "跨skill混淆：都是冲突场景，但这里是对方错了需要避免争辩，不是自己错了需要认错"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这件事我也有错，但对方也有问题",
+      "expected_behavior": "可调用 preemptive-self-criticism 认自己的错，但应提醒不要附带'但是'——认错就是认错，加'但是'会毁掉效果",
+      "notes": "边界：部分认错场景，需提醒不要附带条件"
+    }
+  ]
+}

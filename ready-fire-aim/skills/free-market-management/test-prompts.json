@@ -1,0 +1,55 @@
+{
+  "skill": "free-market-management",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们公司政治太严重了，部门之间互相甩锅、抢资源。每次开会都在争预算和汇报功劳，真正服务客户的事反而没人关心。",
+      "expected_behavior": "调用 free-market-management，诊断政治症状与可拆分的业务边界，设计独立核算的利润中心与市场化机制，并设定晋升/奖励与市场结果绑定的试行规则。",
+      "notes": "正面场景: 部门墙与资源争夺，典型 FMM 触发情境。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "晋升标准很模糊，升得快的人都是会汇报、会哭的孩子有奶吃。真正踏实做产品、服务客户的人反而没得到认可，团队士气很差。",
+      "expected_behavior": "调用 free-market-management，把晋升与奖励绑定到市场结果（客户获取、留存、利润），用内部自由市场替代向上管理博弈。",
+      "notes": "正面场景: 晋升靠取悦上级而非市场结果。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "创始人每天被内部事务淹没，大量时间用于仲裁部门纠纷、审批琐碎决策。我们已经开过价值观会议、做过团建，但政治和内斗依旧。",
+      "expected_behavior": "调用 free-market-management，分析政治根因是激励结构而非'人坏'，设计最小可行的利润中心与信息透明机制，把成功标准从'老板满意'转为'市场赢'。",
+      "notes": "正面场景: 文化宣导无效，需要用市场机制反政治。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "什么事都要等我决定，我不在就推进不了。我每天审批每一张图、每一份合同，公司增长反而放缓了。",
+      "expected_behavior": "不应调用 free-market-management，应调用 bottleneck-diagnosis；根因是创始人亲力亲为拖慢组织速度，而非部门政治与激励扭曲。",
+      "notes": "跨 skill 混淆测试: 明显应触发 bottleneck-diagnosis。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们公司现在到底处于哪个成长阶段？该先加人还是先建流程？",
+      "expected_behavior": "不应调用 free-market-management，应调用 four-stages-of-growth；用户需要先判断企业所处阶段，确认到 Stage Three 后再考虑 FMM。",
+      "notes": "跨 skill 混淆测试: 明显应触发 four-stages-of-growth。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请帮我调解两个同事之间的私人恩怨，他们因为性格不合总是吵架。",
+      "expected_behavior": "不应调用 free-market-management，也不应调用本书任何 skill；这是两人之间的个人冲突/HR 调解问题，不是激励结构设计问题。",
+      "notes": "诱饵: 私人恩怨不属于 FMM 适用范围。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们是一个早期创业团队，只有 8 个人，但大家已经开始互相指责、抢功劳了。是不是该拆成利润中心？",
+      "expected_behavior": "不应调用 free-market-management；团队规模 <10 人、没有稳定销售和可拆分业务线时，拆分利润中心条件不成熟，应先解决销售/授权问题。",
+      "notes": "边界: FMM 不适用于过早的小型创业团队。"
+    }
+  ]
+}

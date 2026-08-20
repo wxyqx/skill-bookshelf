@@ -1,0 +1,48 @@
+{
+  "skill": "life-theme-builder",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我35岁，公司高管，收入不错，家庭也和睦，但最近越来越觉得空虚。事业有成但空虚，说不清楚为什么活着。我的人生好像缺了一个统一的方向，各个领域的事都各自为战，fragmented life。",
+      "expected_behavior": "调用 life-theme-builder，进行碎片化诊断（标注各领域心流与精神熵状况），从过去经历中提取重复出现的关注点作为候选主题线索，跑投入前五问筛选候选人生主题。",
+      "notes": "正面场景: 事业成功后的空虚感与生活碎片化，典型人生主题构建器触发情境，包含 trigger 词 '事业有成但空虚' 和 'fragmented life'。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我工作、健身、带孩子、社交，每件事单独看都不错，但放在一起感觉碎片化。缺乏意义感，好像这些活动之间没有内在联系。我想找到一个能统领所有目标的人生主题，life theme 到底怎么构建？",
+      "expected_behavior": "调用 life-theme-builder，诊断各领域间的衔接缺口，从重复关注点、创伤阐释、前人智慧三个维度提取主题线索，通过发现性/接受性检查确认主题是否为自主选择。",
+      "notes": "正面场景: 生活碎片化、缺乏统一方向，用户明确提到 'life theme' 和 '缺乏意义感'，属于从分散目标中提炼统一人生主题的典型场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "到了四十岁，突然开始问自己'我为什么活着'。以前忙着赚钱养家没想过这些，现在物质条件好了反而迷茫。人生意义到底是什么？是时候构建一个统一的人生方向了。",
+      "expected_behavior": "调用 life-theme-builder，引导用户从过去经历中提取主题线索（而非直接追问'我幸福吗'），检查是否存在碎片化心流问题，产出人生主题与次要目标映射图。",
+      "notes": "正面场景: 中年阶段的意义追问，包含 trigger 词 '我为什么活着' 和 '人生意义'。SKILL.md 强调意义不在自我监控中涌现，在投入行动中涌现。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "上周被裁员了，上有老下有小，房贷还没还完。整个人处于崩溃边缘，满脑子都是'为什么是我'。我需要从这次打击中恢复过来，怎么把这种痛苦转化为前进的力量？",
+      "expected_behavior": "不应调用 life-theme-builder，应调用 adversity-converter；用户遭遇重大挫折（失业）后需要从打击中恢复，核心是在逆境中执行转化操作（行动性干预），而非从分散目标中提炼统一人生主题（方向感建构）。",
+      "notes": "跨 skill 混淆测试: 明显应触发 adversity-converter。关键区分——构建器针对'方向感缺失、目标分散'，转换器针对'遭遇打击后需要恢复和转化'。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我有两个 offer，一个是大厂的资深工程师，一个是创业公司的技术负责人。薪资差不多，我该怎么选？能帮我分析一下职业发展路径吗？",
+      "expected_behavior": "不应调用 life-theme-builder，也不应调用本书任何 skill 做人生主题构建；用户需要的是具体的职业选择建议，不涉及意义追问或人生方向迷茫。若用户表现出犹豫不决可考虑 action-reflection-balance。",
+      "notes": "非触发: 具体的职业选择咨询。SKILL.md 明确边界——'用户只是暂时的职业迷茫，这是 action-reflection-balance 的范围'，且不涉及意义追问。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我还在还助学贷款，每月工资刚好够生活费，勉强温饱。但我最近总在想人生意义是什么，我为什么活着，想构建人生主题。这合理吗？",
+      "expected_behavior": "不应直接调用 life-theme-builder 做主题构建；用户处于基本生存挣扎阶段（意义阶段1未完成），谈人生主题属于阶段跳跃。应建议先使用 meaning-spiral-assessor 确认当前意义阶段，优先解决生存基础后再构建人生主题。",
+      "notes": "边界: 用户使用了 trigger 词（'人生意义'、'我为什么活着'、'人生主题'），但 SKILL.md 明确——'用户还在为基本生存挣扎时先解决生存，谈人生主题是阶段跳跃'。"
+    }
+  ]
+}

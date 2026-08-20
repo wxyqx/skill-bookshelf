@@ -1,0 +1,52 @@
+{
+  "skill": "no-blame-leadership",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "项目失败后团队里每个人都在互相甩锅，复盘会根本开不下去，我该怎么领导？",
+      "expected_behavior": "应激活 no-blame-leadership，先帮助用户按下责难暂停键，再引导其回归自身职责并制定修复方案",
+      "notes": "典型团队互相推诿场景，核心需求是建立不责难的领导方式"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我每次出问题第一反应就是怪下属，事后又很后悔，怎么才能改掉这个习惯？",
+      "expected_behavior": "应激活 no-blame-leadership，帮助用户识别迁怒惯性并练习'我的职责是什么'的自我提问",
+      "notes": "领导者个人行为改变场景，关键词是'怪下属''后悔''习惯'"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "高管犯了一个大错误，让公司损失了两百多万，我想找他谈但又不想毁掉信任，该怎么沟通？",
+      "expected_behavior": "应激活 no-blame-leadership，引导用户先列出对方优点和贡献，再设计修复性谈话",
+      "notes": "直接对应书中洛克菲勒案例，需要在追责与保信任之间找到平衡"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "员工贪污公款被发现，我该怎么处理才能既合法又让他付出代价？",
+      "expected_behavior": "不应激活本 skill，因为涉及违法与必须明确法律责任的场景",
+      "notes": "诱饵: 看似是领导处理问题，但属于边界之外的严重渎职/违法场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "部属在会议上情绪激动、公开顶撞我，我该如何倾听并让他把真实想法说出来？",
+      "expected_behavior": "不应激活本 skill，应激活 deep-listening-leadership",
+      "notes": "跨 skill 混淆诱饵: 场景涉及冲突，但核心需求是深度倾听而非问题发生后的责任归因"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "下属连续三次犯同样的低级错误，我已经很耐心了，这次是不是该严厉问责？",
+      "expected_behavior": "可以有限调用 no-blame-leadership，但需明确边界：先检查自己是否已建立清晰的流程与反馈机制，再进入正式绩效问责，而不是用情绪责难",
+      "notes": "边界：重复性错误介于修复性领导与正式问责之间，需要区分'情绪责难'和'制度问责'"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

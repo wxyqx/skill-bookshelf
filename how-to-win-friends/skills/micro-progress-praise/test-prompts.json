@@ -1,0 +1,58 @@
+{
+  "skill": "micro-progress-praise",
+  "version": "0.1.0",
+  "all_skills_context": [
+    {"name": "bait-the-fish-thinking", "description": "用户想说服别人但效果不好、问'怎么让对方同意'、沟通时只从自己角度出发时激活。"},
+    {"name": "argument-avoidance", "description": "用户想纠正别人、即将或正在争辩、说'我要证明他对不了'时激活。"},
+    {"name": "preemptive-self-criticism", "description": "用户面临冲突、即将被指责、问'怎么化解矛盾'时激活。"},
+    {"name": "yes-ladder-socratic", "description": "用户需要说服他人接受观点、提出提案怕被拒、说'他肯定会说不'时激活。"},
+    {"name": "listening-as-persuasion", "description": "用户说服他人但总在说不停、急于表达、说'他不听我说'时激活。"},
+    {"name": "face-saving-feedback", "description": "用户需要批评/纠正他人、给反馈怕伤关系时激活。"},
+    {"name": "micro-progress-praise", "description": "用户想改变他人行为/习惯、管教孩子、问'为什么他总没进步'时激活。"},
+    {"name": "reputation-anchoring", "description": "用户想改变他人行为但直接批评无效、想激发对方潜力时激活。"}
+  ],
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "孩子从来不愿收拾房间，今天偶尔放了一本书回书架，怎么反应？",
+      "expected_behavior": "调用 micro-progress-praise，引导用户即时赞美这个微小进步而非等全部收拾完",
+      "notes": "正面场景：微小进步出现时"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "下属进步很慢，怎么激励他继续努力？",
+      "expected_behavior": "调用 micro-progress-praise，引导用户建立基线并扫描微进步",
+      "notes": "正面场景：对方进步缓慢需要激励"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "为什么他总没进步？我已经教了很多次了",
+      "expected_behavior": "调用 micro-progress-praise，引导用户重新审视是否有未被注意到的微小进步",
+      "notes": "正面场景：看不到进步时需要换个视角"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我设计一个数据库表结构",
+      "expected_behavior": "纯技术任务，不应调用任何行为改变类 skill",
+      "notes": "诱饵：非激励场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "下属交的报告数据有几处错误，需要指出",
+      "expected_behavior": "应调用 face-saving-feedback（纠正已有问题），不应调用 micro-progress-praise（那是强化已有进步）",
+      "notes": "跨skill混淆：都涉及行为改变，但这里需要纠正错误而非赞美进步"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "对方已经做得很好了，还需要继续赞美吗？",
+      "expected_behavior": "应说明行为已达目标水平，应保持而非继续赞美微进步——微进步赞美适用于进步过程中而非已达目标后",
+      "notes": "边界：已达目标，微进步赞美不适用"
+    }
+  ]
+}

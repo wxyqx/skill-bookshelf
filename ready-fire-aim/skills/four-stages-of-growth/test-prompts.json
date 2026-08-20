@@ -1,0 +1,55 @@
+{
+  "skill": "four-stages-of-growth",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们公司现在到底处于哪个成长阶段？有产品、有付费客户，但增长突然停滞，我不知道是该加人、建流程，还是多产品扩张。",
+      "expected_behavior": "调用 four-stages-of-growth，识别可观察的阶段信号，给出阶段判断与核心任务（卖/快/结构/财富），并指出上一阶段成功习惯是否已成为障碍。",
+      "notes": "正面场景: 企业增长停滞，需要阶段诊断。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "创始人感到很焦虑，什么事都离不开他，想放权但不知道从何放起。公司营收大概 200 万美元，直接下属已经有 9 个人。",
+      "expected_behavior": "调用 four-stages-of-growth，根据创始人时间分配、直接下属人数、产品线数量等信号判断阶段，给出阶段匹配的行动建议与转换条件。",
+      "notes": "正面场景: 创始人角色焦虑，需要阶段判断。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "单一产品已经跑得不错了，团队在争论要不要立刻启动第二曲线、进入新渠道、做第二市场。我想知道现在是不是扩张的时机。",
+      "expected_behavior": "调用 four-stages-of-growth，判断企业是否已满足进入下一阶段的客观条件（如单一产品盈利、可重复 OSS、现金流可支撑 12 个月等）。",
+      "notes": "正面场景: 多产品/多渠道扩张决策。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "部门间互相抢资源、会议充满政治博弈，晋升靠讨好老板而不是市场结果。创始人每天被内部事务淹没。",
+      "expected_behavior": "不应调用 four-stages-of-growth，应调用 free-market-management；用户描述的是 Stage Three 组织政治与激励扭曲，需要利润中心和内部市场机制，而非阶段诊断。",
+      "notes": "跨 skill 混淆测试: 明显应触发 free-market-management。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "什么事都要等我决定，我不在就推进不了。我每天忙到半夜审批每一张图、每一份合同，公司增长反而放缓了。",
+      "expected_behavior": "不应调用 four-stages-of-growth，应调用 bottleneck-diagnosis；用户已经明确表达'我是瓶颈'，需要具体的时间审计与团队访谈来制定授权路径。",
+      "notes": "跨 skill 混淆测试: 明显应触发 bottleneck-diagnosis。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请帮我分析一下这家上市公司的估值，我需要做一份投资研究报告。",
+      "expected_behavior": "不应调用 four-stages-of-growth，也不应调用本书任何 skill；这是成熟上市公司估值分析，不在创业企业成长阶段诊断范围内。",
+      "notes": "诱饵: 成熟上市公司估值，超出适用范围。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我还在想创业，没有产品、没有客户、也没有营收，只是有个模糊的想法。能不能用四阶段模型帮我规划一下？",
+      "expected_behavior": "不应调用 four-stages-of-growth；没有产品/客户时问题处于'想法验证前'，应先用 ready-fire-aim 或 OSS 相关 skill。",
+      "notes": "边界: 四阶段模型不适用于只有创业想法、尚未验证市场的阶段。"
+    }
+  ]
+}

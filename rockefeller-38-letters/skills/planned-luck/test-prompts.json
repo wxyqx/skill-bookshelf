@@ -1,0 +1,52 @@
+{
+  "skill": "planned-luck",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想创业但不知道自己有什么资源，也不知道怎么开始，人生规划一团糟，怎么策划运气？",
+      "expected_behavior": "应激活 planned-luck，帮助用户明确目标、清点资源、设计分阶段谋略",
+      "notes": "典型目标资源不匹配场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "公司要转型，现有业务和资源都不太匹配新方向，怎么主动创造机会？",
+      "expected_behavior": "应激活 planned-luck，协助用户进行目标与资源的协和分析",
+      "notes": "企业转型场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "how to plan your luck like Rockefeller?",
+      "expected_behavior": "应激活 planned-luck，用中文解释策划运气的方法论",
+      "notes": "英文 trigger 场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我最近运气特别差，能不能帮我算一下什么时候转运？",
+      "expected_behavior": "不应激活本 skill，因为用户在寻求算命/占卜，而非主动策划",
+      "notes": "诱饵: 等待天赐好运"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我有一个产品想法，但总觉得还不够完美，一直不敢发布，怎么办？",
+      "expected_behavior": "不应激活本 skill，应激活 action-first",
+      "notes": "跨 skill 混淆诱饵: 完美主义拖延应归属当下行动"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想通过一些灰色地带的操作快速拿下竞争对手的市场份额，这算策划运气吗？",
+      "expected_behavior": "可部分激活 planned-luck 讲解合法合规的竞争策略，但必须明确拒绝灰色地带，并建议 fair-competition-ethics 边界",
+      "notes": "边界: 合法合规与道德底线"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中 1 条为同书兄弟 skill 的当下行动场景。"
+}

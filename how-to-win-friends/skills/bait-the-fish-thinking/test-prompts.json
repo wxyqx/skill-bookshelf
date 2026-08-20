@@ -1,0 +1,58 @@
+{
+  "skill": "bait-the-fish-thinking",
+  "version": "0.1.0",
+  "all_skills_context": [
+    {"name": "bait-the-fish-thinking", "description": "用户想说服别人但效果不好、问'怎么让对方同意'、沟通时只从自己角度出发时激活。"},
+    {"name": "argument-avoidance", "description": "用户想纠正别人、即将或正在争辩、说'我要证明他对不了'时激活。"},
+    {"name": "preemptive-self-criticism", "description": "用户面临冲突、即将被指责、问'怎么化解矛盾'时激活。"},
+    {"name": "yes-ladder-socratic", "description": "用户需要说服他人接受观点、提出提案怕被拒、说'他肯定会说不'时激活。"},
+    {"name": "listening-as-persuasion", "description": "用户说服他人但总在说不停、急于表达、说'他不听我说'时激活。"},
+    {"name": "face-saving-feedback", "description": "用户需要批评/纠正他人、给反馈怕伤关系时激活。"},
+    {"name": "micro-progress-praise", "description": "用户想改变他人行为/习惯、管教孩子、问'为什么他总没进步'时激活。"},
+    {"name": "reputation-anchoring", "description": "用户想改变他人行为但直接批评无效、想激发对方潜力时激活。"}
+  ],
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想说服老板采用新技术栈，但老板只关心成本，怎么说服？",
+      "expected_behavior": "调用 bait-the-fish-thinking，引导用户从老板关心的成本角度设计说服内容，如'这个技术能把服务器成本降30%'",
+      "notes": "正面场景：说服中对方需求与自己的视角不同"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "孩子不愿意学习，直接说教没用，怎么让他主动学习？",
+      "expected_behavior": "调用 bait-the-fish-thinking，引导用户找到孩子的真实需求（如玩游戏、社交）并连接到学习",
+      "notes": "正面场景：教育场景中的说服"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "客户对我们的方案不感兴趣，不知道从什么角度打动他",
+      "expected_behavior": "调用 bait-the-fish-thinking，引导用户分析客户最关心什么，然后重新包装方案",
+      "notes": "正面场景：销售说服起点"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下React的useEffect怎么用",
+      "expected_behavior": "纯信息查询，不应调用任何说服/沟通类 skill",
+      "notes": "诱饵：非说服场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我说了很多遍但他就是不听我说，怎么办",
+      "expected_behavior": "应调用 listening-as-persuasion（对方不听是因为你说太多，应该让对方说），不应调用 bait-the-fish-thinking",
+      "notes": "跨skill混淆：看起来像说服问题，但核心是'说太多'而非'说错了角度'，应触发倾听引导而非钓鱼思维"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想让女朋友多陪我，但她说她很忙",
+      "expected_behavior": "可调用 bait-the-fish-thinking 分析女朋友忙碌背后的需求，但应提醒用户亲密关系中工具化对方需求可能伤感情",
+      "notes": "边界：亲密关系场景，钓鱼思维可用但需谨慎——关系中真诚比技巧更重要"
+    }
+  ]
+}

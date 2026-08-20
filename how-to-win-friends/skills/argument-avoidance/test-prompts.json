@@ -1,0 +1,58 @@
+{
+  "skill": "argument-avoidance",
+  "version": "0.1.0",
+  "all_skills_context": [
+    {"name": "bait-the-fish-thinking", "description": "用户想说服别人但效果不好、问'怎么让对方同意'、沟通时只从自己角度出发时激活。"},
+    {"name": "argument-avoidance", "description": "用户想纠正别人、即将或正在争辩、说'我要证明他对不了'时激活。"},
+    {"name": "preemptive-self-criticism", "description": "用户面临冲突、即将被指责、问'怎么化解矛盾'时激活。"},
+    {"name": "yes-ladder-socratic", "description": "用户需要说服他人接受观点、提出提案怕被拒、说'他肯定会说不'时激活。"},
+    {"name": "listening-as-persuasion", "description": "用户说服他人但总在说不停、急于表达、说'他不听我说'时激活。"},
+    {"name": "face-saving-feedback", "description": "用户需要批评/纠正他人、给反馈怕伤关系时激活。"},
+    {"name": "micro-progress-praise", "description": "用户想改变他人行为/习惯、管教孩子、问'为什么他总没进步'时激活。"},
+    {"name": "reputation-anchoring", "description": "用户想改变他人行为但直接批评无效、想激发对方潜力时激活。"}
+  ],
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "同事在会上说了一个明显错误的方案，我想纠正他，但不确定是否值得",
+      "expected_behavior": "调用 argument-avoidance，引导用户识别争辩冲动，用间接引导代替直接纠正",
+      "notes": "正面场景：即将争辩，犹豫是否纠正"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "他说的明明不对，我一定要证明他是错的！",
+      "expected_behavior": "调用 argument-avoidance，提醒用户争辩中没有赢家，建议用非对抗方式",
+      "notes": "正面场景：强烈争辩冲动"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "网上有人质疑我的观点，本能反应是立刻反驳，但感觉这样不明智",
+      "expected_behavior": "调用 argument-avoidance，引导用户评估争辩代价，考虑退出或用间接方式",
+      "notes": "正面场景：识别到争辩冲动并犹豫"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "今天天气怎么样？",
+      "expected_behavior": "纯信息查询，不应调用任何 skill",
+      "notes": "诱饵：非冲突场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "项目延期了客户很生气，我第一句话该说什么",
+      "expected_behavior": "应调用 preemptive-self-criticism（冲突已发生需化解，主动认错），不应调用 argument-avoidance（那是预防性的）",
+      "notes": "跨skill混淆：都是冲突场景，但这里冲突已发生需化解，不是要争辩"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "同事的方案有严重的安全隐患，我必须指出来",
+      "expected_behavior": "不应调用 argument-avoidance——安全问题需要直接明确指出，不能用间接引导绕弯子",
+      "notes": "边界：安全/法律/道德问题，避免争辩不适用"
+    }
+  ]
+}

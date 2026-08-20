@@ -1,0 +1,55 @@
+{
+  "skill": "allowable-acquisition-cost",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们准备下个月开始投放信息流广告，但老板问预算上限该设为多少。有人说越多越好，有人说必须首单盈利，我需要一个理性的计算框架。",
+      "expected_behavior": "调用 allowable-acquisition-cost，计算客户终身毛利，扣除 overhead 分摊和期望利润后得到 AAC，再用 AAC 评估各渠道预算上限并设定止损点。",
+      "notes": "正面场景: 准备投放广告但不确定预算上限。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我在设计一个订阅制会员产品，前端想定很低的价格甚至免费试用来吸引第一批用户。投资人质疑这是不是烧钱，我需要算清楚可承受的获客成本。",
+      "expected_behavior": "调用 allowable-acquisition-cost，基于订阅周期、留存率、毛利率计算 Lifetime Gross Profit，推导 AAC，并明确首次亏损边界。",
+      "notes": "正面场景: 订阅制产品需要把获客成本摊到客户生命周期中评估。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队内部在争论我们是不是在'烧钱获客'。销售说只要客户进来后面就能赚回来，财务说首单必须盈利。我需要用数字讲清楚边界在哪里。",
+      "expected_behavior": "调用 allowable-acquisition-cost，用客户终身毛利倒推 AAC，明确 CAC ≤ AAC 的放量条件，以及 AAC ≤ 0 时的判停条件。",
+      "notes": "正面场景: 投资人/团队争论获客预算边界。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "客户只买一次，后面怎么让他继续消费？我们只有一个爆款产品，复购率很低，想知道该设计什么后端产品。",
+      "expected_behavior": "不应调用 allowable-acquisition-cost，应调用 front-end-back-end-marketing；用户问的是产品组合与客户终身价值路径设计，不是'为获取一位客户最多能花多少钱'。",
+      "notes": "跨 skill 混淆测试: 明显应触发 front-end-back-end-marketing。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "团队同时在试十几个营销想法，有人做小红书，有人做抖音，有人做 cold email，不知道哪个渠道值得加大投入。",
+      "expected_behavior": "不应调用 allowable-acquisition-cost，应调用 optimum-selling-strategy；用户需要先找到有效获客组合，再用 AAC 给该组合定财务边界。",
+      "notes": "跨 skill 混淆测试: 明显应触发 optimum-selling-strategy。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请帮我计算这个月的个人所得税，我有工资收入和一笔兼职劳务报酬。",
+      "expected_behavior": "不应调用 allowable-acquisition-cost，也不应调用本书任何 skill；这是个人税务计算，与获客成本无关。",
+      "notes": "诱饵: 完全无关的财务计算。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们的客户平均生命周期只有一周，基本只购买一次，没有复购也没有后端产品。这种情况还能用 AAC 思维做前端亏损获客吗？",
+      "expected_behavior": "不应鼓励用 AAC 做首次亏损获客；应说明没有复购/后端利润的一次性生意 AAC 基本为零或极低，首次销售必须盈利。",
+      "notes": "边界: AAC 不适用于无后端利润的一次性生意。"
+    }
+  ]
+}

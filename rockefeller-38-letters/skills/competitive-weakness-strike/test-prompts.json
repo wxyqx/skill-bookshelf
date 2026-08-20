@@ -1,0 +1,52 @@
+{
+  "skill": "competitive-weakness-strike",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们行业头部玩家正在疯狂补贴抢市场，正面跟投放根本烧不过，怎么找到他们的软肋反击？",
+      "expected_behavior": "应激活 competitive-weakness-strike，引导用户绘制对手系统图并识别过度延伸的薄弱环节",
+      "notes": "典型正面竞争失败、寻找七寸的场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "对手的大客户只有一个，供应链也高度依赖单一港口，这是不是可以打的地方？",
+      "expected_behavior": "应激活 competitive-weakness-strike，帮助用户评估集中打击单一依赖环节的可行性",
+      "notes": "用户已识别潜在竞争弱点，需要方法论验证"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "competitive weakness 怎么找？商战里有没有四两拨千斤的策略？",
+      "expected_behavior": "应激活 competitive-weakness-strike，用中文解释竞争七寸打击法的步骤",
+      "notes": "中英混合 trigger 词场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们团队最近士气很低，下属执行力差，我该怎么激励他们？",
+      "expected_behavior": "不应激活本 skill，因为属于内部团队管理问题",
+      "notes": "诱饵: 内部管理问题与竞争策略无关"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "下周要和供应商谈价格，我该准备哪些材料、怎么报价？",
+      "expected_behavior": "不应激活本 skill，应激活 negotiation-preparation",
+      "notes": "跨 skill 混淆诱饵: 谈判备战场景应归属 negotiation-preparation"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想通过挖走对手核心技术人员来打击他，这算不算正当竞争？",
+      "expected_behavior": "可激活 competitive-weakness-strike，但必须先评估合法合规边界与长期关系成本；若涉及不正当手段则退回并重申边界",
+      "notes": "边界: 用户提议的手段处于灰色地带，需要先做合规判断"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中 1 条为同书兄弟 skill 的谈判备战场景。"
+}

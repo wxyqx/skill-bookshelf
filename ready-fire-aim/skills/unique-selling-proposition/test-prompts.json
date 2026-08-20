@@ -1,0 +1,55 @@
+{
+  "skill": "unique-selling-proposition",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们的产品功能和竞品差不多，客户演示时总在问'你们和 XX 有什么区别'。我答不上来，只能拼价格，利润越压越薄。",
+      "expected_behavior": "调用 unique-selling-proposition，做特性→利益→深层欲望翻译，选择并验证 USP 三要素（看起来独特、有用、一句话能说清），并延展为营销素材。",
+      "notes": "正面场景: 产品同质化，客户记不住差异。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们要给新品牌设计一句 slogan，市场部写了十几条都觉得不够打动人。我们需要找到一个能一句话说清、又能让客户选我们的核心卖点。",
+      "expected_behavior": "调用 unique-selling-proposition，从客户利益出发找出看起来独特且有用的角度，生成候选 USP/slogan 并设计快速测试。",
+      "notes": "正面场景: 需要为品牌设计 slogan 和核心卖点。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们要进入一个已经被巨头占据的市场，功能和资金都比不过对方。有没有可能通过定位切出一块可防守的小山头？",
+      "expected_behavior": "调用 unique-selling-proposition，在红海中找到'看起来独特、对客户有用、一句话能说清'的认知位置，避免直接拼功能和价格。",
+      "notes": "正面场景: 新进入者需要差异化定位。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我看看这个广告文案有没有 Big Idea、Big Benefit、Big Promise 和 Proof，为什么感觉有创意但转化差。",
+      "expected_behavior": "不应调用 unique-selling-proposition，应调用 marketing-four-legged-stool；用户问的是单一营销活动的四脚凳结构检查，不是战略定位。",
+      "notes": "跨 skill 混淆测试: 明显应触发 marketing-four-legged-stool。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "产品每次小改动都通过 A/B 测试，但客户说我们和竞品越来越像，USP 好像在慢慢弱化。这是怎么回事？",
+      "expected_behavior": "不应调用 unique-selling-proposition，应调用 incremental-degradation；用户描述的是产品差异化随时间渐进退化，需要用原始基准对照和持续小改进来解决。",
+      "notes": "跨 skill 混淆测试: 明显应触发 incremental-degradation。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请帮我翻译这句话成英文：'我们的使命是让每个人都能享受科技的便利。'",
+      "expected_behavior": "不应调用 unique-selling-proposition，也不应调用本书任何 skill；这是语言翻译请求，与定位无关。",
+      "notes": "诱饵: 完全无关的翻译请求。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们做的是标准化钢材批发，整个行业就是拼最低价，客户只认价格，我们还能做 USP 吗？",
+      "expected_behavior": "不应调用 unique-selling-proposition；产品完全是大宗商品且唯一竞争手段是最低价时，应使用成本领先或价格策略，而非 USP。",
+      "notes": "边界: 纯大宗商品低价竞争不在 USP 适用范围。"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "skill": "marketing-four-legged-stool",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "帮我看看这个 landing page 为什么转化差。我们花了不少钱投流，但用户进来后就是不注册。我觉得文案有创意，但似乎缺了点什么。",
+      "expected_behavior": "调用 marketing-four-legged-stool，逐条检查 Big Idea、Big Benefit、Big Promise、Proof 是否齐全，找出缺少的一脚并给出修改建议。",
+      "notes": "正面场景: landing page 转化率低，需要文案结构诊断。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们要发布一波新的广告 campaign，需要确保创意结构完整。听说有个'四脚凳'框架，包括 Big Idea、Big Benefit、Big Promise、Proof，能不能帮我们过一遍？",
+      "expected_behavior": "调用 marketing-four-legged-stool，提炼 Big Idea，明确 Big Benefit 与 Big Promise，补齐 Proof，并用四脚凳清单自检。",
+      "notes": "正面场景: 用户主动提到四脚凳框架。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "产品卖点很多，但传播信息很杂乱，广告里什么都说。能不能帮我们把所有卖点聚焦到一个核心概念上，让 campaign 更有说服力？",
+      "expected_behavior": "调用 marketing-four-legged-stool，从 USP 中提炼 Big Idea，把多个卖点熔铸成一句 Big Promise，并为每个 claim 准备 Proof。",
+      "notes": "正面场景: 卖点过多、信息杂乱，需要聚焦到单一 campaign 结构。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "产品功能和竞品差不多，客户总在问'你们和 XX 有什么区别'，我们需要找到一个差异化定位。",
+      "expected_behavior": "不应调用 marketing-four-legged-stool，应调用 unique-selling-proposition；用户需要先找到'卖什么独特好处'，再用四脚凳包装成 campaign。",
+      "notes": "跨 skill 混淆测试: 明显应触发 unique-selling-proposition。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "获客成本太高，能不能做一个低价引流款先把人拉进来，后面再卖高价产品？",
+      "expected_behavior": "不应调用 marketing-four-legged-stool，应调用 front-end-back-end-marketing；用户问的是产品组合与盈利路径，不是单一广告文案结构。",
+      "notes": "跨 skill 混淆测试: 明显应触发 front-end-back-end-marketing。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请帮我总结这篇文章的要点，我需要一份 200 字以内的摘要。",
+      "expected_behavior": "不应调用 marketing-four-legged-stool，也不应调用本书任何 skill；这是内容摘要任务，与营销活动结构无关。",
+      "notes": "诱饵: 完全无关的内容摘要。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们只想做一个好玩的品牌短片，没有什么销售目标，主要是想表达品牌态度。这种适合用四脚凳检查吗？",
+      "expected_behavior": "不应调用 marketing-four-legged-stool；四脚凳强调'能卖货'，不适合纯艺术表达或没有销售目标的品牌短片。",
+      "notes": "边界: 没有销售目标的创意项目不适合四脚凳。"
+    }
+  ]
+}

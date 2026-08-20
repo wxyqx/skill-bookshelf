@@ -1,0 +1,48 @@
+{
+  "skill": "adversity-converter",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "三个月前公司裁员我被裁了，前两个月一直在自怨自艾，借酒消愁。现在稍微缓过来了，但不知道接下来该怎么走。怎么从这次打击中恢复？我想把这段经历变成 stress to growth 的契机，而不是一直沉沦下去。",
+      "expected_behavior": "调用 adversity-converter，诊断用户当前适应策略（从退化型转向转换型），引导痛苦阐释重定义（从'命运不公'转为'可解决的挑战'），提取废弃能量构建新目标，检查广泛化。",
+      "notes": "正面场景: 失业后的恢复需求 + stress to growth trigger，已过急性期，适合方法论指导。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "去年查出慢性病，生活全变了，一直在想'为什么是我'。最近读到耗散结构 dissipative structure 的概念，说痛苦可以转化为更高秩序。我想知道具体怎么做，怎么把生病这件事变成 post-traumatic growth？",
+      "expected_behavior": "调用 adversity-converter，引导用户将'为什么是我'的无效阐释转为有效阐释（'可解决的挑战'），识别病痛中可迁移的能量（新同理心、被迫放下的旧执念），设定与新阐释一致的具体目标。",
+      "notes": "正面场景: 慢性病后的意义重构 + dissipative structure / post-traumatic growth trigger。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "创业失败赔了两百万，合伙人跑了，女朋友也分手了。已经过了半年，不再像刚开始那样崩溃了，但感觉人生完全停滞了。痛苦有什么意义？我想化悲愤为力量，但不知道从哪里开始重新建立。",
+      "expected_behavior": "调用 adversity-converter，诊断适应策略，引导痛苦阐释重定义（将失败经验转化为可解决的挑战），提取废弃能量（创业经验中的可迁移技能），构建新目标并做广泛化检查。",
+      "notes": "正面场景: 多重打击后的恢复 + '痛苦有什么意义'/'化悲愤为力量' trigger，已过急性期。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我事业很成功，公司估值上亿，家庭也和睦，但越来越觉得空虚。不知道每天忙这些到底为了什么，人生意义是什么？感觉所有的成就都没有真正意义。我需要找到一个统一的人生方向。",
+      "expected_behavior": "不应调用 adversity-converter，应调用 life-theme-builder；用户没有遭遇逆境打击，核心问题是成功后的方向感缺失和意义追问，需要从分散目标中提炼统一人生主题。",
+      "notes": "跨 skill 混淆测试: 明显应触发 life-theme-builder（同书相邻 skill）。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "刚刚接到电话，我妈妈突发心梗进了ICU，我现在浑身发抖，完全不知道该怎么办。能不能快告诉我怎么应对这种打击？",
+      "expected_behavior": "不应调用 adversity-converter；用户处于急性危机期（事件刚刚发生），需要紧急安全/医疗/情感支持，不是方法论指导的时机。应建议用户先赶往医院、联系家人、确保当下安全。",
+      "notes": "诱饵: 急性危机期需要紧急干预，方法论指导应等急性期过后再介入。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我在公司被系统性歧视了三年，同样的业绩总是不被认可，晋升轮不到我，上司还经常当众贬低我。我想把这种痛苦转化为成长的力量，用 resilience 的方式应对。但不管怎么调整心态，处境都没有改变。是不是我的适应策略不对？",
+      "expected_behavior": "不应调用 adversity-converter 的标准流程；用户的痛苦源于系统性压迫（职场歧视），个人'转换'可能掩盖需要集体行动解决的问题。应建议用户寻求组织层面的维权途径（HR、劳动仲裁、法律咨询），而非仅靠个人心态调整。",
+      "notes": "边界: 系统性压迫导致的痛苦，个人逆境转化可能掩盖需要集体行动解决的问题。"
+    }
+  ]
+}

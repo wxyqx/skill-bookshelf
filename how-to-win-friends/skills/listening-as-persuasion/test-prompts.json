@@ -1,0 +1,58 @@
+{
+  "skill": "listening-as-persuasion",
+  "version": "0.1.0",
+  "all_skills_context": [
+    {"name": "bait-the-fish-thinking", "description": "用户想说服别人但效果不好、问'怎么让对方同意'、沟通时只从自己角度出发时激活。"},
+    {"name": "argument-avoidance", "description": "用户想纠正别人、即将或正在争辩、说'我要证明他对不了'时激活。"},
+    {"name": "preemptive-self-criticism", "description": "用户面临冲突、即将被指责、问'怎么化解矛盾'时激活。"},
+    {"name": "yes-ladder-socratic", "description": "用户需要说服他人接受观点、提出提案怕被拒、说'他肯定会说不'时激活。"},
+    {"name": "listening-as-persuasion", "description": "用户说服他人但总在说不停、急于表达、说'他不听我说'时激活。"},
+    {"name": "face-saving-feedback", "description": "用户需要批评/纠正他人、给反馈怕伤关系时激活。"},
+    {"name": "micro-progress-praise", "description": "用户想改变他人行为/习惯、管教孩子、问'为什么他总没进步'时激活。"},
+    {"name": "reputation-anchoring", "description": "用户想改变他人行为但直接批评无效、想激发对方潜力时激活。"}
+  ],
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "客户来投诉产品质量问题，怎么处理？",
+      "expected_behavior": "调用 listening-as-persuasion，引导用户先问'您能详细说说遇到什么问题吗？'然后安静听15分钟",
+      "notes": "正面场景：投诉场景需要先倾听"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我说了很多但对方就是不听我说，怎么办",
+      "expected_behavior": "调用 listening-as-persuasion，引导用户把'说'转为'问'和'听'",
+      "notes": "正面场景：说太多导致无效"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "做销售时我总是说太多，怎么改善沟通效果",
+      "expected_behavior": "调用 listening-as-persuasion，引导用户承诺前70%时间只问和听",
+      "notes": "正面场景：销售中说太多"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我写个排序算法",
+      "expected_behavior": "纯技术任务，不应调用任何沟通类 skill",
+      "notes": "诱饵：非沟通场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "怎么让对方同意我的提案？他肯定会说不",
+      "expected_behavior": "应调用 yes-ladder-socratic（已有方案需用共识积累推进），不应调用 listening-as-persuasion（那是还不了解对方需求时用的）",
+      "notes": "跨skill混淆：都涉及说服，但这里已有明确方案需要推进，需要控制对话节奏而非释放信息"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "生产环境出了紧急故障，客户需要快速得到答案，没时间慢慢听",
+      "expected_behavior": "不应调用 listening-as-persuasion——紧急场景需要快速给出信息而非让对方说更多",
+      "notes": "边界：紧急场景，倾听不适用"
+    }
+  ]
+}

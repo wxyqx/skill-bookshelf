@@ -1,0 +1,52 @@
+{
+  "skill": "strength-based-management",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我团队里有个员工生活习惯跟我很不一样，但工作能力很强，我该不该重用他？",
+      "expected_behavior": "应激活 strength-based-management，帮助用户区分个人好恶与工作才能，引导其根据岗位需求决定是否重用",
+      "notes": "直接对应洛克菲勒重用阿奇博尔德的案例，核心冲突是个人好恶 vs 工作才能"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "每次绩效面谈我都只能说出下属一堆问题，团队士气越来越差，怎么扭转？",
+      "expected_behavior": "应激活 strength-based-management，引导用户建立优点回顾机制并把面谈焦点转向长处开发",
+      "notes": "典型只盯缺点的失败模式，需要转向长处用人"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我要组建一个新团队，怎么根据每个人的长处来分配角色？",
+      "expected_behavior": "应激活 strength-based-management，引导用户用'喜欢+擅长+组织需要'三要素进行人岗匹配",
+      "notes": "团队组建场景，关键词是'长处''分配角色''人岗匹配'"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我发现一个核心员工偷偷把客户资源卖给竞争对手，该怎么处理？",
+      "expected_behavior": "不应激活本 skill，因为涉及严重职业道德与竞业违规，需要走合规与问责流程",
+      "notes": "诱饵: 涉及核心员工，但属于边界之外的严重违纪场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我个人职业迷茫，不知道自己喜欢做什么、适合做什么，该怎么选择？",
+      "expected_behavior": "不应激活本 skill，应激活 passion-job-fit",
+      "notes": "跨 skill 混淆诱饵: 涉及'喜欢+擅长'，但主体是个人职业选择而非领导者配置他人"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "一个销售冠军业绩很好，但经常公开挑战我的管理权威，我该怎么用他？",
+      "expected_behavior": "可以有限调用 strength-based-management，但需要先判断挑战行为是否属于建设性意见或可管理的冲突，再设计授权边界；若涉及恶意破坏则不适用",
+      "notes": "边界：高能力+难管理属于长处用人的典型灰色地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

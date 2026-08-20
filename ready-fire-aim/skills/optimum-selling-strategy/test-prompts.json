@@ -1,0 +1,55 @@
+{
+  "skill": "optimum-selling-strategy",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "新业务刚启动，我完全不知道客户聚集在哪里、该通过什么渠道获客。有人在说小红书，有人说要做抖音，还有人说先跑 cold email，我完全没方向。",
+      "expected_behavior": "调用 optimum-selling-strategy，列出 OSS 四变量（渠道/产品/定价/主张）的当前假设，设计对照测试每次只改一个变量，最终锁定单位经济为正的组合。",
+      "notes": "正面场景: 新业务不知道客户在哪，典型 OSS 触发情境。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们已经有产品了，但转化率很低。落地页来了人也不注册，注册了的也不付费。我怀疑是渠道、定价或销售主张出了问题，但不知道从何排查。",
+      "expected_behavior": "调用 optimum-selling-strategy，系统诊断四变量中哪一项最可能是瓶颈，设计 A/B 或小型市场测试，并保持其他变量不变以判断因果关系。",
+      "notes": "正面场景: 已有产品转化率低迷，需系统测试销售组合。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队同时在试十几个营销想法：有的做 KOL，有的做 SEO，有的做线下活动，还有的做低价促销。资源很分散，没有一个可重复的获客公式。",
+      "expected_behavior": "调用 optimum-selling-strategy，收敛到 2–3 个最值得测试的组合，设定测试预算与判停条件，最终把 80% 资源投入验证有效的组合。",
+      "notes": "正面场景: 营销想法过多、资源分散，需要找到可重复获客组合。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我总觉得产品还不够完美，怕上线后没人买。市场调研也还没做完，商业计划也还不完整，我是不是该再准备准备？",
+      "expected_behavior": "不应调用 optimum-selling-strategy，应调用 ready-fire-aim；用户的核心问题是'准备完美才开始'的行动瘫痪，而非'已有假设需要系统测试'。",
+      "notes": "跨 skill 混淆测试: 明显应触发 ready-fire-aim。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们公司现在到底处于哪个成长阶段？该先加人还是先建流程？我感觉创始人角色有点混乱。",
+      "expected_behavior": "不应调用 optimum-selling-strategy，应调用 four-stages-of-growth；用户问的是企业成长阶段诊断与优先级，不是销售四变量测试。",
+      "notes": "跨 skill 混淆测试: 明显应触发 four-stages-of-growth。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "帮我写一下下周部门会议的议程，大概半小时，需要讨论项目进度和预算分配。",
+      "expected_behavior": "不应调用 optimum-selling-strategy，也不应调用本书任何 skill；这是日常办公协助，与获客策略无关。",
+      "notes": "诱饵: 完全无关的日常事务。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "产品还没上线，连 10 个真实客户都没有，但我想直接花 100 万投放广告，同时测试渠道、产品、定价、主张四个变量，快速找到 OSS。",
+      "expected_behavior": "不应直接调用 optimum-selling-strategy 做大规模测试；应先调用 ready-fire-aim 验证需求，确认有人愿意付费后再用 OSS 系统优化。",
+      "notes": "边界: 产品价值尚未验证就想规模化投放，超出 OSS 适用范围。"
+    }
+  ]
+}

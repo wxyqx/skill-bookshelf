@@ -1,0 +1,52 @@
+{
+  "skill": "deliberate-hardship",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我女儿从小生活条件很好，我怕她将来经不起挫折，该怎么培养她的抗压能力？",
+      "expected_behavior": "应激活 deliberate-hardship，帮助用户设计有目的的历练机制，让孩子通过真实挑战磨砺毅力与实行能力。",
+      "notes": "典型场景：培养接班人，主动设计吃苦历练。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我刚毕业进入一家大公司，工作很闲，感觉学不到东西，要不要主动申请去艰苦的一线岗位？",
+      "expected_behavior": "应激活 deliberate-hardship，引导用户评估一线历练与职业目标的匹配度，设计主动吃苦路径。",
+      "notes": "典型场景：个人长期处于舒适区，寻求快速成长。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队里年轻员工遇到点困难就退缩，我想设计一个历练机制帮他们快速成长，有什么方法？",
+      "expected_behavior": "应激活 deliberate-hardship，帮助用户设计有挑战但不过度的团队历练方案。",
+      "notes": "典型场景：团队新人需要快速成长，增强抗压与执行能力。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我连续加班三个月，身心俱疲，经常失眠焦虑，该怎么调整？",
+      "expected_behavior": "不应激活本 skill，因为用户需要的是休息恢复而非继续吃苦。",
+      "notes": "诱饵：身心俱疲状态，吃苦会加重问题。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想让下属多承担责任，是不是应该把最苦最累的活都派给他们？",
+      "expected_behavior": "不应激活本 skill，应激活 responsibility-culture 或 strength-based-management，帮助建立责任文化与合理分工。",
+      "notes": "跨 skill 混淆诱饵：让下属吃苦不等于合理历练，可能是管理偷懒。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "公司有一个去非洲开拓市场的机会，条件艰苦但成长空间大，我犹豫要不要主动报名，该怎么判断？",
+      "expected_behavior": "可调用 deliberate-hardship，但需先评估：该艰苦任务是否与用户当前能力缺口和长期目标匹配，是否具备基本保障与成长反馈。",
+      "notes": "边界：主动吃苦机会的真实价值判断。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

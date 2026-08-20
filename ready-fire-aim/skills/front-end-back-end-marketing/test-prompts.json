@@ -1,0 +1,55 @@
+{
+  "skill": "front-end-back-end-marketing",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们获客成本太高了，每次投放广告都很难回本。我能不能先做一款低价入门课或者免费资料，先把潜在客户拉进来，后面再卖高价课程？",
+      "expected_behavior": "调用 front-end-back-end-marketing，盘点现有产品并划分前后端角色，设计前端获客品与后端盈利路径，并用 AAC 设定经济模型与测试漏斗。",
+      "notes": "正面场景: 获客成本高，想用低价入门款降低首次购买门槛。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "公司有多个产品，但每个产品都被当作独立利润中心考核，销售只愿意推利润高的，没人愿意推获客品。整体利润反而下降了。",
+      "expected_behavior": "调用 front-end-back-end-marketing，重新划分各产品在'获客'与'盈利'中的战略角色，设计整体 LTV 路径并调整考核方式。",
+      "notes": "正面场景: 多产品独立考核导致整体利润下降。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "客户买了一次我们的产品就不见了，复购率很低。我想设计一条 upsell 路径，但不确定哪款产品该用来获客、哪款产品用来盈利、什么时候推后端。",
+      "expected_behavior": "调用 front-end-back-end-marketing，设计前端获客品、后端利润品、upsell 触发点与最短转化路径，并测试整体 LTV:CAC。",
+      "notes": "正面场景: 需要设计会员/订阅/课程的 upsell 路径。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我看看这个 landing page 为什么转化差，文案感觉有创意但卖不出去。",
+      "expected_behavior": "不应调用 front-end-back-end-marketing，应调用 marketing-four-legged-stool；用户问的是单一营销素材的创意结构，不是产品组合与盈利路径。",
+      "notes": "跨 skill 混淆测试: 明显应触发 marketing-four-legged-stool。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我该花多少钱获客？首次销售能不能亏损？如果前端定价 9.9 元，后面需要多少复购才能回本？",
+      "expected_behavior": "不应调用 front-end-back-end-marketing，应调用 allowable-acquisition-cost；用户问的是'可承受获客成本'的财务边界，不是前后端产品组合设计。",
+      "notes": "跨 skill 混淆测试: 明显应触发 allowable-acquisition-cost。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请推荐一款好用的 CRM 工具，我们团队大概 20 人，主要做 B2B 销售。",
+      "expected_behavior": "不应调用 front-end-back-end-marketing，也不应调用本书任何 skill；这是工具推荐请求，与前后端营销框架无关。",
+      "notes": "诱饵: 完全无关的工具推荐。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们只有一款产品，而且未来半年也没有开发第二款产品的计划，但想先设计一套前后端营销组合。",
+      "expected_behavior": "不应调用 front-end-back-end-marketing；只有单一产品且没有第二款产品计划时，应先使用 OSS 或 AAC 优化首次销售，等产品矩阵形成后再设计前后端路径。",
+      "notes": "边界: 单一产品无法构成前后端组合。"
+    }
+  ]
+}

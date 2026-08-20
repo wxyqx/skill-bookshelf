@@ -1,0 +1,48 @@
+{
+  "skill": "attention-audit",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我每天从早忙到晚，开了无数个会，回了几百条消息，但到下班时发现真正重要的事一件都没推进。注意力完全涣散，脑子里乱七八糟停不下来，感觉精神内耗特别严重。我控制不了自己的注意力了。",
+      "expected_behavior": "调用 attention-audit，进行注意力带宽审计（列出过去24小时注意力分配），识别精神熵来源，排定意图优先级，制定带宽重分配方案。",
+      "notes": "正面场景: 典型'忙但没产出+注意力涣散+精神内耗'，核心 trigger 全覆盖。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "最近总感觉 brain fog，明明没做什么体力活但脑子像浆糊一样。一闲下来就焦虑，刷手机刷到半夜，第二天更累。attention scattered 到连一篇文章都读不完。到底什么东西在消耗我的注意力？",
+      "expected_behavior": "调用 attention-audit，诊断被动休闲导致注意力退化，识别精神熵来源（焦虑、碎片信息），引导用户将注意力重分配到与意图一致的资讯上。",
+      "notes": "正面场景: brain fog + attention scattered + 被动休闲后的注意力退化，含英文 trigger。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我同时在做三个项目，还要带团队、照顾家庭。每件事都只做到一半就被打断，脑子里永远有十件事在转，精神内耗严重。感觉自己像个救火队员，注意力被各种紧急但不重要的事劫持了。",
+      "expected_behavior": "调用 attention-audit，审计注意力带宽分配，识别精神熵来源（多任务切换焦虑），明确主意图，制定将70%以上带宽分配给主意图的方案。",
+      "notes": "正面场景: 多角色多任务导致注意力被劫持，精神内耗明显。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我做数据录入的工作三年了，闭着眼睛都能做完，现在每天上班都觉得太无聊了，完全没有挑战感。以前还挺喜欢这份工作的，现在就是混日子。怎么才能让工作重新有沉浸感？",
+      "expected_behavior": "不应调用 attention-audit，应调用 flow-channel-trigger；用户的核心问题是单个活动的挑战-技巧失衡（挑战<技巧导致无聊），而非整体注意力分配问题。",
+      "notes": "跨 skill 混淆测试: 明显应触发 flow-channel-trigger（同书相邻 skill）。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我下周有三个 deadline，帮我排一下时间表，周一到周五每天上午做项目A、下午做项目B、晚上做项目C，周末留出来缓冲。另外帮我找一下时间管理的最佳实践。",
+      "expected_behavior": "不应调用 attention-audit，也不应调用本书任何 skill；这是纯时间管理/日程安排请求，用户需要的是时间块规划而非注意力带宽审计。",
+      "notes": "诱饵: 纯日程安排请求，注意力审计关注的是意识中资讯的质量而非时间块的分配。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我从小就有注意力缺陷问题，去医院确诊过 ADHD，吃药的时候好一些，停药就完全没法集中。最近换药期间 brain fog 特别严重，注意力完全涣散。有什么方法能帮我管理注意力吗？",
+      "expected_behavior": "不应调用 attention-audit；用户的注意力问题是生理性的（ADHD、药物调整），需要医学干预而非注意力管理方法论。应建议用户继续遵医嘱治疗。",
+      "notes": "边界: 生理性注意力问题（ADHD/药物影响）需要医学干预，不在注意力审计适用范围内。"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "skill": "flow-activity-designer",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我每天的工作就是录入数据，重复同样的操作几百次，routine is killing me。有时候真觉得这份工作太无聊了，有没有办法让这种枯燥的日常变得有意思一点？想做一些 gamification 的设计。",
+      "expected_behavior": "调用 flow-activity-designer，分析数据录入为何无聊（太简单/无反馈/无意义感），为该活动设计四要素（新目标、规则、即时反馈、难度递增），组装一个嵌入式微型游戏。",
+      "notes": "正面场景: 重复性工作无聊，典型心流活动设计器触发情境，包含 trigger 词 'routine is killing me' 和 'gamification'。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "每天通勤来回两个小时，地铁上特别无聊。想问问怎么把这种碎片时间利用起来，甚至做点 gamification，让通勤不那么难熬？感觉这些无聊的等待时间都被浪费了。",
+      "expected_behavior": "调用 flow-activity-designer，将通勤活动分析为'纯被动等待'类型，设计可在通勤中执行的微型游戏（如观察+分类挑战、限时阅读目标），并确认游戏不影响通勤安全。",
+      "notes": "正面场景: 日常琐事（通勤）无聊，用户明确提到 gamification，属于从无聊活动中注入心流要素的典型场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "公司每周的例会特别无聊，大家都在走神刷手机。作为组织者我想做一些心流化设计，让参会的人能更投入。这种无聊的会议怎么变得有意思？",
+      "expected_behavior": "调用 flow-activity-designer，分析会议为何无聊（目标不清/无反馈/挑战不足），为会议设计嵌入式微型游戏（如预测讨论结果、限时决策挑战），同时确保游戏不干扰会议本身的完成质量。",
+      "notes": "正面场景: 为团队设计无聊活动的心流化方案，对应书中莱布尼茨在无聊会议中设计手指敲击游戏的案例。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我最近在练吉他，以前挺喜欢的，但现在一弹就觉得焦虑，好像太难了，总是弹错。为什么做一个原本喜欢的事反而感到焦虑？是我练的方式有问题吗？",
+      "expected_behavior": "不应调用 flow-activity-designer，应调用 flow-channel-trigger；用户面对的是一个已有乐趣的活动出现了焦虑感，核心问题是挑战-技巧比例失调（挑战 > 技巧 → 焦虑），需要诊断和调整已有活动的体验品质，而非从零为无聊活动设计心流要素。",
+      "notes": "跨 skill 混淆测试: 明显应触发 flow-channel-trigger。关键区分——设计器针对'本就无聊的活动注入心流'，触发器针对'已有活动体验品质下降时调整挑战-技巧比'。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我最近迷上了攀岩，每次去攀岩馆都觉得时间飞逝，完全沉浸在里面。想问问怎么系统提升攀岩技巧，挑战更高难度的路线？",
+      "expected_behavior": "不应调用 flow-activity-designer，也不应调用本书任何 skill 做活动设计；攀岩本身已提供足够挑战和反馈，用户已处于心流状态，活动不需要重新设计。若需进一步优化可考虑 flow-channel-trigger 微调挑战-技巧比。",
+      "notes": "非触发: 活动本身已提供足够挑战和反馈，用户已在心流中。SKILL.md 明确边界——'活动本身已提供足够挑战和反馈时需要 flow-channel-trigger 微调而非重新设计'。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我每天刷短视频能刷三四个小时，越刷越空虚但停不下来。能不能用 gamification 的方法把刷视频这件事心流化，让它变得有质量一点？",
+      "expected_behavior": "不应调用 flow-activity-designer；刷短视频属于纯粹的被动消费，无法通过注入心流要素来改造。应建议用户先替换为可注入挑战要素的活动（如学习、创作、运动），而非对被动消费进行心流化设计。可引导使用 pleasure-vs-enjoyment 辨别器先判断该活动的性质。",
+      "notes": "边界: 用户使用了 trigger 词 'gamification' 和 '心流化'，但活动本质是被动消费。SKILL.md 明确——'活动是纯粹的被动消费（刷短视频）应替换而非改造'。"
+    }
+  ]
+}

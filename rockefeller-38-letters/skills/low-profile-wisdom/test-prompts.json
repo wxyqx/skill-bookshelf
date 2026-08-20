@@ -1,0 +1,52 @@
+{
+  "skill": "low-profile-wisdom",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我刚升职，手下老员工不服气，我该怎么做才能让他们愿意配合我？",
+      "expected_behavior": "应激活 low-profile-wisdom，帮助用户分析如何通过低调谦恭、宽宏赞美赢得人心，而非以权压人。",
+      "notes": "典型场景：身居高位需要笼络人心，收敛锋芒获取团队信任。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "谈判时对方一直逼我当场做决定，我如何争取更多思考时间？",
+      "expected_behavior": "应激活 low-profile-wisdom，引导用户用平静姿态争取24小时或更长时间思考，避免情绪决策。",
+      "notes": "典型场景：谈判中需要争取思考时间，以谦恭姿态换取有利条件。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "部门里有个技术大牛，我想跟他学东西，但怕他觉得我基础差看不起我，怎么开口请教？",
+      "expected_behavior": "应激活 low-profile-wisdom，鼓励用户坦诚说不懂、放下自尊主动请教。",
+      "notes": "典型场景：向高手请教，主动放低姿态获取知识。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我要在面试中证明我的专业能力，应该重点展示哪些项目经验？",
+      "expected_behavior": "不应激活本 skill，因为该场景需要主动展示专业能力而非收敛锋芒。",
+      "notes": "诱饵：需要展现实力的专业场合。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我最近状态很差，做什么都提不起劲，想辞职又不敢，怎么办？",
+      "expected_behavior": "不应激活本 skill，应激活 attitude-reframe 或 action-first，帮助用户调整工作态度或采取当下行动。",
+      "notes": "跨 skill 混淆诱饵：情绪与行动问题，不是低调策略问题。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我已经做到高管，但公司战略会上我的方案被CEO当众否定，我该当场反驳还是沉默接受？",
+      "expected_behavior": "可调用 low-profile-wisdom，但需先判断：若反驳是维护关键利益则适度表达；若只是面子问题则选择韬光养晦、会后沟通。",
+      "notes": "边界：公开场合被否定，既涉及低调也涉及维护权威，需要情境判断。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

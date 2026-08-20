@@ -1,0 +1,55 @@
+{
+  "skill": "bottleneck-diagnosis",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我每天忙到半夜，但公司好像没更快。很多事我不在就推进不了，我开始怀疑我自己是不是公司的瓶颈。",
+      "expected_behavior": "调用 bottleneck-diagnosis，执行一周时间审计并分类质控类工作，召开核心团队访谈收集'可停止/可授权'清单，制定授权标准与 30 天试行计划。",
+      "notes": "正面场景: 创始人怀疑自己是瓶颈。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "公司增长放缓了，但一线团队并不忙，很多人其实是在等我审批。创始人仍在审批每一张广告素材、每一份合同、每一个产品细节。",
+      "expected_behavior": "调用 bottleneck-diagnosis，通过时间审计与团队访谈两条线交叉验证创始人是否为瓶颈，并给出具体授权路径。",
+      "notes": "正面场景: 增长放缓但团队等待审批，典型瓶颈信号。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想授权但不知道放什么，担心放了会出错。现在所有重要决策都集中在我这里，直接下属已经有 9 个人，我觉得管理开始失控。",
+      "expected_behavior": "调用 bottleneck-diagnosis，帮助创始人识别可授权事项，区分'可完全授权''可授权但有复核点''不可授权'三类，并制定 30 天试行计划。",
+      "notes": "正面场景: 想授权但无从下手，直接下属过多。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "部门间互相抢资源、会议充满政治博弈，晋升靠讨好老板而不是市场结果。创始人每天被内部事务淹没。",
+      "expected_behavior": "不应调用 bottleneck-diagnosis，应调用 free-market-management；根因是部门政治与激励扭曲，不是创始人亲力亲为造成的速度瓶颈。",
+      "notes": "跨 skill 混淆测试: 明显应触发 free-market-management。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们公司现在到底处于哪个成长阶段？感觉已经从单一产品走向多产品扩张，但不知道算不算进入青春期。",
+      "expected_behavior": "不应调用 bottleneck-diagnosis，应调用 four-stages-of-growth；用户需要先判断企业阶段，确认 Stage Three 后再判断是否为创始人瓶颈。",
+      "notes": "跨 skill 混淆测试: 明显应触发 four-stages-of-growth。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "下属总是完不成任务，交待下去的事情总是打折扣。我是不是该亲自抓执行？",
+      "expected_behavior": "不应调用 bottleneck-diagnosis；问题本质是下属执行力或能力问题，应先用招聘/培训/淘汰解决人问题，再谈授权。",
+      "notes": "诱饵: 执行力不足不是创始人瓶颈。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们初创企业只有创始人能做销售和产品，其他人都还没招到。这种情况下创始人亲力亲为算不算瓶颈？",
+      "expected_behavior": "不应调用 bottleneck-diagnosis；企业仍在婴儿期，创始人是唯一能做销售和产品的人，此时亲力亲为是必要的，不是瓶颈。",
+      "notes": "边界: 婴儿期创始人的亲力亲为是必要阶段，不是瓶颈。"
+    }
+  ]
+}

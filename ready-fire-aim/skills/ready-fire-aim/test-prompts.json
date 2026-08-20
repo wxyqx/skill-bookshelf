@@ -1,0 +1,55 @@
+{
+  "skill": "ready-fire-aim",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我有一个创业想法，但总觉得要先写商业计划、做市场调研、完善产品才能开始。朋友说我想太多了，但我就是放不下心，怕产品不够好没人买。",
+      "expected_behavior": "调用 ready-fire-aim，定义'足够好'的启动版本，设计 48–72 小时内的最小可行测试，并根据反馈决定继续/修正/放弃。",
+      "notes": "正面场景: 创业启动前的完美主义瘫痪，典型 Ready-Fire-Aim 触发情境。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我想写一本书已经三年了，大纲改了很多遍，但一直没动笔。每次打开文档都觉得结构还不够完美，资料还不够全。",
+      "expected_behavior": "调用 ready-fire-aim，帮助用户把'写书'拆解为最小可测试动作（如先写一章、发一篇 newsletter、做一次预售），用市场反馈替代完美准备。",
+      "notes": "正面场景: 个人目标长期停滞在'还没准备好'。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们团队准备发布一款新产品，但反复打磨功能，已经内测了六个月还没面向真实用户。CTO 说再多两个功能就能上线，销售说再不上就错过旺季了。",
+      "expected_behavior": "调用 ready-fire-aim，区分'必须有'与'可后期补'的功能，设计一个面向真实用户的最小销售/使用测试，并设定止损点。",
+      "notes": "正面场景: 团队层面的产品上线拖延症。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们公司现在增长停滞，部门间互相抢资源，每周管理会议都变成政治博弈，真正该做的决策反而没人拍板。",
+      "expected_behavior": "不应调用 ready-fire-aim，应调用 free-market-management；本场景核心问题是 Stage Three 组织政治与激励扭曲，而非'还没准备好就行动'。",
+      "notes": "跨 skill 混淆测试: 明显应触发 free-market-management。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我该花多少钱去获取一个新客户？首次销售亏损可以吗？我想用低价前端产品把人先进来。",
+      "expected_behavior": "不应调用 ready-fire-aim，应调用 allowable-acquisition-cost；用户已经在问'可承受获客成本'和'首次亏损边界'，属于财务决策而非行动瘫痪。",
+      "notes": "跨 skill 混淆测试: 明显应触发 allowable-acquisition-cost。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下这个 API 的参数文档，我需要知道 rate limit 和认证方式。",
+      "expected_behavior": "不应调用 ready-fire-aim，也不应调用本书任何 skill；这是纯信息查询，与行动哲学无关。",
+      "notes": "诱饵: 完全无关的纯信息查询。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想学跳伞，想先在家里做足理论准备、看完所有安全视频再报名体验课，这样算 Ready-Fire-Aim 吗？",
+      "expected_behavior": "不应调用 ready-fire-aim；跳伞属于高安全风险活动，需要受控培训和合规准备，不在本书'先行动再瞄准'的适用范围内。",
+      "notes": "边界: 区分创业/个人成长中的快速试错与高安全风险活动。"
+    }
+  ]
+}

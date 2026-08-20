@@ -1,0 +1,52 @@
+{
+  "skill": "employees-first",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "公司最近核心员工流失率很高，除了涨工资还有什么办法能留住人？",
+      "expected_behavior": "应激活 employees-first，帮助用户从尊重、感谢、成长机会等多维度设计留人方案",
+      "notes": "典型员工流失场景，关键词是'流失''涨工资''留住人'"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "团队士气很低落，大家只做分内事，怎么才能让他们更有干劲？",
+      "expected_behavior": "应激活 employees-first，引导用户诊断状态并设计员工首位的激励系统",
+      "notes": "典型士气低落场景，核心是把员工放在首位以激发潜能"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我设计新的退休福利制度，应该以什么为原则？",
+      "expected_behavior": "应激活 employees-first，引导用户以员工利益和长期尊重为出发点设计制度",
+      "notes": "制度设计场景，关键词是'退休福利''制度''原则'"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "公司已经三个月发不出工资，我该怎么跟员工谈降薪？",
+      "expected_behavior": "不应激活本 skill，因为企业已无法承担基本薪酬承诺，需要进入危机沟通与止损场景",
+      "notes": "诱饵: 涉及员工，但属于边界之外的资不抵债场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想写一封感谢信给最近加班很多的团队，具体该怎么写？",
+      "expected_behavior": "不应激活本 skill，应激活 gratitude-leadership",
+      "notes": "跨 skill 混淆诱饵: 涉及员工感谢，但核心是具体感谢表达而非全面员工管理理念"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "员工要求涨薪30%，但公司今年利润下滑，我该怎么平衡员工利益和公司生存？",
+      "expected_behavior": "可以有限调用 employees-first，但需明确边界：在可承受范围内优化非物质激励与部分福利，同时坦诚沟通公司现状，不做出无法兑现的承诺",
+      "notes": "边界：员工利益与企业可持续之间的张力是员工首位管理的灰色地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

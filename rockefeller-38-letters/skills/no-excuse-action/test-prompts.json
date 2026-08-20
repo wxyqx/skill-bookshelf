@@ -1,0 +1,52 @@
+{
+  "skill": "no-excuse-action",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "项目延期了，团队都在说客户变需求、资源不够，我感觉大家是在找借口，怎么破？",
+      "expected_behavior": "应激活 no-excuse-action，帮助用户识别借口类型并转向可控行动",
+      "notes": "典型团队外部归因场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我总是觉得自己年纪大了、学不动新东西，所以一直不敢转型，这是不是借口？",
+      "expected_behavior": "应激活 no-excuse-action，引导用户把年龄借口转化为可控的下一步行动",
+      "notes": "个人以年龄为借口的场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "no excuses 怎么落地到团队管理？",
+      "expected_behavior": "应激活 no-excuse-action，用中文解释不找借口行动法的步骤与团队应用",
+      "notes": "英文 trigger 场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们部门连续三个月完不成指标，老板要求做系统性复盘，该从哪些维度分析？",
+      "expected_behavior": "不应激活本 skill，因为用户需要系统性归因与复盘，而非切断借口",
+      "notes": "诱饵: 真实系统性复盘场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我有一个创业想法，但总觉得还没准备好，怎么才能迈出第一步？",
+      "expected_behavior": "不应激活本 skill，应激活 action-first",
+      "notes": "跨 skill 混淆诱饵: 完美主义拖延应归属当下行动"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "员工说他因为抑郁症最近状态差、任务没完成，这是借口还是真实困难？",
+      "expected_behavior": "可谨慎激活 no-excuse-action，但必须先共情并建议专业评估；区分心理健康问题与执行力借口，不能简单要求「不找借口」",
+      "notes": "边界: 身心健康问题与借口的模糊地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中 1 条为同书兄弟 skill 的当下行动场景。"
+}

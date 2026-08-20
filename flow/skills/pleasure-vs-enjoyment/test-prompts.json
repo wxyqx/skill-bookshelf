@@ -1,0 +1,48 @@
+{
+  "skill": "pleasure-vs-enjoyment",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "每个周末都在花钱——逛街、看电影、吃大餐、做SPA，当时挺开心的，但周日晚上躺在床上总觉得特别空虚，感觉什么也没留下。hedonic treadmill 是不是就是说我这种状态？花钱买快乐为什么不管用？",
+      "expected_behavior": "调用 pleasure-vs-enjoyment，辨别用户当前休闲活动多为享乐型（被动消费、恢复均衡但不成长），评估享乐/乐趣比例，制定享乐→乐趣升级方案和乐趣优先清单。",
+      "notes": "正面场景: 花钱享乐后空虚 + hedonic treadmill trigger，典型享乐与乐趣区分需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "每天下班回家就瘫在沙发上看电视刷手机，觉得这是最放松的方式。但越看越累，看完脑子更糊了，周末过了就过了，感觉什么也没留下。pleasure vs enjoyment 到底有什么区别？怎么选更好的休闲方式？",
+      "expected_behavior": "调用 pleasure-vs-enjoyment，辨别看电视/刷手机为享乐型活动（不需要注意力、不带动成长），引导用户用主动休闲替代被动休闲，制定乐趣优先清单。",
+      "notes": "正面场景: 被动休闲后更累 + pleasure vs enjoyment trigger，书中看电视 vs 阅读的经典对比。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想给八岁的孩子报课外班，钢琴、画画、编程、游泳选了好多。但我不想盲目报班，怎么判断哪些活动对孩子是真正有价值的、能让他成长的，而不是只是消磨时间？",
+      "expected_behavior": "调用 pleasure-vs-enjoyment，用四问辨别法（是否需要高度注意力/是否感到成长/是否可被动获得/是否转瞬即逝）逐项评估候选活动，标注哪些可升级、哪些应替换。",
+      "notes": "正面场景: 评估课外活动品质，辨别享乐型与乐趣型活动。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我弹了十年钢琴，以前每次弹都很享受，但最近半年突然觉得好无聊，练琴完全没动力了。明明技巧比以前好很多，为什么反而没意思了？是不是该换个爱好？",
+      "expected_behavior": "不应调用 pleasure-vs-enjoyment，应调用 flow-channel-trigger；用户描述的是某个具体爱好的挑战-技巧失衡（技巧提升后挑战未同步提升导致无聊），而非休闲活动品质的享乐/乐趣区分。",
+      "notes": "跨 skill 混淆测试: 明显应触发 flow-channel-trigger（同书相邻 skill）。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "最近两个月一直情绪低落，什么都不想做，对以前喜欢的事也提不起兴趣，有时候觉得活着没意思。是不是我的休闲方式有问题？",
+      "expected_behavior": "不应调用 pleasure-vs-enjoyment，也不应调用本书任何 skill；用户描述的是持续情绪低落和快感缺失，可能属于抑郁状态，需要专业心理评估而非休闲品质方法论。",
+      "notes": "诱饵: 纯情绪困扰，不涉及活动品质评估。快感缺失是抑郁症状而非享乐/乐趣选择问题。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我已经连续加班两个月了，身心俱疲，周末唯一想做的就是躺在沙发上看综艺节目什么都不想。我知道看电视是低品质休闲，但我真的没力气做别的了。这种时候还应该追求 enjoyment 吗？",
+      "expected_behavior": "不调用 pleasure-vs-enjoyment 的标准升级流程；用户处于极度疲劳/倦怠期，此时享乐（恢复均衡）是必要的，不应强迫'乐趣'。应先建议用户休息恢复，待精力恢复后再做休闲品质升级。",
+      "notes": "边界: 极度疲劳期享乐是必要的恢复机制，不应在此阶段强制享乐→乐趣升级。"
+    }
+  ]
+}

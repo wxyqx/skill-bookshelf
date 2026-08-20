@@ -1,0 +1,58 @@
+{
+  "skill": "face-saving-feedback",
+  "version": "0.1.0",
+  "all_skills_context": [
+    {"name": "bait-the-fish-thinking", "description": "用户想说服别人但效果不好、问'怎么让对方同意'、沟通时只从自己角度出发时激活。"},
+    {"name": "argument-avoidance", "description": "用户想纠正别人、即将或正在争辩、说'我要证明他对不了'时激活。"},
+    {"name": "preemptive-self-criticism", "description": "用户面临冲突、即将被指责、问'怎么化解矛盾'时激活。"},
+    {"name": "yes-ladder-socratic", "description": "用户需要说服他人接受观点、提出提案怕被拒、说'他肯定会说不'时激活。"},
+    {"name": "listening-as-persuasion", "description": "用户说服他人但总在说不停、急于表达、说'他不听我说'时激活。"},
+    {"name": "face-saving-feedback", "description": "用户需要批评/纠正他人、给反馈怕伤关系时激活。"},
+    {"name": "micro-progress-praise", "description": "用户想改变他人行为/习惯、管教孩子、问'为什么他总没进步'时激活。"},
+    {"name": "reputation-anchoring", "description": "用户想改变他人行为但直接批评无效、想激发对方潜力时激活。"}
+  ],
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "下属交的报告数据有几处错误，但整体框架不错，怎么反馈？",
+      "expected_behavior": "调用 face-saving-feedback，引导用户先赞美框架思路再间接指出数据问题",
+      "notes": "正面场景：需要批评但有优点可铺垫"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么批评他不会伤到我们的关系？",
+      "expected_behavior": "调用 face-saving-feedback，引导用户用五组件公式：赞美铺垫→间接指出→自我暴露→提问代替命令→保全面子",
+      "notes": "正面场景：明确需要批评但担心关系"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "孩子做错了事，怎么指出不伤他自尊？",
+      "expected_behavior": "调用 face-saving-feedback，引导用户先找优点铺垫再温和指出问题",
+      "notes": "正面场景：亲子场景需要纠偏"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我算一下这个概率",
+      "expected_behavior": "纯计算任务，不应调用任何沟通类 skill",
+      "notes": "诱饵：非反馈场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "孩子从来不愿收拾房间，今天偶尔放了一本书回书架，怎么反应？",
+      "expected_behavior": "应调用 micro-progress-praise（赞美微进步而非纠正问题），不应调用 face-saving-feedback（那是纠正已有问题用的）",
+      "notes": "跨skill混淆：都涉及行为改变，但这里对方做了好事需要赞美进步，不是纠正错误"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "下属明确说'直接告诉我哪里做错了就好，别绕弯子'",
+      "expected_behavior": "不应调用 face-saving-feedback 的完整流程——对方明确请求直接评价，应直接给出建设性反馈",
+      "notes": "边界：对方主动请求直接评价，面子保全过程多余"
+    }
+  ]
+}

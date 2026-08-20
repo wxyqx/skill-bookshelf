@@ -1,0 +1,52 @@
+{
+  "skill": "action-first",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想做自媒体想了半年，总觉得还没准备好，设备、选题、脚本都没完美，怎么开始？",
+      "expected_behavior": "应激活 action-first，帮助用户识别完美主义拖延，找到最小可行行动并立即启动。",
+      "notes": "典型场景：完美主义拖延，长期停留在准备阶段。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们团队开会讨论新项目三个月了，方案改了十几版还没启动，怎么打破这个局面？",
+      "expected_behavior": "应激活 action-first，帮助团队识别分析瘫痪，确定最小可行版本并设定启动时间。",
+      "notes": "典型场景：团队过度准备，议而不决。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我有很多副业想法，但每个都停留在计划阶段，一个都没落地，怎么办？",
+      "expected_behavior": "应激活 action-first，帮助用户从众多想法中选择一个，拆解出24-72小时内可执行的最小行动。",
+      "notes": "典型场景：想法多、落地少。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我准备给病人做一台复杂手术，术前还需要做哪些核查才能确保安全？",
+      "expected_behavior": "不应激活本 skill，因为医疗手术属于高风险合规场景，必须追求极致安全而非立即行动。",
+      "notes": "诱饵：高风险专业场景，不适用当下行动。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想创业但不知道做什么方向，是该先调研市场还是随便找个项目先做起来？",
+      "expected_behavior": "不应激活本 skill，应激活 planned-luck 或 goal-resource-alignment，先明确目标与资源再行动。",
+      "notes": "跨 skill 混淆诱饵：方向未清时不宜立即行动，应先策划。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我有个产品方案只验证了初步需求，投资人希望我尽快上线抢占市场，但技术团队说还有明显bug，我该立刻发布还是再修两周？",
+      "expected_behavior": "可调用 action-first，但需先评估：若bug不影响核心功能与安全，可小范围上线快速验证；若bug会造成用户流失或品牌损害，应优先修复。",
+      "notes": "边界：当下行动与产品质量风险之间的权衡。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

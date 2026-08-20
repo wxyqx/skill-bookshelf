@@ -1,0 +1,52 @@
+{
+  "skill": "calculated-risk",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想辞去稳定工作去创业，但风险很大，该怎么判断这个险值不值得冒？",
+      "expected_behavior": "应激活 calculated-risk，引导用户评估目标价值、最坏结果、信息缺口、周密计划和备选方案",
+      "notes": "典型职业转型冒险场景，关键词是'创业''风险''值不值得'"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "公司有机会并购一个竞争对手，但价格很高，怎么判断是不是该下手？",
+      "expected_behavior": "应激活 calculated-risk，帮助用户用'大胆谋划、周密计划、谨慎实施'框架分析并购价值与风险",
+      "notes": "典型重大投资并购场景，关键词是'并购''价格''下手'"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "行业窗口期只有半年，别人都行动了，我还在犹豫要不要All in，怎么办？",
+      "expected_behavior": "应激活 calculated-risk，帮助用户在时间压力下快速完成价值判断、最坏结果评估和最小可行计划",
+      "notes": "窗口期有限的冒险场景，关键词是'窗口期''All in''犹豫'"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我把全部积蓄都押在一只听朋友推荐的股票上，现在很焦虑，该不该继续持有？",
+      "expected_behavior": "不应激活本 skill，因为这是信息极度不对称的赌博式决策，且已孤注一掷",
+      "notes": "诱饵: 涉及冒险决策，但属于边界之外的纯粹赌博"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "竞争对手好像运气特别好，连连得手，我该怎么主动创造自己的机会？",
+      "expected_behavior": "不应激活本 skill，应激活 create-your-luck",
+      "notes": "跨 skill 混淆诱饵: 涉及冒险与机会，但核心需求是主动创造时运而非具体高风险下注决策"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "合伙人坚决反对扩张，认为太冒险，但我坚信行业机会巨大，该怎么处理和他的分歧？",
+      "expected_behavior": "可以调用 calculated-risk，但需要先评估分歧是源于风险承受力差异还是信息差异；如果是信息差异，补充分析后共同决策；如果是价值观差异，可能需要考虑分家或独立行动",
+      "notes": "边界：冒险决策中的人际冲突，需要同时处理决策框架和关系处理"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}

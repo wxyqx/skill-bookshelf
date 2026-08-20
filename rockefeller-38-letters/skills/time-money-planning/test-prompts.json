@@ -1,0 +1,52 @@
+{
+  "skill": "time-money-planning",
+  "version": "0.1.0",
+  "source_book": "《洛克菲勒留给儿子的38封信》— 约翰·D·洛克菲勒",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我今年有一笔营销预算，但不知道该怎么分配才能让每一分钱都产生最大价值？",
+      "expected_behavior": "应激活 time-money-planning，引导用户明确目标、列出措施、评估投入产出并建立监督机制",
+      "notes": "典型金钱分配决策场景，关键词是'预算''每一分钱''最大价值'"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我总感觉时间不够用，每天忙得团团转却没什么成果，怎么把时间和目标挂上钩？",
+      "expected_behavior": "应激活 time-money-planning，帮助用户用目标-措施-监督三步法重新分配时间",
+      "notes": "典型时间管理场景，核心是把时间从消耗变成投资"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "公司准备投一个新项目，但我还没想清楚最后一步怎么走，要不要先迈出第一步？",
+      "expected_behavior": "应激活 time-money-planning，引用'未想最后一步，不迈第一步'原则，帮助用户推演终点后再决策",
+      "notes": "直接对应书中原则，强调计划前的终点思考"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想找一个好用的记账APP，你推荐哪个？",
+      "expected_behavior": "不应激活本 skill，因为只是日常记账工具咨询，没有明确目标与资源分配决策",
+      "notes": "诱饵: 涉及金钱管理，但属于工具推荐而非目标导向的规划"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "合伙人会议上大家各怀心思，都说'我应该怎么做'，怎么让大家变成'我们应该怎么做'？",
+      "expected_behavior": "不应激活本 skill，应激活 we-first-collaboration",
+      "notes": "跨 skill 混淆诱饵: 涉及资源分配与合伙人，但核心问题是协作文化而非时间金钱双维计划"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我手头有50万闲钱，既想投资自己创业，又怕风险，存银行又嫌利息低，怎么办？",
+      "expected_behavior": "可以调用 time-money-planning，但需明确边界：帮助用户用目标-措施-监督框架比较创业投资与稳健理财的相对价值，不直接给出投资建议",
+      "notes": "边界：资金配置决策涉及风险承受力，适合用本框架梳理但不替代专业投资建议"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过 (诱饵容错为 0), 且其中至少 1 条是同书兄弟 skill 的场景 (跨 skill 混淆测试)。"
+}
