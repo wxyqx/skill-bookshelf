@@ -13,7 +13,7 @@
 **5 本书 · 50 个 skills**（最后更新：2026-08-20）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 目录 |
-|---|---|---:|---|
+|---|---|---:|---|---|
 | 《心流》*Flow* | 米哈里·契克森米哈赖 · 1990 | 心流 / 注意力 / 意义 | 8 | [`flow/`](./flow/) |
 | *Ready, Fire, Aim* | Michael Masterson · 2008 | 创业 / 销售 / 营销 | 11 | [`ready-fire-aim/`](./ready-fire-aim/) |
 | 《人性的弱点》 | 戴尔·卡耐基 · 1936 | 人际关系 / 说服 | 8 | [`how-to-win-friends/`](./how-to-win-friends/) |
