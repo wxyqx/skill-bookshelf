@@ -1,0 +1,73 @@
+{
+  "skill": "sustain-long-term-motivation",
+  "version": "0.1.0",
+  "source_book": "《刻意练习：如何从新手到大师》安德斯·艾利克森、罗伯特·普尔",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我每年办健身卡都坚持不过三个月，这次想认真练，怎么避免半途而废？",
+      "expected_behavior": "激活 sustain-long-term-motivation，诊断继续/停止理由并重新设计环境与习惯",
+      "notes": "正面场景：历史上一再半途而废"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "练了两个月吉他，开始很兴奋，现在每天都懒得碰琴，怎么办？",
+      "expected_behavior": "激活本 skill，用继续/停止理由博弈分析厌倦期",
+      "notes": "正面场景：热情消退后的练习倦怠"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我就是没毅力，怎么才能坚持一年以上不掉链子？",
+      "expected_behavior": "激活本 skill，破除意志力迷思，设计支持系统",
+      "notes": "正面场景：把坚持归因于'没毅力'"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "为什么健身房1月爆满、7月只剩一半人？我想成为留下来的那个。",
+      "expected_behavior": "激活本 skill，用新年决心效应和动机方程解释并给出行动方案",
+      "notes": "正面场景：长期动机与新年决心效应"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请推荐几首适合新手练的吉他谱。",
+      "expected_behavior": "不应激活本 skill，这是资源推荐请求",
+      "notes": "诱饵：非动机类资源查询"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我每天都按计划练，但最近一个月速度没提升，是不是训练计划有问题？",
+      "expected_behavior": "不应激活 sustain-long-term-motivation，应激活 break-through-plateau 诊断方法瓶颈",
+      "notes": "跨 skill 混淆诱饵：还在练但没进步 vs 不想练/想放弃"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我还没有明确的技能目标，只是觉得应该学点东西充实自己。",
+      "expected_behavior": "不应激活本 skill，用户尚未定义清晰练习目标，应先制定计划",
+      "notes": "诱饵：目标缺失"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我最近压力大到不想练，但也不想完全放弃，需要有人鼓励我。",
+      "expected_behavior": "应谨慎激活本 skill，先诊断继续/停止理由，同时提醒若只是需要情绪鼓励而非重新设计系统则边界有限",
+      "notes": "边界：情绪支持与动机设计的交界"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我处于抑郁状态，之前定的练习计划完全执行不了，该怎么调整？",
+      "expected_behavior": "不应激活本 skill，严重心理健康问题应建议休息和专业支持",
+      "notes": "边界：严重倦怠/心理危机"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的混淆场景。本测试包含 1 条跨 skill 混淆（应激活 break-through-plateau）。"
+}

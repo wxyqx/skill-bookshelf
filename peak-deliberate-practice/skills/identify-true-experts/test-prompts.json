@@ -1,0 +1,73 @@
+{
+  "skill": "identify-true-experts",
+  "version": "0.1.0",
+  "source_book": "《刻意练习：如何从新手到大师》安德斯·艾利克森、罗伯特·普尔",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我要招一个资深数据科学家，怎么判断他真厉害还是只会写简历？",
+      "expected_behavior": "激活 identify-true-experts，用客观绩效指标、小型真实任务和同行评价来验证",
+      "notes": "正面场景：招聘中判断简历 vs 实力"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这两位外科医生资历差不多，哪位手术水平更高？",
+      "expected_behavior": "激活本 skill，寻找可重复的客观结果指标（如复发率、并发症率）",
+      "notes": "正面场景：求医时比较专家水平"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么判断一个行业大V是不是真专家，而不是包装出来的？",
+      "expected_behavior": "激活本 skill，追溯可重复绩效痕迹而非只看声望",
+      "notes": "正面场景：识别自我宣传者"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我想给孩子选一位钢琴老师，怎么验证老师的真实水平？",
+      "expected_behavior": "激活本 skill，设计小型任务或同行评价来验证教学能力",
+      "notes": "正面场景：选导师/教练"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请介绍一下某知名投资人的公开成就。",
+      "expected_behavior": "不应激活本 skill，这是名人公开信息查询",
+      "notes": "诱饵：非专业能力判断"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我喜欢印象派画风，帮我推荐几位画家。",
+      "expected_behavior": "不应激活本 skill，这是主观审美偏好选择",
+      "notes": "诱饵：无客观标准的审美选择"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我想在公司内部培养销售高手，该设计什么样的仿真训练？",
+      "expected_behavior": "不应激活本 skill，应激活 workplace-deliberate-practice",
+      "notes": "跨 skill 混淆诱饵：如何培养人 vs 如何判断/选择专家"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想选一位吉他老师，但这个领域没有统一考级，怎么判断？",
+      "expected_behavior": "应激活本 skill，但需说明客观指标有限，转而用小型真实任务和同行评价做近似验证",
+      "notes": "边界：缺少统一客观标准的领域"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "这位医生很有名，患者口碑也很好，是不是就可以直接认为他是专家？",
+      "expected_behavior": "应激活本 skill，提醒声望和口碑不能替代客观绩效指标，需要进一步验证",
+      "notes": "边界：声望/口碑 vs 真实能力"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的混淆场景。本测试包含 1 条跨 skill 混淆（应激活 workplace-deliberate-practice）。"
+}

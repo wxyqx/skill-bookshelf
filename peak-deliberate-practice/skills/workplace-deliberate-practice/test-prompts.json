@@ -1,0 +1,73 @@
+{
+  "skill": "workplace-deliberate-practice",
+  "version": "0.1.0",
+  "source_book": "《刻意练习：如何从新手到大师》安德斯·艾利克森、罗伯特·普尔",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们销售团队在客户会议上总是犯同样的错，有没有办法在内部先演练？",
+      "expected_behavior": "激活 workplace-deliberate-practice，把客户会议改造成角色扮演+即时反馈的仿真训练",
+      "notes": "正面场景：工作场景中的高风险沟通技能"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "医生能不能通过仿真训练提高手术技能？",
+      "expected_behavior": "激活本 skill，说明如何把高风险操作搬到仿真环境并建立反馈",
+      "notes": "正面场景：医疗/高风险行业的模拟训练"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想把每周的复盘会从信息传递改成真正的技能演练，该怎么做？",
+      "expected_behavior": "激活本 skill，重新设计例会结构为练习—反馈—修正循环",
+      "notes": "正面场景：把日常会议改造成训练"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我们公司想建一个客服投诉处理案例库给员工练习。",
+      "expected_behavior": "激活本 skill，设计案例库+即时反馈的工作场景练习",
+      "notes": "正面场景：组织内案例库/仿真系统"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想自学吉他，每天下班后怎么安排练习？",
+      "expected_behavior": "不应激活本 skill，这是个人兴趣爱好训练，应走 design-deliberate-practice-plan 或 self-practice-3f-method",
+      "notes": "跨 skill 混淆诱饵：个人技能提升 vs 工作场景训练"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "如何设计一门让学生结课后能独立完成项目的物理课？",
+      "expected_behavior": "不应激活本 skill，应激活 deliberate-practice-in-teaching",
+      "notes": "跨 skill 混淆诱饵：课程/教学设计 vs 工作场景训练"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请帮我查一下销售行业的最新趋势报告。",
+      "expected_behavior": "不应激活本 skill，这是行业信息查询",
+      "notes": "诱饵：纯信息查询"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我是自由职业者，没有同事和团队，工作中还能做王牌训练吗？",
+      "expected_behavior": "不应直接激活本 skill，缺少组织内反馈来源，应 redirect 到 self-practice-3f-method",
+      "notes": "边界：无团队协作的工作形态"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我们部门例会只有15分钟，根本不够做一次角色扮演，还能怎么练？",
+      "expected_behavior": "应激活本 skill，但需压缩为微仿真（如30秒话术演练、一句反馈）",
+      "notes": "边界：时间极短但仍有工作场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的混淆场景。本测试包含 2 条跨 skill 混淆（应激活 self-practice-3f-method / deliberate-practice-in-teaching）。"
+}

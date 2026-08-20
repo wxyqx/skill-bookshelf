@@ -1,0 +1,73 @@
+{
+  "skill": "break-through-plateau",
+  "version": "0.1.0",
+  "source_book": "《刻意练习：如何从新手到大师》安德斯·艾利克森、罗伯特·普尔",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我练了一年钢琴，最近三个月音阶速度一直卡在120，加练也没提高。",
+      "expected_behavior": "激活 break-through-plateau，诊断具体弱点并设计针对性突破练习",
+      "notes": "正面场景：长期练习但关键指标停滞"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "同样的语法错误在写作中反复出现，是不是到上限了？",
+      "expected_behavior": "激活本 skill，帮助用户把错误定位到具体子技能并变换刺激",
+      "notes": "正面场景：同一环节反复出错"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "游泳换气总是这一步出问题，练了很久还是一样。",
+      "expected_behavior": "激活本 skill，锁定卡住点并设计微练习",
+      "notes": "正面场景：复杂技能中某一环节反复失败"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我的跑步5公里成绩停滞在25分钟半年了，怎么突破？",
+      "expected_behavior": "激活本 skill，诊断训练方法瓶颈并给出变换刺激的方案",
+      "notes": "正面场景：可测量指标长期持平"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我还没学会吉他基础和弦，想直接练高级指弹。",
+      "expected_behavior": "不应激活本 skill，基础动作尚未掌握，应先学习基础或使用 3F 法",
+      "notes": "诱饵：跳过基础直接攻坚"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我最近工作太忙，已经两周没练琴了，提不起劲怎么办？",
+      "expected_behavior": "不应激活 break-through-plateau，应激活 sustain-long-term-motivation 处理动机问题",
+      "notes": "跨 skill 混淆诱饵：停止练习/动力不足 vs 平台期"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "请给我讲一下平台期的概念。",
+      "expected_behavior": "不应激活本 skill，这是概念解释请求",
+      "notes": "诱饵：纯信息查询"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我练了很久但手腕受伤，最近成绩下降了，是不是平台期？",
+      "expected_behavior": "边界判断：因伤病导致表现下降，不应触发本 skill，应建议休息与恢复",
+      "notes": "边界：伤病/疲劳导致的暂时下降"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我刚学两个月，发现单词背了就忘，这是平台期吗？",
+      "expected_behavior": "不应触发本 skill，学习早期记忆遗忘属于方法或表征构建问题，应先走 build-mental-representation 或设计计划",
+      "notes": "边界：学习早期尚未形成稳定基础"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的混淆场景。本测试包含 1 条跨 skill 混淆（应激活 sustain-long-term-motivation）。"
+}

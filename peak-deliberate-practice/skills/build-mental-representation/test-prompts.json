@@ -1,0 +1,73 @@
+{
+  "skill": "build-mental-representation",
+  "version": "0.1.0",
+  "source_book": "《刻意练习：如何从新手到大师》安德斯·艾利克森、罗伯特·普尔",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我背了很多英语单词，但阅读时还是看不懂长句，感觉只能死记硬背，怎么建立心理表征？",
+      "expected_behavior": "激活 build-mental-representation，帮助用户把零散语法/词汇整合为可预测句子结构的模式",
+      "notes": "正面场景：死记硬背、无法看到整体结构"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "围棋高手是怎么一眼看出棋局大势的？我也想学会这种判断。",
+      "expected_behavior": "激活本 skill，拆解高手关注的棋形、线路与局势维度，设计预测—验证循环",
+      "notes": "正面场景：想知道高手如何快速判断与预测"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "学了那么多设计原则，一到做项目就懵，好像不会用。",
+      "expected_behavior": "激活本 skill，把孤立知识点转化为可迁移的设计判断模式",
+      "notes": "正面场景：知识多但不会迁移"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我想训练团队的新人，让他们像资深工程师一样快速定位 bug，该怎么设计？",
+      "expected_behavior": "激活本 skill，识别高手 debug 时关注的关键线索并固化为检查清单或决策树",
+      "notes": "正面场景：教学中把零散知识转化为可调用的模式"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请解释一下什么是刻意练习。",
+      "expected_behavior": "不应激活本 skill，这是概念定义查询",
+      "notes": "诱饵：纯信息查询"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想在三个月内学会弹吉他，该怎么安排练习时间？",
+      "expected_behavior": "不应激活本 skill，应激活 design-deliberate-practice-plan 制定训练计划",
+      "notes": "跨 skill 混淆诱饵：用户要的是计划/时间表，不是心理表征构建"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我每天都在背50个单词，是不是练习量还不够？",
+      "expected_behavior": "不应激活本 skill，用户关注的是练习量，应回到计划或动机设计",
+      "notes": "诱饵：把量增加误认为表征构建"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "高手说的'语感'是不是就是心理表征？",
+      "expected_behavior": "应激活本 skill，但不应只给定义，而要借机引导用户通过预测—验证循环构建可迁移的模式",
+      "notes": "边界：问题接近概念定义，但包含关键触发词'心理表征'"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我已经能稳定完成中级编程题，但想提速，是不是该继续大量刷题？",
+      "expected_behavior": "不应激活本 skill，用户已能稳定完成任务，只是需要增加练习量或突破速度瓶颈，应走设计计划或跨越停滞 skill",
+      "notes": "边界：稳定正确但需提速，不属于表征构建"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的混淆场景。本测试包含 1 条跨 skill 混淆（应激活 design-deliberate-practice-plan）。"
+}

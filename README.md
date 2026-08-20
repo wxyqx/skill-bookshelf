@@ -10,7 +10,7 @@
 
 ## 目录总览
 
-**4 本书 · 42 个 skills**（最后更新：2026-08-20）
+**5 本书 · 50 个 skills**（最后更新：2026-08-20）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 目录 |
 |---|---|---:|---|
@@ -18,6 +18,7 @@
 | *Ready, Fire, Aim* | Michael Masterson · 2008 | 创业 / 销售 / 营销 | 11 | [`ready-fire-aim/`](./ready-fire-aim/) |
 | 《人性的弱点》 | 戴尔·卡耐基 · 1936 | 人际关系 / 说服 | 8 | [`how-to-win-friends/`](./how-to-win-friends/) |
 | 《洛克菲勒留给儿子的38封信》 | 约翰·D·洛克菲勒 · 19 世纪末–20 世纪初 | 商业哲学 / 领导 / 行动 | 15 | [`rockefeller-38-letters/`](./rockefeller-38-letters/) |
+| 《刻意练习》*PEAK* | 艾利克森、普尔 · 2016 | 学习 / 技能精进 | 8 | [`peak-deliberate-practice/`](./peak-deliberate-practice/) |
 
 ---
 
@@ -47,6 +48,12 @@
 - **一句话**：一个白手起家者如何通过态度、行动、谋略、合作与责任，持续创造财富并掌控命运的完整心智体系。
 - **Skills**：`attitude-reframe` · `deliberate-hardship` · `impulse-control` · `low-profile-wisdom` · `no-excuse-action` · `action-first` · `time-money-planning` · `planned-luck` · `calculated-risk` · `negotiation-preparation` · `competitive-weakness-strike` · `purpose-driven-leadership` · `no-blame-leadership` · `strength-based-management` · `employees-first`
 
+### 5. 《刻意练习：如何从新手到大师》 — *PEAK* · [`peak-deliberate-practice/`](./peak-deliberate-practice/)
+
+- **作者**：安德斯·艾利克森（Anders Ericsson）、罗伯特·普尔（Robert Pool）· 2016
+- **一句话**：杰出表现并非依赖天生才华，而是通过走出舒适区、获得即时反馈、持续构建高质量心理表征的刻意练习被系统地塑造出来。
+- **Skills**：`build-mental-representation` · `design-deliberate-practice-plan` · `self-practice-3f-method` · `sustain-long-term-motivation` · `break-through-plateau` · `identify-true-experts` · `workplace-deliberate-practice` · `deliberate-practice-in-teaching`
+
 ---
 
 ## 安装
@@ -54,7 +61,7 @@
 一次性安装**所有书**的 skills，或只装某一本：
 
 ```bash
-# 一次性安装全部 42 个 skills（用户级，所有项目可用）
+# 一次性安装全部 50 个 skills（用户级，所有项目可用）
 for d in */skills; do cp -r "$d"/* ~/.claude/skills/; done
 
 # 或只装某一本（以心流为例）
@@ -76,7 +83,8 @@ skill-bookshelf/
 │   └── docs/                 # 蒸馏文档（DIGEST/INDEX/GLOSSARY/…）
 ├── ready-fire-aim/           # *Ready, Fire, Aim*（11 skills）
 ├── how-to-win-friends/       # 《人性的弱点》（8 skills）
-└── rockefeller-38-letters/   # 《洛克菲勒留给儿子的38封信》（15 skills）
+├── rockefeller-38-letters/   # 《洛克菲勒留给儿子的38封信》（15 skills）
+└── peak-deliberate-practice/ # 《刻意练习》（8 skills）
 ```
 
 ---

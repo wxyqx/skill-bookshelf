@@ -1,0 +1,73 @@
+{
+  "skill": "self-practice-3f-method",
+  "version": "0.1.0",
+  "source_book": "《刻意练习：如何从新手到大师》安德斯·艾利克森、罗伯特·普尔",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "没有老师教，我想自学插画，但不知道画完怎么判断好坏，该怎么练？",
+      "expected_behavior": "激活 self-practice-3f-method，引导用户拆分模块、寻找样板、建立反馈与纠正循环",
+      "notes": "正面场景：无导师、需要自我反馈的自学"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "看编程视频很爽，一写就废，有没有办法自己获得反馈？",
+      "expected_behavior": "激活本 skill，用 focus-feedback-fix 循环把观看转化为可检验练习",
+      "notes": "正面场景：典型'一看就会一做就废'"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想自学日语口语，找不到语伴和导师，怎么自己练发音？",
+      "expected_behavior": "激活本 skill，设计可重复的发音练习与自我反馈方式",
+      "notes": "正面场景：找不到反馈来源的自学"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "富兰克林那种自学写作的方法具体怎么做？",
+      "expected_behavior": "激活本 skill，说明 3F 循环如何拆模块、找样板、对比纠正",
+      "notes": "正面场景：用户明确询问无导师自学方法"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "你能帮我查一下这个 API 的参数吗？",
+      "expected_behavior": "不应激活本 skill，这是纯信息查询",
+      "notes": "诱饵：非练习场景的技术查询"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我已经报了一个有真人教练每天批改的写作营，下一步该怎么练？",
+      "expected_behavior": "不应激活 self-practice-3f-method，用户已有即时反馈的优秀导师，应优先跟随导师",
+      "notes": "诱饵：已有导师，不应闭门造车"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我想系统提升公开演讲，该制定一个怎样的长期训练计划？",
+      "expected_behavior": "不应激活本 skill，应激活 design-deliberate-practice-plan 做长期目标拆解",
+      "notes": "跨 skill 混淆诱饵：要求的是整体训练蓝图而非单次执行循环"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我找不到导师，但学的领域似乎也没有公认的高手样板，还能用3F法吗？",
+      "expected_behavior": "边界判断：没有可观察质量标准或高手样板时，3F 反馈环节会失效，应谨慎触发或提示边界",
+      "notes": "边界：缺少反馈标准的领域"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我想自学一个全新的小众 AI 工具，网上教程很少，也没有参考答案",
+      "expected_behavior": "应触发但需先帮助用户设计'制造反馈'的方法（如公开作品、小项目验证），否则 3F 循环无法闭环",
+      "notes": "边界：无现成反馈来源时，需要先做反馈源设计"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的混淆场景。本测试包含 1 条跨 skill 混淆（应激活 design-deliberate-practice-plan）。"
+}
