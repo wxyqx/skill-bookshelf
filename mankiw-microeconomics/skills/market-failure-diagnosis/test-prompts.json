@@ -1,0 +1,75 @@
+{
+  "skill": "market-failure-diagnosis",
+  "skill_name": "市场失灵诊断框架",
+  "test_cases": [
+    {
+      "id": "T1",
+      "type": "positive",
+      "prompt": "工厂排污影响附近居民健康，政府应该怎么解决？用什么政策工具最好？",
+      "expected": "should_call",
+      "reason": "负外部性问题，市场失灵诊断的核心应用场景",
+      "key_concepts": ["负外部性", "矫正税", "可交易许可证", "管制", "科斯定理"]
+    },
+    {
+      "id": "T2",
+      "type": "positive",
+      "prompt": "为什么公共厕所总是那么脏？海洋里的鱼为什么越来越少？",
+      "expected": "should_call",
+      "reason": "公共资源问题 → 公地悲剧，是市场失灵的重要类型",
+      "key_concepts": ["公共资源", "公地悲剧", "非排他性 + 竞争性"]
+    },
+    {
+      "id": "T3",
+      "type": "positive",
+      "prompt": "基础研究为什么总是投入不足？应该由谁来做？",
+      "expected": "should_call",
+      "reason": "正外部性 + 公共物品问题，知识/技术溢出是典型的正外部性",
+      "key_concepts": ["正外部性", "公共物品", "搭便车", "技术溢出"]
+    },
+    {
+      "id": "T4",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "market-structure-analysis",
+      "prompt": "为什么自来水公司只有一家？这合理吗？",
+      "expected": "should_not_call",
+      "reason": "自然垄断属于市场结构问题，应调用市场结构分析框架",
+      "confusion_point": "垄断也是市场失灵的一种，但市场结构分析更聚焦于企业行为和定价"
+    },
+    {
+      "id": "T5",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "welfare-cost-benefit",
+      "prompt": "污染造成的经济损失有多大？怎么衡量？",
+      "expected": "should_not_call",
+      "reason": "用户问的是损失的量化衡量，应调用福利经济学框架",
+      "confusion_point": "都涉及外部性，但市场失灵诊断回答「是什么/怎么办」，福利分析回答「损失多少」"
+    },
+    {
+      "id": "T6",
+      "type": "positive",
+      "prompt": "科斯定理是什么？它能解决所有外部性问题吗？",
+      "expected": "should_call",
+      "reason": "科斯定理是外部性私人解决方案的核心理论，是市场失灵诊断的重要内容",
+      "key_concepts": ["科斯定理", "交易成本", "产权", "私人解决方案"]
+    },
+    {
+      "id": "T7",
+      "type": "lure",
+      "subtype": "domain_mismatch",
+      "prompt": "我父母总是偏心我弟弟，这公平吗？",
+      "expected": "should_not_call",
+      "reason": "这是家庭/情感问题，不是经济学意义上的市场失灵",
+      "confusion_point": "都涉及「不公平」，但市场失灵是效率层面的，不是家庭情感层面的"
+    },
+    {
+      "id": "T8",
+      "type": "positive",
+      "prompt": "为什么灯塔通常由政府提供？私人不能建灯塔收费吗？",
+      "expected": "should_call",
+      "reason": "公共物品的经典案例，涉及非排他性和搭便车问题",
+      "key_concepts": ["公共物品", "搭便车", "非排他性", "物品分类矩阵"]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "skill": "welfare-cost-benefit",
+  "skill_name": "福利经济学与成本收益分析",
+  "test_cases": [
+    {
+      "id": "T1",
+      "type": "positive",
+      "prompt": "对面包征税，社会总福利会损失多少？谁的损失更大？",
+      "expected": "should_call",
+      "reason": "税收的福利效应分析，消费者剩余、生产者剩余、无谓损失的经典应用",
+      "key_concepts": ["消费者剩余", "生产者剩余", "无谓损失", "税收归宿"]
+    },
+    {
+      "id": "T2",
+      "type": "positive",
+      "prompt": "政府要建一条高速公路，怎么评估值不值得建？",
+      "expected": "should_call",
+      "reason": "公共项目成本收益分析，是福利经济学的重要应用",
+      "key_concepts": ["成本收益分析", "时间价值", "生命价值", "贴现"]
+    },
+    {
+      "id": "T3",
+      "type": "positive",
+      "prompt": "自由贸易使谁受益、谁受损？总体来说是好事吗？",
+      "expected": "should_call",
+      "reason": "贸易的福利分配分析，消费者剩余和生产者剩余的变化",
+      "key_concepts": ["贸易赢家", "贸易输家", "总剩余变化"]
+    },
+    {
+      "id": "T4",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "market-failure-diagnosis",
+      "prompt": "环境污染有哪些解决办法？收税好还是管制好？",
+      "expected": "should_not_call",
+      "reason": "用户问的是外部性的政策工具选择和比较，应调用市场失灵诊断框架",
+      "confusion_point": "都涉及效率评价，但福利分析是通用工具，市场失灵诊断是针对特定失灵类型的处方"
+    },
+    {
+      "id": "T5",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "supply-demand-analysis",
+      "prompt": "如果人们收入增加了，汽车价格会涨还是跌？销量呢？",
+      "expected": "should_not_call",
+      "reason": "用户问的是价格和数量变化方向，应调用供需分析框架",
+      "confusion_point": "都涉及市场分析，但供需分析回答方向，福利分析回答剩余变化"
+    },
+    {
+      "id": "T6",
+      "type": "positive",
+      "prompt": "为什么说完全竞争市场是有效率的？效率是什么意思？",
+      "expected": "should_call",
+      "reason": "市场效率定理是福利经济学的核心结论",
+      "key_concepts": ["总剩余最大化", "边际支付意愿 = 边际成本", "帕累托最优"]
+    },
+    {
+      "id": "T7",
+      "type": "lure",
+      "subtype": "domain_mismatch",
+      "prompt": "幸福和金钱有关系吗？钱越多越幸福吗？",
+      "expected": "should_not_call",
+      "reason": "这是心理学/哲学问题，福利经济学的「福利」是物质层面的剩余，不是主观幸福感",
+      "confusion_point": "都叫「福利」，但经济学的福利是货币化的支付意愿，不是幸福感"
+    },
+    {
+      "id": "T8",
+      "type": "positive",
+      "prompt": "拉弗曲线是什么？减税真的能增加税收收入吗？",
+      "expected": "should_call",
+      "reason": "拉弗曲线是税收的福利分析中的重要概念，涉及税率、税基、税收收入的关系",
+      "key_concepts": ["拉弗曲线", "无谓损失", "税率与税收收入的关系"]
+    }
+  ]
+}

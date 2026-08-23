@@ -1,0 +1,75 @@
+{
+  "skill": "supply-demand-analysis",
+  "skill_name": "供需均衡分析框架",
+  "test_cases": [
+    {
+      "id": "T1",
+      "type": "positive",
+      "prompt": "今年夏天特别热，对冰淇淋市场有什么影响？价格和销量会怎么变？",
+      "expected": "should_call",
+      "reason": "典型的市场事件分析，需要用供需四步法判断价格和数量变化",
+      "key_steps": ["需求增加", "需求曲线右移", "均衡价格上升", "均衡数量增加"]
+    },
+    {
+      "id": "T2",
+      "type": "positive",
+      "prompt": "如果政府对香烟征税，谁承担的税负更多？为什么？",
+      "expected": "should_call",
+      "reason": "税收归宿分析，是供需分析+弹性的经典应用",
+      "key_concepts": ["税收归宿", "弹性", "缺乏弹性的一方承担更多税负"]
+    },
+    {
+      "id": "T3",
+      "type": "positive",
+      "prompt": "租金控制政策短期和长期的效果有什么不同？",
+      "expected": "should_call",
+      "reason": "价格上限分析+短期长期弹性差异，是供需分析的经典案例",
+      "key_concepts": ["价格上限", "短缺", "短期弹性 vs 长期弹性"]
+    },
+    {
+      "id": "T4",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "market-structure-analysis",
+      "prompt": "为什么电信运营商就那么几家？他们怎么定价的？",
+      "expected": "should_not_call",
+      "reason": "用户问的是寡头市场的企业行为和定价，应调用市场结构分析框架",
+      "confusion_point": "都涉及定价，但供需分析假设完全竞争，寡头市场需要博弈论和策略互动分析"
+    },
+    {
+      "id": "T5",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "welfare-cost-benefit",
+      "prompt": "收汽油税会造成多大的效率损失？消费者和生产者各损失多少？",
+      "expected": "should_not_call",
+      "reason": "用户问的是效率损失和各方福利变化，应调用福利经济学框架",
+      "confusion_point": "都涉及税收分析，但供需分析回答方向，福利分析回答损失多少"
+    },
+    {
+      "id": "T6",
+      "type": "positive",
+      "prompt": "科技进步降低了生产成本，对手机市场有什么影响？",
+      "expected": "should_call",
+      "reason": "技术进步影响供给曲线，供需分析的标准场景",
+      "key_steps": ["供给增加", "供给曲线右移", "价格下降", "数量增加"]
+    },
+    {
+      "id": "T7",
+      "type": "lure",
+      "subtype": "domain_mismatch",
+      "prompt": "为什么我总是买了之后就后悔？",
+      "expected": "should_not_call",
+      "reason": "这是行为经济学/心理学问题（购后失调、冲动消费），供需模型假设理性人",
+      "confusion_point": "都涉及购买决策，但供需分析是市场层面的，不是个体心理层面的"
+    },
+    {
+      "id": "T8",
+      "type": "positive",
+      "prompt": "OPEC 减产为什么短期油价暴涨，长期又回落了？",
+      "expected": "should_call",
+      "reason": "短期长期弹性差异的经典案例，是供需+弹性分析的核心应用",
+      "key_concepts": ["供给弹性", "短期 vs 长期", "需求弹性"]
+    }
+  ]
+}

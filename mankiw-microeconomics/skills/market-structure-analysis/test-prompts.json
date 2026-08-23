@@ -1,0 +1,76 @@
+{
+  "skill": "market-structure-analysis",
+  "skill_name": "市场结构分析框架",
+  "test_cases": [
+    {
+      "id": "T1",
+      "type": "positive",
+      "prompt": "为什么航空公司的价格战那么频繁？他们为什么不联合起来抬价？",
+      "expected": "should_call",
+      "reason": "寡头市场的价格竞争与囚徒困境，是市场结构分析的核心应用",
+      "key_concepts": ["寡头", "囚徒困境", "策略互动", "占优策略"]
+    },
+    {
+      "id": "T2",
+      "type": "positive",
+      "prompt": "垄断企业是怎么定价的？为什么垄断会有无谓损失？",
+      "expected": "should_call",
+      "reason": "垄断企业的定价决策和效率损失分析，是市场结构分析的重要内容",
+      "key_concepts": ["垄断", "MR = MC", "P > MC", "无谓损失"]
+    },
+    {
+      "id": "T3",
+      "type": "positive",
+      "prompt": "为什么街上的咖啡店开了又关、关了又开？利润到底高不高？",
+      "expected": "should_call",
+      "reason": "垄断竞争市场的长期均衡，零经济利润 + 自由进入退出",
+      "key_concepts": ["垄断竞争", "零经济利润", "自由进入", "过剩生产能力"]
+    },
+    {
+      "id": "T4",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "supply-demand-analysis",
+      "prompt": "如果小麦丰收了，小麦价格会怎么变？农民收入会增加吗？",
+      "expected": "should_not_call",
+      "reason": "小麦是完全竞争市场，用标准的供需分析框架即可",
+      "confusion_point": "完全竞争也是市场结构的一种，但供需分析已经能很好地回答，不需要市场结构分析的深度工具"
+    },
+    {
+      "id": "T5",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "market-failure-diagnosis",
+      "prompt": "垄断导致的效率损失有多大？怎么计算无谓损失？",
+      "expected": "should_not_call",
+      "reason": "用户问的是无谓损失的计算，属于福利经济学的量化分析",
+      "confusion_point": "垄断既是市场结构问题也是市场失灵问题，但无谓损失计算是福利分析工具"
+    },
+    {
+      "id": "T6",
+      "type": "positive",
+      "prompt": "以牙还牙策略是什么？为什么囚徒困境比赛中它赢了？",
+      "expected": "should_call",
+      "reason": "重复博弈与合作的可能性，是寡头/博弈论部分的重要内容",
+      "key_concepts": ["囚徒困境", "重复博弈", "以牙还牙", "合作"]
+    },
+    {
+      "id": "T7",
+      "type": "lure",
+      "subtype": "domain_mismatch",
+      "prompt": "为什么商场里同一种衣服每家店价格不一样？",
+      "expected": "should_call",
+      "reason": "虽然是价格差异问题，但这可能涉及价格歧视（垄断/垄断竞争），属于市场结构分析范畴。这是个边缘案例，但应调用。",
+      "key_concepts": ["价格歧视", "市场势力", "消费者区分"],
+      "note": "此为诱饵测试的反向验证——看似普通价格问题，实际涉及市场势力"
+    },
+    {
+      "id": "T8",
+      "type": "positive",
+      "prompt": "「沉没成本」是什么意思？为什么说覆水难收？做生意时哪些成本是沉没的？",
+      "expected": "should_call",
+      "reason": "沉没成本是企业决策和成本结构中的核心概念，属于市场结构分析的成本部分",
+      "key_concepts": ["沉没成本", "短期停止营业决策", "机会成本"]
+    }
+  ]
+}

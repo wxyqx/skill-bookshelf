@@ -1,0 +1,75 @@
+{
+  "skill": "comparative-advantage",
+  "skill_name": "比较优势与贸易决策",
+  "test_cases": [
+    {
+      "id": "T1",
+      "type": "positive",
+      "prompt": "我们团队有两个人，张三做设计快写代码也快，李四都慢一些，应该怎么分工？",
+      "expected": "should_call",
+      "reason": "团队分工决策，典型的比较优势应用场景",
+      "key_concepts": ["机会成本", "比较优势", "绝对优势"]
+    },
+    {
+      "id": "T2",
+      "type": "positive",
+      "prompt": "中国造芯片造不过美国，造衣服造得比美国好，那中国应该只造衣服吗？",
+      "expected": "should_call",
+      "reason": "国家贸易模式分析，比较优势的经典应用",
+      "key_concepts": ["比较优势", "贸易获益", "机会成本"]
+    },
+    {
+      "id": "T3",
+      "type": "positive",
+      "prompt": "我应该自己做家务还是请保洁？从经济角度怎么算？",
+      "expected": "should_call",
+      "reason": "个人时间分配决策，比较优势的日常应用",
+      "key_concepts": ["机会成本", "比较优势"]
+    },
+    {
+      "id": "T4",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "supply-demand-analysis",
+      "prompt": "如果进口关税降低，汽车价格会降多少？销量会怎么变？",
+      "expected": "should_not_call",
+      "reason": "用户问的是价格和数量的具体变化方向，应调用供需分析框架，而非比较优势的分工决策框架",
+      "confusion_point": "都涉及国际贸易，但比较优势讲的是分工模式，供需分析讲的是价格数量变化"
+    },
+    {
+      "id": "T5",
+      "type": "lure",
+      "subtype": "domain_mismatch",
+      "prompt": "我和朋友合作开公司，股权应该怎么分？",
+      "expected": "should_not_call",
+      "reason": "股权分配主要涉及贡献评估、控制权、风险分担等，不是比较优势能解决的",
+      "confusion_point": "都涉及合作/分工，但比较优势是关于生产什么最划算，不是关于利益分配"
+    },
+    {
+      "id": "T6",
+      "type": "positive",
+      "prompt": "为什么即使什么都不如别人，也能通过贸易获益？",
+      "expected": "should_call",
+      "reason": "比较优势的核心洞见——绝对优势不是必要条件",
+      "key_concepts": ["比较优势 vs 绝对优势", "贸易获益"]
+    },
+    {
+      "id": "T7",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "welfare-cost-benefit",
+      "prompt": "自由贸易对谁有利对谁不利？总福利是增加还是减少？",
+      "expected": "should_not_call",
+      "reason": "用户问的是福利分配和总剩余变化，应调用福利经济学框架（welfare-cost-benefit）",
+      "confusion_point": "都涉及贸易，但比较优势回答「该不该贸易、贸易什么」，福利分析回答「谁赢谁输、赢多少」"
+    },
+    {
+      "id": "T8",
+      "type": "positive",
+      "prompt": "公司应该把客服外包还是自己做？怎么判断？",
+      "expected": "should_call",
+      "reason": "企业外包决策，比较优势在商业中的应用",
+      "key_concepts": ["机会成本", "比较优势", "专业化"]
+    }
+  ]
+}

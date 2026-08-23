@@ -1,0 +1,75 @@
+{
+  "skill": "econ-ten-principles",
+  "skill_name": "经济学十大原理决策框架",
+  "test_cases": [
+    {
+      "id": "T1",
+      "type": "positive",
+      "prompt": "帮我分析一下提高最低工资的经济影响",
+      "expected": "should_call",
+      "reason": "政策评估问题，需要经济学原理搭建分析框架",
+      "key_principles": ["权衡取舍", "激励反应", "市场优化", "政府改善"]
+    },
+    {
+      "id": "T2",
+      "type": "positive",
+      "prompt": "我在考虑要不要辞职创业，从经济学角度怎么看？",
+      "expected": "should_call",
+      "reason": "个人决策问题，十大原理的决策层适用",
+      "key_principles": ["机会成本", "边际思考", "权衡取舍", "激励"]
+    },
+    {
+      "id": "T3",
+      "type": "positive",
+      "prompt": "用经济学原理解释为什么房价这么高",
+      "expected": "should_call",
+      "reason": "需要从供需、市场、政策等多维度分析",
+      "key_principles": ["市场优化", "政府改善", "人们面临权衡"]
+    },
+    {
+      "id": "T4",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "supply-demand-analysis",
+      "prompt": "如果对汽油征税，价格会上涨多少？销量会减少多少？",
+      "expected": "should_not_call",
+      "reason": "用户问的是具体的价格和数量变化，应调用供需分析框架（supply-demand-analysis），而非十大原理的定性框架",
+      "confusion_point": "都涉及市场分析，但十大原理是入门级定性框架，供需分析是具体量化工具"
+    },
+    {
+      "id": "T5",
+      "type": "lure",
+      "subtype": "domain_mismatch",
+      "prompt": "我该如何处理和同事之间的人际关系矛盾？",
+      "expected": "should_not_call",
+      "reason": "纯人际关系问题，经济学原理不适用，应使用人际关系/沟通技巧",
+      "confusion_point": "十大原理涉及人与人互动（原理五-七），但那是市场交易，不是情感关系"
+    },
+    {
+      "id": "T6",
+      "type": "positive",
+      "prompt": "为什么发达国家的生活水平比发展中国家高那么多？",
+      "expected": "should_call",
+      "reason": "涉及整体经济运行的原理（原理八：生产率决定生活水平）",
+      "key_principles": ["生产率", "贸易获益"]
+    },
+    {
+      "id": "T7",
+      "type": "lure",
+      "subtype": "sibling_confusion",
+      "sibling_skill": "market-failure-diagnosis",
+      "prompt": "工厂排放污染，政府应该怎么管？用什么工具最好？",
+      "expected": "should_not_call",
+      "reason": "用户问的是具体的外部性政策工具选择，应调用市场失灵诊断框架（market-failure-diagnosis）",
+      "confusion_point": "十大原理的原理七提到政府改善市场，但不涉及具体的失灵类型和政策工具"
+    },
+    {
+      "id": "T8",
+      "type": "positive",
+      "prompt": "经济学到底有什么用？学了能干嘛？",
+      "expected": "should_call",
+      "reason": "入门性问题，需要用十大原理搭建经济学的整体认知框架",
+      "key_principles": ["全部十大原理"]
+    }
+  ]
+}
