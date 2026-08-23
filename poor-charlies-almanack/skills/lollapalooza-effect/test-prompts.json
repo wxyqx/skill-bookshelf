@@ -1,0 +1,52 @@
+{
+  "skill": "lollapalooza-effect",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "为什么这家公司能突然爆发式增长？",
+      "expected_behavior": "应激活 lollapalooza-effect，引导用户识别多因素共振。",
+      "notes": "爆发式增长常是多因素共振。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "lollapalooza 效应是什么意思？",
+      "expected_behavior": "应激活 lollapalooza-effect，解释多因素非线性放大。",
+      "notes": "直接询问概念。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这个产品成功是因为品牌好，还是因为渠道好？",
+      "expected_behavior": "应激活 lollapalooza-effect，指出可能是品牌+渠道+心理等多因素共振。",
+      "notes": "单一归因质疑。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我算一下这个投资组合的夏普比率。",
+      "expected_behavior": "不应激活本 skill，这是计算请求。",
+      "notes": "无关计算诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想用多个学科模型分析这个问题，应该看哪些模型？",
+      "expected_behavior": "不应激活 lollapalooza-effect，应激活 multi-disciplinary-thinking。",
+      "notes": "跨 skill 混淆诱饵：用户要的是模型框架而非共振结果。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这家公司最近增长很快，是因为 CEO 个人能力很强吗？",
+      "expected_behavior": "可以调用 lollapalooza-effect，但应先指出单一归因风险，再邀请用户补充其他因素。",
+      "notes": "边界：有单一归因，但用户可能有进一步分析意愿。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

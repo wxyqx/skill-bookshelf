@@ -1,0 +1,52 @@
+{
+  "skill": "checklist-method",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我要做一个重大投资决策，有没有检查清单？",
+      "expected_behavior": "应激活 checklist-method，提供投资决策检查清单。",
+      "notes": "直接请求检查清单。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我担心遗漏什么关键风险。",
+      "expected_behavior": "应激活 checklist-method，引导用户逐项扫描风险。",
+      "notes": "风险遗漏焦虑。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "How do I use a checklist before important decisions?",
+      "expected_behavior": "应激活 checklist-method（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我列一下今天去超市要买的东西。",
+      "expected_behavior": "不应激活本 skill，这是购物清单。",
+      "notes": "非决策检查清单诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想先想清楚这个项目会怎么失败。",
+      "expected_behavior": "不应激活 checklist-method，应激活 inversion-thinking。",
+      "notes": "跨 skill 混淆诱饵：用户要逆向思考而非清单。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这个决定不大，但我担心犯错。",
+      "expected_behavior": "可以调用 checklist-method，但应提供简化版 3-5 项检查，避免过度复杂。",
+      "notes": "边界：决策重要性中等。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

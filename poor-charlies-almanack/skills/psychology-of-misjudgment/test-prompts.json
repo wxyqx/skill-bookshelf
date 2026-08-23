@@ -1,0 +1,52 @@
+{
+  "skill": "psychology-of-misjudgment",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我为什么会反复相信推销员的鬼话？",
+      "expected_behavior": "应激活 psychology-of-misjudgment，识别回馈倾向、社会认同等心理机制。",
+      "notes": "典型被操控场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "人类误判心理学有哪些偏见？",
+      "expected_behavior": "应激活 psychology-of-misjudgment，列出 25 种心理倾向。",
+      "notes": "直接询问概念。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "I keep making the same stupid decision. Why does my brain fool me?",
+      "expected_behavior": "应激活 psychology-of-misjudgment（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我最近总是失眠，是不是抑郁了？",
+      "expected_behavior": "不应激活本 skill，建议用户寻求专业心理咨询。",
+      "notes": "临床心理问题诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想用理性和心理两条轨道分析这个选择。",
+      "expected_behavior": "不应激活 psychology-of-misjudgment，应激活 two-track-analysis。",
+      "notes": "跨 skill 混淆诱饵：用户要的是决策框架。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我看了一下清单，觉得我可能中了社会认同和激励机制偏见。",
+      "expected_behavior": "可以调用 psychology-of-misjudgment，但应帮助用户缩小到 1-2 个最相关的倾向并给出防御措施。",
+      "notes": "边界：用户已有初步判断，需避免罗列清单。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

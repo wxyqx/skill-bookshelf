@@ -1,0 +1,52 @@
+{
+  "skill": "inversion-thinking",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想让这个项目成功，但正面思路都想过了，还能怎么分析？",
+      "expected_behavior": "应激活 inversion-thinking，引导用户从反面列出失败路径。",
+      "notes": "正面思路枯竭，适合逆向。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么才能保证不失败？",
+      "expected_behavior": "应激活 inversion-thinking，用避免失败的角度拆解问题。",
+      "notes": "直接询问避免失败。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Tell me how to use inversion thinking.",
+      "expected_behavior": "应激活 inversion-thinking（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请把这句话翻译成英文。",
+      "expected_behavior": "不应激活本 skill，这是翻译请求。",
+      "notes": "无关任务诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我已经列出了很多失败路径，现在想把它变成具体的不做清单。",
+      "expected_behavior": "不应激活 inversion-thinking，应激活 stop-doing-list。",
+      "notes": "跨 skill 混淆诱饵：用户已到执行阶段。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想提前预防考试失败，你能帮我吗？",
+      "expected_behavior": "可以调用 inversion-thinking，但应快速给出几条常见失败因素并转向具体学习计划。",
+      "notes": "边界：场景较简单，不应过度展开。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

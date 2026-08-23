@@ -10,7 +10,7 @@
 
 ## 目录总览
 
-**5 本书 · 50 个 skills**（最后更新：2026-08-20）
+**6 本书 · 62 个 skills**（最后更新：2026-08-23）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 目录 |
 |---|---|---:|---|---|
@@ -19,6 +19,7 @@
 | 《人性的弱点》 | 戴尔·卡耐基 · 1936 | 人际关系 / 说服 | 8 | [`how-to-win-friends/`](./how-to-win-friends/) |
 | 《洛克菲勒留给儿子的38封信》 | 约翰·D·洛克菲勒 · 19 世纪末–20 世纪初 | 商业哲学 / 领导 / 行动 | 15 | [`rockefeller-38-letters/`](./rockefeller-38-letters/) |
 | 《刻意练习》*PEAK* | 艾利克森、普尔 · 2016 | 学习 / 技能精进 | 8 | [`peak-deliberate-practice/`](./peak-deliberate-practice/) |
+| 《穷查理宝典》*Poor Charlie's Almanack* | 查理·芒格 · 2021 | 决策 / 思维模型 | 12 | [`poor-charlies-almanack/`](./poor-charlies-almanack/) |
 
 ---
 
@@ -54,6 +55,12 @@
 - **一句话**：杰出表现并非依赖天生才华，而是通过走出舒适区、获得即时反馈、持续构建高质量心理表征的刻意练习被系统地塑造出来。
 - **Skills**：`build-mental-representation` · `design-deliberate-practice-plan` · `self-practice-3f-method` · `sustain-long-term-motivation` · `break-through-plateau` · `identify-true-experts` · `workplace-deliberate-practice` · `deliberate-practice-in-teaching`
 
+### 6. 《穷查理宝典》 — *Poor Charlie's Almanack* · [`poor-charlies-almanack/`](./poor-charlies-almanack/)
+
+- **作者**：查理·芒格（Charles T. Munger）/ 编：彼得·考夫曼 · 2021
+- **一句话**：通过跨学科的重要思维模型、诚实面对自身局限、在能力圈内保持纪律与耐心，从而少犯愚蠢的错误并抓住少数关键机会。
+- **Skills**：`circle-of-competence` · `multi-disciplinary-thinking` · `two-track-analysis` · `psychology-of-misjudgment` · `inversion-thinking` · `stop-doing-list` · `checklist-method` · `opportunity-cost` · `margin-of-safety` · `patience-and-action` · `lollapalooza-effect` · `destroy-favorite-idea`
+
 ---
 
 ## 安装
@@ -61,7 +68,7 @@
 一次性安装**所有书**的 skills，或只装某一本：
 
 ```bash
-# 一次性安装全部 50 个 skills（用户级，所有项目可用）
+# 一次性安装全部 62 个 skills（用户级，所有项目可用）
 for d in */skills; do cp -r "$d"/* ~/.claude/skills/; done
 
 # 或只装某一本（以心流为例）
@@ -84,7 +91,8 @@ skill-bookshelf/
 ├── ready-fire-aim/           # *Ready, Fire, Aim*（11 skills）
 ├── how-to-win-friends/       # 《人性的弱点》（8 skills）
 ├── rockefeller-38-letters/   # 《洛克菲勒留给儿子的38封信》（15 skills）
-└── peak-deliberate-practice/ # 《刻意练习》（8 skills）
+├── peak-deliberate-practice/ # 《刻意练习》（8 skills）
+└── poor-charlies-almanack/   # 《穷查理宝典》（12 skills）
 ```
 
 ---

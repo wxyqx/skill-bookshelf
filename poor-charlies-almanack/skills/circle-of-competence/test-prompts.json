@@ -1,0 +1,52 @@
+{
+  "skill": "circle-of-competence",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我不懂这个领域，但机会好像很好，要不要冲？",
+      "expected_behavior": "应激活 circle-of-competence，帮助用户判断是否在能力圈内。",
+      "notes": "典型越界犹豫场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "circle of competence 到底怎么判断？",
+      "expected_behavior": "应激活 circle-of-competence，解释能力圈定义和边界测试方法。",
+      "notes": "直接询问概念。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "大家都在买这个，我也想买，但我根本看不懂它的商业模式。",
+      "expected_behavior": "应激活 circle-of-competence，指出 FOMO 和能力圈外风险。",
+      "notes": "跟风+不懂触发。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "给我介绍一下量子计算的基本原理。",
+      "expected_behavior": "不应激活本 skill，这是知识介绍请求。",
+      "notes": "无关事实查询诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "如果我看错了这个投资，最坏会怎样？",
+      "expected_behavior": "不应激活 circle-of-competence，应激活 margin-of-safety。",
+      "notes": "跨 skill 混淆诱饵：核心是安全边际而非能力圈。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我学过一些心理学，能不能算在能力圈内接咨询项目？",
+      "expected_behavior": "可以调用 circle-of-competence，但应引导用户用具体能力测试而非学历判断。",
+      "notes": "边界：相关背景不等于能力圈。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

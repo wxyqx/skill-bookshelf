@@ -1,0 +1,52 @@
+{
+  "skill": "destroy-favorite-idea",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我过去一直靠这个方法成功，但现在好像不灵了。",
+      "expected_behavior": "应激活 destroy-favorite-idea，帮助用户主动证伪旧方法。",
+      "notes": "旧方法失效场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "How do I stop being attached to my own ideas?",
+      "expected_behavior": "应激活 destroy-favorite-idea（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "有什么证据能推翻我最相信的这个观点？",
+      "expected_behavior": "应激活 destroy-favorite-idea，引导用户寻找反面证据。",
+      "notes": "主动证伪请求。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我不想再坚持这段婚姻了。",
+      "expected_behavior": "不应激活本 skill，这是重大人生关系决策，需要谨慎处理。",
+      "notes": "核心价值观/情感边界诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想把失败路径变成具体的不做清单。",
+      "expected_behavior": "不应激活 destroy-favorite-idea，应激活 stop-doing-list。",
+      "notes": "跨 skill 混淆诱饵：用户要的是行动清单。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我有个想法帮过我很多次，但现在出现了新证据。",
+      "expected_behavior": "可以调用 destroy-favorite-idea，但应先评估证据强度，再建议是否更新观念。",
+      "notes": "边界：需要证据强度评估。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "patience-and-action",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "大家都开始投了，我还在观望，是不是太保守？",
+      "expected_behavior": "应激活 patience-and-action，帮助用户评估最佳击球区并克制行动偏好。",
+      "notes": "FOMO + 行动偏好场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "How do I know when to wait and when to act decisively?",
+      "expected_behavior": "应激活 patience-and-action（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "手上有现金，但找不到好机会，要不要随便买点什么？",
+      "expected_behavior": "应激活 patience-and-action，解释等待的机会成本与行动成本。",
+      "notes": "持有现金等待场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我制定一个健身计划。",
+      "expected_behavior": "不应激活本 skill，这是执行计划请求。",
+      "notes": "无关任务诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这两个投资机会哪个机会成本更低？",
+      "expected_behavior": "不应激活 patience-and-action，应激活 opportunity-cost。",
+      "notes": "跨 skill 混淆诱饵：核心是资源比较。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这个投资机会看起来还可以，但不算绝佳。",
+      "expected_behavior": "可以调用 patience-and-action，但应引导用户用机会成本和最佳击球区标准判断，不轻易建议等待或行动。",
+      "notes": "边界：机会质量中等。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

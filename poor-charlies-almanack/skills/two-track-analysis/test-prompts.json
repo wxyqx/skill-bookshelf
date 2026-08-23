@@ -1,0 +1,52 @@
+{
+  "skill": "two-track-analysis",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "理性告诉我应该拒绝，但我心里又舍不得，怎么办？",
+      "expected_behavior": "应激活 two-track-analysis，引导用户分别分析理性轨道和心理轨道。",
+      "notes": "典型理性与心理冲突。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "用双轨分析帮我看看这个投资决策。",
+      "expected_behavior": "应激活 two-track-analysis，分别列出理性因素和心理偏差。",
+      "notes": "直接请求方法论。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "What factors really control the interest here, and what psychological biases might distort my view?",
+      "expected_behavior": "应激活 two-track-analysis（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我最近心情不好，能陪我聊聊天吗？",
+      "expected_behavior": "不应激活本 skill，这是情绪陪伴请求。",
+      "notes": "非决策场景诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想列出所有可能影响我判断的心理偏差。",
+      "expected_behavior": "不应激活 two-track-analysis，应激活 psychology-of-misjudgment。",
+      "notes": "跨 skill 混淆诱饵：用户要的是偏差清单本身。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这个选择无论从理性还是直觉都支持 A。",
+      "expected_behavior": "不应强制调用 two-track-analysis；应简单确认并提醒用户检查是否有未识别的盲点。",
+      "notes": "边界：两条轨道结论一致，可能无需展开。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "margin-of-safety",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个投资机会我看不太准，应该怎么办？",
+      "expected_behavior": "应激活 margin-of-safety，建议用户要求更大的价格折扣或缓冲。",
+      "notes": "不确定性高时的安全边际需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "How much margin of safety should I leave in this project plan?",
+      "expected_behavior": "应激活 margin-of-safety（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "如果我的判断错了，这个方案会不会崩盘？",
+      "expected_behavior": "应激活 margin-of-safety，引导用户设计缓冲机制。",
+      "notes": "最坏情况担忧场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "今天天气怎么样？",
+      "expected_behavior": "不应激活本 skill，这是闲聊。",
+      "notes": "无关闲聊诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我不懂这个领域，但机会很好，要不要投？",
+      "expected_behavior": "不应激活 margin-of-safety，应激活 circle-of-competence。",
+      "notes": "跨 skill 混淆诱饵：核心问题是能力圈。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这个机会价格已经很高了，但公司确实伟大。",
+      "expected_behavior": "可以调用 margin-of-safety，但应明确提醒用户价格过高时安全边际消失，伟大公司也需要合理价格。",
+      "notes": "边界：伟大公司+高价格的张力。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}

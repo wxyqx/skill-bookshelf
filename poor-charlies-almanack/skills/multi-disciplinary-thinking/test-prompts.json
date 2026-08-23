@@ -1,0 +1,52 @@
+{
+  "skill": "multi-disciplinary-thinking",
+  "version": "0.1.0",
+  "source_book": "《穷查理宝典》 — 查理·芒格",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我总是用经济学角度看问题，是不是太片面了？",
+      "expected_behavior": "应激活 multi-disciplinary-thinking，引导用户识别铁锤人倾向并推荐其他学科模型。",
+      "notes": "典型铁锤人综合征场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么用多元思维模型分析一家公司？",
+      "expected_behavior": "应激活 multi-disciplinary-thinking，列出数学/心理/生物/工程等视角。",
+      "notes": "直接询问方法论。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "I feel like I only have one hammer and everything looks like a nail.",
+      "expected_behavior": "应激活 multi-disciplinary-thinking（description 含英文 trigger）。",
+      "notes": "英文 trigger。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "Python 列表怎么排序？",
+      "expected_behavior": "不应激活本 skill，这是纯技术事实查询。",
+      "notes": "无关事实查询诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我不懂这个项目，该不该投资？",
+      "expected_behavior": "不应激活 multi-disciplinary-thinking，应激活 circle-of-competence。",
+      "notes": "跨 skill 混淆诱饵：用户核心问题是能力圈判断。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这个决策我需要心理学和经济学两个角度，但不确定还要不要加其他学科？",
+      "expected_behavior": "可以调用 multi-disciplinary-thinking，但应简洁建议再补充 1-2 个学科，避免过度复杂化。",
+      "notes": "边界：已有部分跨学科意识，但仍需框架提醒。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。"
+}
