@@ -1,0 +1,52 @@
+{
+  "skill": "put-money-to-work",
+  "version": "0.1.0",
+  "source_book": "《富爸爸穷爸爸系列（共32册）》 — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我手里有30万闲钱，怎么让钱为我工作？",
+      "expected_behavior": "应激活 put-money-to-work，并引导用户盘点资金、定义工作岗位、筛选现金流资产。",
+      "notes": "典型触发：资金闲置，寻求资本配置。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "给你的钱找一份工作是什么意思？钱放在银行是不是在贬值？",
+      "expected_behavior": "应激活 put-money-to-work，解释概念并给出现金流资产示例。",
+      "notes": "直接出现书名关键词。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "How do I put my money to work instead of just saving it?",
+      "expected_behavior": "应激活 put-money-to-work，用英文给出资本配置思路。",
+      "notes": "英文关键词 put money to work 应能触发。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这个月工资怎么分配还花呗和生活费？",
+      "expected_behavior": "不应激活本 skill，因为用户需要月度预算与现金流管理，而非资本投资配置。",
+      "notes": "诱饵：涉及钱怎么分配，但是月度预算。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "买股票要看哪几个方面？怎么判断一只股票值不值得买？",
+      "expected_behavior": "不应激活本 skill，应激活 four-pillars-investing。",
+      "notes": "跨 skill 混淆诱饵：涉及股票投资，但属于四柱分析法的具体场景。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "把钱投入货币基金算让钱工作吗？",
+      "expected_behavior": "可以触发 put-money-to-work，但应说明货币基金收益通常跑不赢通胀，只能算临时停泊，而非真正的现金流资产；应引导用户投向更高现金流产出的资产。",
+      "notes": "边界：资金配置意图存在，但产品选择处于低效区。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 should_trigger + 2 should_not_trigger + 1 edge_case，其中 1 条为跨 skill 混淆测试。"
+}

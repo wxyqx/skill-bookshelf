@@ -10,7 +10,7 @@
 
 ## 目录总览
 
-**7 本书 · 68 个 skills**（最后更新：2026-08-23）
+**8 本书 · 86 个 skills**（最后更新：2026-08-24）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 目录 |
 |---|---|---:|---|---|
@@ -21,6 +21,7 @@
 | 《刻意练习》*PEAK* | 艾利克森、普尔 · 2016 | 学习 / 技能精进 | 8 | [`peak-deliberate-practice/`](./peak-deliberate-practice/) |
 | 《穷查理宝典》*Poor Charlie's Almanack* | 查理·芒格 · 2021 | 决策 / 思维模型 | 12 | [`poor-charlies-almanack/`](./poor-charlies-almanack/) |
 | 《经济学原理（微观分册）》 | 曼昆 · 2020 | 经济学 / 决策分析 | 6 | [`mankiw-microeconomics/`](./mankiw-microeconomics/) |
+| 《富爸爸穷爸爸系列》*Rich Dad Poor Dad* | 罗伯特·T·清崎 · 2021 | 财商 / 投资 / 创业 | 18 | [`rich-dad-poor-dad-series/`](./rich-dad-poor-dad-series/) |
 
 ---
 
@@ -68,6 +69,12 @@
 - **一句话**：把经济学的基础思维工具——权衡取舍、机会成本、边际分析、供需均衡、市场效率与失灵——提炼成可调用的决策分析框架。
 - **Skills**：`econ-ten-principles` · `comparative-advantage` · `supply-demand-analysis` · `welfare-cost-benefit` · `market-failure-diagnosis` · `market-structure-analysis`
 
+### 8. 《富爸爸穷爸爸系列》 — *Rich Dad Poor Dad* · [`rich-dad-poor-dad-series/`](./rich-dad-poor-dad-series/)
+
+- **作者**：罗伯特·T·清崎（Robert T. Kiyosaki）· 2021 套装（1997–2020）
+- **一句话**：通过转变金钱观、持续买入「能把钱放进口袋的资产」、从 E/S 象限迁往 B/I 象限，普通人可以跳出「为钱工作」的老鼠赛跑，实现不依赖工资的财务自由。
+- **Skills**：`asset-liability-filter` · `cashflow-quadrant` · `rat-race-detector` · `pay-yourself-first` · `mind-your-own-business` · `good-debt-bad-debt` · `five-financial-iqs` · `opm-opt-leverage` · `put-money-to-work` · `four-pillars-investing` · `real-estate-cashflow` · `bi-triangle` · `startup-ten-lessons` · `sales-dogs` · `code-of-honor` · `retirement-ark` · `second-chance` · `kids-financial-iq`
+
 ---
 
 ## 安装
@@ -75,7 +82,7 @@
 一次性安装**所有书**的 skills，或只装某一本：
 
 ```bash
-# 一次性安装全部 68 个 skills（用户级，所有项目可用）
+# 一次性安装全部 86 个 skills（用户级，所有项目可用）
 for d in */skills; do cp -r "$d"/* ~/.claude/skills/; done
 
 # 或只装某一本（以心流为例）
@@ -100,7 +107,8 @@ skill-bookshelf/
 ├── rockefeller-38-letters/   # 《洛克菲勒留给儿子的38封信》（15 skills）
 ├── peak-deliberate-practice/ # 《刻意练习》（8 skills）
 ├── poor-charlies-almanack/   # 《穷查理宝典》（12 skills）
-└── mankiw-microeconomics/    # 《经济学原理（微观分册）》（6 skills）
+├── mankiw-microeconomics/    # 《经济学原理（微观分册）》（6 skills）
+└── rich-dad-poor-dad-series/ # 《富爸爸穷爸爸系列》（18 skills）
 ```
 
 ---

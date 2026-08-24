@@ -1,0 +1,52 @@
+{
+  "skill": "five-financial-iqs",
+  "version": "0.1.0",
+  "source_book": "《富爸爸穷爸爸系列（共32册）》 — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想系统提升自己的财商，应该从哪开始？",
+      "expected_behavior": "应激活 five-financial-iqs，并引导用户自评五维财商、找出短板。",
+      "notes": "直接询问财商提升路径，是五种财商 skill 的核心触发场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我的五种财商里，哪一项最弱？赚更多的钱、守住钱、预算、杠杆、信息怎么平衡？",
+      "expected_behavior": "应激活 five-financial-iqs，逐项解释并帮助用户诊断。",
+      "notes": "出现‘五种财商’及其五个维度关键词。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "How can I improve my five financial IQs according to Rich Dad?",
+      "expected_behavior": "应激活 five-financial-iqs，用英文或中英双语给出五维框架。",
+      "notes": "英文关键词 five financial IQs 应能触发。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "推荐一只好股票，我想短线赚一波。",
+      "expected_behavior": "不应激活本 skill，因为用户已锁定具体股票并要求荐股，不属于财商能力诊断。",
+      "notes": "诱饵：看似投资，但属于具体标的需求，非五种财商场景。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "OPM 和 OPT 杠杆怎么用才能快速放大收益？",
+      "expected_behavior": "不应激活本 skill，应激活 opm-opt-leverage。",
+      "notes": "跨 skill 混淆诱饵：只聚焦第四财商杠杆，应走专门的 OPM/OPT skill。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我收入很高但存不下钱，这是财商问题吗？",
+      "expected_behavior": "可以触发 five-financial-iqs，但应指出问题可能落在‘守住你的钱’和‘预算你的钱’两个维度，而非单纯收入不足。",
+      "notes": "边界：高收入但守不住钱，属于财商诊断，但需要细化到具体维度。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 should_trigger + 2 should_not_trigger + 1 edge_case，其中 1 条为跨 skill 混淆测试。"
+}

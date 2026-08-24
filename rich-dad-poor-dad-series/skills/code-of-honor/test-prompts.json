@@ -1,0 +1,52 @@
+{
+  "skill": "code-of-honor",
+  "version": "0.1.0",
+  "source_book": "《富爸爸胜利之师》— 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我和朋友准备合伙创业，想先定一份荣誉守则，应该怎么写？",
+      "expected_behavior": "应激活 code-of-honor，引导用户识别高压场景并制定可问责的团队守则。",
+      "notes": "典型合伙前约定规则场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "团队扩大到10人后开始出现甩锅和信息不透明，能不能用富爸爸的荣誉守则模型？",
+      "expected_behavior": "应激活 code-of-honor，帮助用户复盘团队冲突并制定/升级守则。",
+      "notes": "团队扩张后的文化落地场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Code of honor 在团队中具体怎么用？我们想建立可问责的团队文化。",
+      "expected_behavior": "应激活 code-of-honor，识别英文 trigger 并给出团队契约制定步骤。",
+      "notes": "英文触发场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我一个人做自由职业，想提升销售技巧，该学什么？",
+      "expected_behavior": "不应激活 code-of-honor，应激活 sales-dogs。",
+      "notes": "诱饵：个人销售能力提升，不是团队守则。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "公司已经成立，我想诊断产品、法律、现金流等八个要素是否齐全。",
+      "expected_behavior": "不应激活 code-of-honor，应激活 bi-triangle。",
+      "notes": "跨 skill 混淆诱饵：企业八要素诊断 vs 团队文化契约。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "家庭成员一起投资房产，经常为花钱和决策吵架，能用荣誉守则吗？",
+      "expected_behavior": "可以激活 code-of-honor，但需把团队守则转化为家庭投资公约，并强调情感关系与法律协议的平衡。",
+      "notes": "边界：家庭合伙场景，既有团队属性又有亲属关系。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case，其中 1 条 should_not_trigger 为跨 skill 混淆测试。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "four-pillars-investing",
+  "version": "0.1.0",
+  "source_book": "《富爸爸穷爸爸系列（共32册）》 — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "怎么用四柱法分析一只股票？",
+      "expected_behavior": "应激活 four-pillars-investing，并展开基本面、技术面、现金流策略、风险管理四个维度。",
+      "notes": "直接询问四柱法股票分析。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "基本面、技术面、现金流策略、风险管理分别是什么？我想通过股票产生现金流。",
+      "expected_behavior": "应激活 four-pillars-investing，解释四柱并给出股票现金流策略示例。",
+      "notes": "出现四柱关键词及股票现金流目标。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Can you use the four pillars to evaluate a stock for me?",
+      "expected_behavior": "应激活 four-pillars-investing，用英文说明四柱法及用户需提供的信息。",
+      "notes": "英文关键词 four pillars evaluate a stock 应能触发。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这套房子租金能覆盖月供吗？值不值得买？",
+      "expected_behavior": "不应激活本 skill，因为用户询问的是房地产投资现金流，而非股票四柱法。",
+      "notes": "诱饵：涉及投资分析，但属于房产。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我有一笔资金想投资，选股票还是房产更好？",
+      "expected_behavior": "不应激活本 skill，应激活 put-money-to-work（或资产配置相关 skill）。",
+      "notes": "跨 skill 混淆诱饵：涉及股票投资，但本质是资金配置选择，应走让钱工作框架。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "只看基本面长期持有可以吗？巴菲特不也这样？",
+      "expected_behavior": "可以触发 four-pillars-investing，但应指出四柱法强调四维度结合；仅看基本面会忽略技术面时机、现金流策略和风险管理，巴菲特也有严格安全边际与仓位纪律。",
+      "notes": "边界：提到基本面和长期投资，但需要纠正单一维度。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 should_trigger + 2 should_not_trigger + 1 edge_case，其中 1 条为跨 skill 混淆测试。"
+}

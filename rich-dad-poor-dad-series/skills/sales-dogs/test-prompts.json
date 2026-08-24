@@ -1,0 +1,52 @@
+{
+  "skill": "sales-dogs",
+  "version": "0.1.0",
+  "source_book": "《富爸爸销售狗》— 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我害怕被拒绝，一直做不好销售，富爸爸销售狗模型里我属于哪种狗？",
+      "expected_behavior": "应激活 sales-dogs，帮助用户自评销售狗类型并制定短板训练计划。",
+      "notes": "典型销售心理与风格识别场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我组建了一个三人销售团队，但业绩很差，怎么用销售狗风格搭配人员？",
+      "expected_behavior": "应激活 sales-dogs，评估团队风格覆盖度并提出互补建议。",
+      "notes": "销售团队组建场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Sales dogs 说销售=收入，我应该怎么训练自己成为超级混种狗？",
+      "expected_behavior": "应激活 sales-dogs，识别英文 trigger 并给出综合风格训练路径。",
+      "notes": "英文触发场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我公司产品定位不清晰，帮我用B-I三角形梳理一下产品、系统和现金流。",
+      "expected_behavior": "不应激活 sales-dogs，应激活 bi-triangle 进行企业八要素诊断。",
+      "notes": "诱饵：产品战略问题，不是销售风格。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想学习股票投资，怎么分析基本面和技术面？",
+      "expected_behavior": "不应激活 sales-dogs，应激活 four-pillars-investing。",
+      "notes": "跨 skill 混淆诱饵：股票投资四柱法 vs 销售狗模型。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我在做线上客服，经常要回复客户投诉，这算销售狗模型吗？",
+      "expected_behavior": "不应优先激活 sales-dogs；应先确认是否存在销售/成交目标，若只是售后支持则不属于销售狗模型。",
+      "notes": "边界：售后客服与销售成交的模糊地带。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case，其中 1 条 should_not_trigger 为跨 skill 混淆测试。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "kids-financial-iq",
+  "version": "0.1.0",
+  "source_book": "《富爸爸发现你孩子的财富基因》— 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "孩子总是做家务要钱，我想用富爸爸的方法教他财商，该怎么做？",
+      "expected_behavior": "应激活 kids-financial-iq，引导家长转换金钱语言、设计存钱罐系统和真实场景练习。",
+      "notes": "典型儿童零花钱与家务场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我想培养孩子的财富基因，从几岁开始、用什么工具比较好？",
+      "expected_behavior": "应激活 kids-financial-iq，给出分龄财商启蒙工具和现金流游戏建议。",
+      "notes": "财富基因启蒙场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "kids financial IQ / 儿童财商教育，家长应该怎么在日常生活中教？",
+      "expected_behavior": "应激活 kids-financial-iq，识别英文 trigger 并给出家庭财商教育路径。",
+      "notes": "英文触发场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学习如何区分资产和负债来做自己的购买决策。",
+      "expected_behavior": "不应激活 kids-financial-iq，应激活 asset-liability-filter。",
+      "notes": "诱饵：成人购买决策，不是儿童财商。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想给自己做现金流象限定位，看看该往B/I迁移。",
+      "expected_behavior": "不应激活 kids-financial-iq，应激活 cashflow-quadrant。",
+      "notes": "跨 skill 混淆诱饵：个人象限定位 vs 儿童财商教育。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我 teenage 的孩子已经会炒股了，我还需要教他儿童财商吗？",
+      "expected_behavior": "可激活 kids-financial-iq，但需把内容升级为青少年版：侧重风险、杠杆、三种收入类型和创业思维，而非幼儿化工具。",
+      "notes": "边界：高财商青少年，教育方法需调整。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case，其中 1 条 should_not_trigger 为跨 skill 混淆测试。"
+}

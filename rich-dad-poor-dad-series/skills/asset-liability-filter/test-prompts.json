@@ -1,0 +1,52 @@
+{
+  "skill": "asset-liability-filter",
+  "version": "0.1.0",
+  "source_book": "富爸爸穷爸爸系列（共32册） — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我买了套自住房，每月还房贷1万，这房子到底是资产还是负债？",
+      "expected_behavior": "应激活 asset-liability-filter，按现金流方向判断：自住房贷、税费、维护均为现金流出，属于负债而非资产。",
+      "notes": "经典资产/负债判断场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "朋友说我车值30万是资产，我怎么觉得是负债？",
+      "expected_behavior": "应激活 asset-liability-filter，解释汽车折旧、油费、保险、贷款等现金流出，判定为负债。",
+      "notes": "涉及常见误判。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想整理一下我的资产负债表，哪些东西是真正值钱的资产？",
+      "expected_behavior": "应激活 asset-liability-filter，引导用户按现金流方向重新归类资产、负债与支出。",
+      "notes": "主动要求资产负债表分析。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我该不该为了省税，把存款从定期改成货币基金？",
+      "expected_behavior": "不应激活 asset-liability-filter，因为问题核心是现金管理/资产配置，不针对单笔物品的资产/负债定性。",
+      "notes": "诱饵：涉及资产，但不是在问物品是资产还是负债。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我刷信用卡买了台游戏机，现在分期还没还完，这是良性债务还是不良债务？",
+      "expected_behavior": "不应激活 asset-liability-filter，应激活 good-debt-bad-debt，因为问题核心是债务性质判断。",
+      "notes": "跨 skill 混淆诱饵：涉及信用卡和消费，但属于兄弟skill good-debt-bad-debt 的场景。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我买了一套小户型出租，租金刚好覆盖月供，略有结余。这套房算资产吗？",
+      "expected_behavior": "应激活 asset-liability-filter，判定为正现金流即为资产；但需提示出租房仍有空置、维修、利率等风险，资产≠无风险。",
+      "notes": "边界：现金流接近盈亏平衡，需要量化而非简单定性。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger + 2条should_not_trigger + 1条edge_case，其中1条should_not_trigger为跨skill混淆测试（good-debt-bad-debt）。"
+}

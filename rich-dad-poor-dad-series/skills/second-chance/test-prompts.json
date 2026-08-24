@@ -1,0 +1,52 @@
+{
+  "skill": "second-chance",
+  "version": "0.1.0",
+  "source_book": "《富爸爸第二次致富机会》— 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我创业失败欠了债，感觉没希望了，富爸爸说的第二次致富机会怎么开始？",
+      "expected_behavior": "应激活 second-chance，引导用户清点现实、转换提问、寻找导师并小步验证现金流。",
+      "notes": "典型失败后翻盘场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "被裁员后行业也不景气，我想把这次危机当作重新开始的机会，有什么框架？",
+      "expected_behavior": "应激活 second-chance，帮助用户从危机中看到硬币另一面并制定重启计划。",
+      "notes": "职业危机重启场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "second chance / 东山再起，失败后的心态和行动步骤是什么？",
+      "expected_behavior": "应激活 second-chance，识别英文 trigger 并给出翻盘行动框架。",
+      "notes": "英文触发场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我工作稳定，想提前规划退休资产，该怎么做？",
+      "expected_behavior": "不应激活 second-chance，应激活 retirement-ark。",
+      "notes": "诱饵：稳定期的退休规划，不是危机翻盘。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我刚毕业，想第一次创业，需要做哪些准备？",
+      "expected_behavior": "不应激活 second-chance，应激活 startup-ten-lessons。",
+      "notes": "跨 skill 混淆诱饵：首次创业准备 vs 失败后翻盘。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我投资亏损了30%，但本职工作还在，这算需要第二次致富机会吗？",
+      "expected_behavior": "可激活 second-chance，但侧重轻微危机的心态复盘与资产再平衡，而非破产级别的重启。",
+      "notes": "边界：投资亏损但未破产，属于心态与策略调整。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case，其中 1 条 should_not_trigger 为跨 skill 混淆测试。"
+}

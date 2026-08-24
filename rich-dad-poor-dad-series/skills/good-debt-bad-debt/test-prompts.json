@@ -1,0 +1,52 @@
+{
+  "skill": "good-debt-bad-debt",
+  "version": "0.1.0",
+  "source_book": "富爸爸穷爸爸系列（共32册） — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我有一套出租房在还贷款，每月租金覆盖月供后还有结余。这是良性债务吗？",
+      "expected_behavior": "应激活 good-debt-bad-debt，判定为正现金流覆盖本息的出租房贷款属于良性债务，并提示利率上升、空置等风险。",
+      "notes": "经典良性债务场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我信用卡欠了5万，每月只还最低额，还借了消费贷去旅游。这些是不良债务吗？",
+      "expected_behavior": "应激活 good-debt-bad-debt，判定信用卡债和消费贷为不良债务，建议优先还清并改变消费行为。",
+      "notes": "典型不良债务场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "富爸爸说良性债务和不良债务怎么区分？我想借钱投资股票，算良性吗？",
+      "expected_behavior": "应激活 good-debt-bad-debt，解释区分标准，并评估股票融资的风险与现金流特征。",
+      "notes": "直接询问框架并请求应用。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我月薪两万，公司给了我两个offer，一个稳定但税高，一个创业合伙人但无底薪，选哪个？",
+      "expected_behavior": "不应激活 good-debt-bad-debt，因为问题核心是职业/象限选择，不是债务性质判断。",
+      "notes": "诱饵：涉及创业和钱，但属于职业决策。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我刚买了一套自住房，每月还房贷1万，这房子到底是资产还是负债？",
+      "expected_behavior": "不应激活 good-debt-bad-debt，应激活 asset-liability-filter，因为问题核心是房产的现金流方向定性。",
+      "notes": "跨 skill 混淆诱饵：涉及房贷，但属于兄弟skill asset-liability-filter 的场景。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我生意需要贷款扩张，但现在市场环境不好，订单不稳定。这时候借钱是良性还是不良？",
+      "expected_behavior": "应激活 good-debt-bad-debt，但需说明债务性质取决于未来现金流的可预测性；在市场不确定时应保守，先稳住现金流再谈杠杆。",
+      "notes": "边界：用途可能产生现金流，但环境不确定性使判断不能简单定性。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger + 2条should_not_trigger + 1条edge_case，其中1条should_not_trigger为跨skill混淆测试（asset-liability-filter）。"
+}

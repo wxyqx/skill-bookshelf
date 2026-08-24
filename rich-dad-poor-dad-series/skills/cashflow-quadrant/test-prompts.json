@@ -1,0 +1,52 @@
+{
+  "skill": "cashflow-quadrant",
+  "version": "0.1.0",
+  "source_book": "富爸爸穷爸爸系列（共32册） — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我年薪50万，但税和开销也越来越高，感觉永远在老鼠赛跑。现金流象限里我到底属于哪一边？",
+      "expected_behavior": "应激活 cashflow-quadrant，先定位用户在E/S象限，再解释高收入为何仍在左侧，并给出迁往B/I的路径建议。",
+      "notes": "典型ESBI自我定位场景，包含老鼠赛跑暗示但不改变应激活的skill。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我在考虑辞职做自由职业者，还是直接创业。富爸爸说的S型和B型企业有什么区别？",
+      "expected_behavior": "应激活 cashflow-quadrant，用ESBI区分S与B，指出是否拥有可复制系统。",
+      "notes": "直接触发ESBI框架中的S/B区分。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我不想一辈子为钱工作，应该成为雇员、投资者还是企业家？哪个象限适合我？",
+      "expected_behavior": "应激活 cashflow-quadrant，引导用户从收入来源和思维模式判断E/S/B/I位置。",
+      "notes": "包含核心trigger词“象限”。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我刚买了一套自住房，月供8000，这房子到底是资产还是负债？",
+      "expected_behavior": "不应激活 cashflow-quadrant，应激活 asset-liability-filter，因为问题核心是单笔资产的现金流方向判断。",
+      "notes": "诱饵：涉及房地产和现金流，但属于资产/负债区分而非象限定位。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我每月工资到账就还信用卡和花呗，根本存不下钱，该怎么先支付自己？",
+      "expected_behavior": "不应激活 cashflow-quadrant，应激活 pay-yourself-first，因为问题核心是现金流分配顺序与预算纪律。",
+      "notes": "跨 skill 混淆诱饵：提到工资和现金流，但属于兄弟skill pay-yourself-first 的场景。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我白天是雇员，晚上有出租房在收租，周末还经营一个小工作室。我属于哪个象限？",
+      "expected_behavior": "应激活 cashflow-quadrant，但需说明用户同时跨E/I/S多个象限，按主要收入占比和未来迁移目标分别定位，而非简单归到单一象限。",
+      "notes": "边界：用户跨多个象限，需要多象限占比分析而非单一象限判断。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger + 2条should_not_trigger + 1条edge_case，其中1条should_not_trigger为跨skill混淆测试（pay-yourself-first）。"
+}

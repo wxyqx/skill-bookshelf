@@ -1,0 +1,52 @@
+{
+  "skill": "startup-ten-lessons",
+  "version": "0.1.0",
+  "source_book": "《富爸爸成功创业的10堂必修课》— 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想辞职创业，但不知道创业前该做哪些准备，你能按富爸爸的10堂必修课帮我梳理吗？",
+      "expected_behavior": "应激活 startup-ten-lessons，引导用户完成使命、代价、B-I三角形自检、大目标与里程碑等步骤。",
+      "notes": "典型的创业前准备场景，含关键词“创业前”“10堂必修课”。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我副业做了一年，发现只靠自己忙不过来，是不是该用B-I三角形先检查一下再决定要不要全职？",
+      "expected_behavior": "应激活 startup-ten-lessons，强调创立前自检与从S向B迁移的思维转换。",
+      "notes": "副业转全职前的系统准备场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Before you quit your job, what should I prepare? 我想设定一个清晰的创业大目标。",
+      "expected_behavior": "应激活 startup-ten-lessons，用中英混合触发词也能识别。",
+      "notes": "英文 trigger 场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我公司已经运转三年了，最近现金流总是断，帮我诊断一下哪里出了问题。",
+      "expected_behavior": "不应激活 startup-ten-lessons，应激活 bi-triangle 或 cashflow-quadrant 进行企业诊断。",
+      "notes": "诱饵：已运营企业的问题诊断，不是创业前准备。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想学习个人理财，提高自己的财商五力，应该怎么开始？",
+      "expected_behavior": "不应激活 startup-ten-lessons，应激活 five-financial-iqs。",
+      "notes": "跨 skill 混淆诱饵：财商五力 vs 创业准备。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我打算下周辞职开咖啡馆，已经租好店面了，现在想请你帮我做创业前准备。",
+      "expected_behavior": "可激活 startup-ten-lessons，但需提醒用户店面已租、部分决策已不可逆，重点转为剩余风险控制和B-I三角形补缺。",
+      "notes": "边界：表面上在创业前，但关键行动已发生，需柔性处理。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case，其中 1 条 should_not_trigger 为跨 skill 混淆测试。"
+}

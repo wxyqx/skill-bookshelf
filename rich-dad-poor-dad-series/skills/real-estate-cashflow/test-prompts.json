@@ -1,0 +1,52 @@
+{
+  "skill": "real-estate-cashflow",
+  "version": "0.1.0",
+  "source_book": "《富爸爸穷爸爸系列（共32册）》 — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这套房买来出租，现金流怎么算？",
+      "expected_behavior": "应激活 real-estate-cashflow，并引导用户计算租金、空置、费用、月供、净现金流。",
+      "notes": "典型触发：投资房现金流计算。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "房地产投资怎么判断正现金流？租售比多少才算合格？",
+      "expected_behavior": "应激活 real-estate-cashflow，解释正现金流标准、现金回报率与压力测试。",
+      "notes": "出现正现金流、租售比等关键词。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "How do I analyze rental property cash flow?",
+      "expected_behavior": "应激活 real-estate-cashflow，用英文说明现金流分析步骤。",
+      "notes": "英文关键词 rental property cash flow 应能触发。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "买自住房要不要提前还贷款？",
+      "expected_behavior": "不应激活本 skill，因为自住房不产生租金现金流，属于负债/资产配置问题。",
+      "notes": "诱饵：涉及房产和贷款，但是自住用途。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "怎么用信用卡首付买房？",
+      "expected_behavior": "不应激活本 skill，应激活 opm-opt-leverage。",
+      "notes": "跨 skill 混淆诱饵：涉及房地产，但核心是融资杠杆，应走 OPM/OPT。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "公寓租金刚够还月供，算好的投资吗？",
+      "expected_behavior": "可以触发 real-estate-cashflow，但应指出“刚够还贷”未扣除空置、维修、物业、税费和机会成本，真实现金流可能为负；需要完整测算后再判断。",
+      "notes": "边界：看似正现金流，实际可能遗漏成本。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 should_trigger + 2 should_not_trigger + 1 edge_case，其中 1 条为跨 skill 混淆测试。"
+}

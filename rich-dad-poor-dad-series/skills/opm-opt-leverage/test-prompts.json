@@ -1,0 +1,52 @@
+{
+  "skill": "opm-opt-leverage",
+  "version": "0.1.0",
+  "source_book": "《富爸爸穷爸爸系列（共32册）》 — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "怎么用别人的钱（OPM）投资房地产？",
+      "expected_behavior": "应激活 opm-opt-leverage，并解释 OPM 概念、给出融资结构思路。",
+      "notes": "直接询问 OPM 在房地产投资中的应用。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "OPT 是什么意思，怎么让别人的时间为我工作？",
+      "expected_behavior": "应激活 opm-opt-leverage，区分 OPM 与 OPT 并给出案例。",
+      "notes": "出现 OPT 与“别人的时间”关键词。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Can you explain OPM and OPT leverage in Rich Dad's framework?",
+      "expected_behavior": "应激活 opm-opt-leverage，用英文解释 OPM/OPT 及使用前提。",
+      "notes": "英文关键词 OPM/OPT leverage 应能触发。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我信用卡欠了很多，怎么尽快还清？",
+      "expected_behavior": "不应激活本 skill，因为用户需要债务清偿与现金流管理，而非加杠杆。",
+      "notes": "诱饵：涉及借钱/信用卡，但实际是债务问题。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "房地产企业现金流怎么算？租金能不能覆盖月供？",
+      "expected_behavior": "不应激活本 skill，应激活 real-estate-cashflow。",
+      "notes": "跨 skill 混淆诱饵：房地产现金流分析应走专门的房产现金流 skill。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "借钱买自住房算 OPM 吗？",
+      "expected_behavior": "可以调用 opm-opt-leverage，但应明确说明自住房若无正现金流属于不良债务/负债，不是 OPM 投资意义上的杠杆。",
+      "notes": "边界：关键词‘借钱’触发，但需判断资产是否产生现金流。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 should_trigger + 2 should_not_trigger + 1 edge_case，其中 1 条为跨 skill 混淆测试。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "pay-yourself-first",
+  "version": "0.1.0",
+  "source_book": "富爸爸穷爸爸系列（共32册） — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我每个月工资到账就花光，想开始先支付自己，该怎么操作？",
+      "expected_behavior": "应激活 pay-yourself-first，建议开设独立投资账户、设置自动转账、确定固定比例。",
+      "notes": "直接触发核心方法论。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "工资发了，信用卡账单也来了，我应该先还卡还是先存一笔投资？",
+      "expected_behavior": "应激活 pay-yourself-first，解释“先支付自己”的反向预算逻辑，并协调与不良债务的关系。",
+      "notes": "常见冲突场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想设置工资自动转账到投资账户，比例多少合适？需要单独开账户吗？",
+      "expected_behavior": "应激活 pay-yourself-first，给出自动化机制与账户隔离建议。",
+      "notes": "自动化触发场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我手上有10万，想买指数基金还是银行股？哪个现金流更好？",
+      "expected_behavior": "不应激活 pay-yourself-first，因为问题核心是具体投资标的选择，而非收入分配纪律。",
+      "notes": "诱饵：涉及投资，但不在问“先支付自己”的纪律。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我感觉自己一直在老鼠赛跑里，工资涨了但存款没涨，该怎么跳出来？",
+      "expected_behavior": "不应激活 pay-yourself-first，应激活 rat-race-detector，因为问题核心是诊断无资产循环。",
+      "notes": "跨 skill 混淆诱饵：涉及储蓄和工资，但属于兄弟skill rat-race-detector 的场景。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我信用卡欠了3万，每月利息很高，但我也想开始投资。这时还要先支付自己吗？",
+      "expected_behavior": "应激活 pay-yourself-first，但需说明高息不良债务应先消灭或并行处理：先还最低额+小额投资储蓄，而不是盲目先投资让债务滚雪球。",
+      "notes": "边界：先支付自己与不良债务冲突，需要优先级协调。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger + 2条should_not_trigger + 1条edge_case，其中1条should_not_trigger为跨skill混淆测试（rat-race-detector）。"
+}

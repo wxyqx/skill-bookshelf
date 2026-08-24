@@ -1,0 +1,52 @@
+{
+  "skill": "rat-race-detector",
+  "version": "0.1.0",
+  "source_book": "富爸爸穷爸爸系列（共32册） — 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我感觉自己一直在老鼠赛跑里，工资涨了但存款没涨，越忙越焦虑。怎么跳出来？",
+      "expected_behavior": "应激活 rat-race-detector，诊断恐惧-贪婪循环，盘点资产项，给出被动收入覆盖支出的跳出条件。",
+      "notes": "直接出现核心隐喻。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "每次加薪我就换更好的车和房，结果压力更大了。这是不是恐惧和贪婪在控制我？",
+      "expected_behavior": "应激活 rat-race-detector，指出加薪-增支循环，帮助用户识别老鼠赛跑机制。",
+      "notes": "典型恐惧-贪婪触发场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我每个月都是起床、上班、还花呗、再起床、再上班。没有被动收入，一停下来就慌。",
+      "expected_behavior": "应激活 rat-race-detector，使用书中原文循环描述，确认无资产现金流的状态。",
+      "notes": "高度贴近原文措辞。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "公司给了我两个offer，一个稳定但钱少，一个高薪但有裁员风险，我该怎么选？",
+      "expected_behavior": "不应激活 rat-race-detector，因为问题核心是单次职业选择/风险评估，而非结构性老鼠赛跑循环。",
+      "notes": "诱饵：涉及工作和恐惧，但属于职业决策而非老鼠赛跑诊断。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我每月工资到账，应该先还信用卡还是先存一笔做投资？",
+      "expected_behavior": "不应激活 rat-race-detector，应激活 pay-yourself-first，因为问题核心是现金流分配顺序。",
+      "notes": "跨 skill 混淆诱饵：提到工资和循环还款，但属于兄弟skill pay-yourself-first 的场景。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我工资全部用来还房贷和养娃，没有存款，但房本上有我的名字，这算老鼠赛跑吗？",
+      "expected_behavior": "应激活 rat-race-detector，但需说明自住房即使署名也不产生现金流，用户仍处于无资产现金流的老鼠赛跑状态；同时可联动 asset-liability-filter 进一步判断房产性质。",
+      "notes": "边界：用户有“资产幻觉”（自住房），需要既诊断循环又纠正资产定义。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger + 2条should_not_trigger + 1条edge_case，其中1条should_not_trigger为跨skill混淆测试（pay-yourself-first）。"
+}

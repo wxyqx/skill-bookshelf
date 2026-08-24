@@ -1,0 +1,52 @@
+{
+  "skill": "retirement-ark",
+  "version": "0.1.0",
+  "source_book": "《富爸爸财富大趋势》— 罗伯特·T·清崎",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我现在只靠公司交的社保和401k，担心退休后不够，怎么打造退休方舟？",
+      "expected_behavior": "应激活 retirement-ark，引导用户盘点退休依赖、识别风险并设计三类资产方舟。",
+      "notes": "典型退休安全焦虑场景。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "通胀这么厉害，我想按富爸爸的财富大趋势重新配置退休资产，该怎么做？",
+      "expected_behavior": "应激活 retirement-ark，从宏观趋势角度给出资产结构建议。",
+      "notes": "宏观趋势驱动的退休配置场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "retirement ark 是什么意思？我该怎么为养老建立多元现金流？",
+      "expected_behavior": "应激活 retirement-ark，识别英文 trigger 并解释退休方舟框架。",
+      "notes": "英文触发场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我有一笔钱，想给每笔钱找一份能产生现金流的工作，怎么分配？",
+      "expected_behavior": "不应激活 retirement-ark，应激活 put-money-to-work。",
+      "notes": "诱饵：资本效率分配，不是退休规划。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想学习房地产投资现金流分析，该看什么指标？",
+      "expected_behavior": "不应激活 retirement-ark，应激活 real-estate-cashflow。",
+      "notes": "跨 skill 混淆诱饵：房地产现金流分析 vs 退休方舟。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我刚毕业，收入只够覆盖生活支出，现在谈退休方舟是不是太早？",
+      "expected_behavior": "可激活 retirement-ark，但需调整为“起步版”：先建立现金流象限意识和小额资产积累，而非直接配置多元资产。",
+      "notes": "边界：人生早期收入有限，退休规划需分阶段。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case，其中 1 条 should_not_trigger 为跨 skill 混淆测试。"
+}
