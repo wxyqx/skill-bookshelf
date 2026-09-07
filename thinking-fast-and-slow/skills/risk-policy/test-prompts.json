@@ -1,0 +1,59 @@
+{
+  "skill": "risk-policy",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "每次买电子产品都要纠结半天要不要加延保，太累了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我是自由职业者，这种低价单接不接的问题每个月都要煎熬一次",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "帮团队定一条折扣审批规矩，别每次都重新吵一遍",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我的定投纪律老是被大跌打断，想立个规矩管住自己",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这笔单笔亏损让我特别难受，我要不要就此收手？",
+      "expected_behavior": "应激活 wide-frame-trader（当下情绪重述），不是立法",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "保险产品的现金价值怎么算",
+      "expected_behavior": "知识问答",
+      "notes": "诱饵：产品咨询"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我只有这一次演出要买责任险，怎么定？",
+      "expected_behavior": "边界：一次性决策无政策可言——转 fourfold-risk-locator 或 base-rate-first",
+      "notes": "边界：单次决策场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

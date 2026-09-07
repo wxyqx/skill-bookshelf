@@ -10,7 +10,7 @@
 
 ## 目录总览
 
-**8 本书 · 86 个 skills**（最后更新：2026-08-24）
+**9 本书 · 114 个 skills**（最后更新：2026-09-07）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 目录 |
 |---|---|---:|---|---|
@@ -22,6 +22,7 @@
 | 《穷查理宝典》*Poor Charlie's Almanack* | 查理·芒格 · 2021 | 决策 / 思维模型 | 12 | [`poor-charlies-almanack/`](./poor-charlies-almanack/) |
 | 《经济学原理（微观分册）》 | 曼昆 · 2020 | 经济学 / 决策分析 | 6 | [`mankiw-microeconomics/`](./mankiw-microeconomics/) |
 | 《富爸爸穷爸爸系列》*Rich Dad Poor Dad* | 罗伯特·T·清崎 · 2021 | 财商 / 投资 / 创业 | 18 | [`rich-dad-poor-dad-series/`](./rich-dad-poor-dad-series/) |
+| 《思考，快与慢》*Thinking, Fast and Slow* | 卡尼曼 · 2025 | 认知偏差 / 判断决策 | 28 | [`thinking-fast-and-slow/`](./thinking-fast-and-slow/) |
 
 ---
 
@@ -75,6 +76,12 @@
 - **一句话**：通过转变金钱观、持续买入「能把钱放进口袋的资产」、从 E/S 象限迁往 B/I 象限，普通人可以跳出「为钱工作」的老鼠赛跑，实现不依赖工资的财务自由。
 - **Skills**：`asset-liability-filter` · `cashflow-quadrant` · `rat-race-detector` · `pay-yourself-first` · `mind-your-own-business` · `good-debt-bad-debt` · `five-financial-iqs` · `opm-opt-leverage` · `put-money-to-work` · `four-pillars-investing` · `real-estate-cashflow` · `bi-triangle` · `startup-ten-lessons` · `sales-dogs` · `code-of-honor` · `retirement-ark` · `second-chance` · `kids-financial-iq`
 
+### 9. 《思考，快与慢》 — *Thinking, Fast and Slow* · [`thinking-fast-and-slow/`](./thinking-fast-and-slow/)
+
+- **作者**：丹尼尔·卡尼曼（Daniel Kahneman）· 中信 2025（原书 2011）
+- **一句话**：判断与选择由爱编故事的快速直觉（系统1）主导，负责怀疑与统计的慢思考（系统2）天性懒惰，因此错误是系统性、可预测的——本书提供诊断词汇与程序性纠偏工具。
+- **Skills**：`substitution-check` · `wysiati-check` · `base-rate-first` · `availability-check` · `scenario-scrutiny` · `rare-events-check` · `anti-anchoring` · `high-stakes-slow-thinking` · `small-sample-rules` · `regression-to-mean` · `outside-view` · `four-step-prediction` · `interval-calibration` · `expert-intuition-precheck` · `formula-over-intuition` · `premortem` · `bias-proof-review` · `frame-check` · `fourfold-risk-locator` · `wide-frame-trader` · `risk-policy` · `zero-base-rethink` · `two-selves-check` · `peak-end-design` · `focusing-illusion` · `dual-ledger` · `independent-judgment` · `decision-factory`
+
 ---
 
 ## 安装
@@ -82,7 +89,7 @@
 一次性安装**所有书**的 skills，或只装某一本：
 
 ```bash
-# 一次性安装全部 86 个 skills（用户级，所有项目可用）
+# 一次性安装全部 114 个 skills（用户级，所有项目可用）
 for d in */skills; do cp -r "$d"/* ~/.claude/skills/; done
 
 # 或只装某一本（以心流为例）
@@ -108,7 +115,8 @@ skill-bookshelf/
 ├── peak-deliberate-practice/ # 《刻意练习》（8 skills）
 ├── poor-charlies-almanack/   # 《穷查理宝典》（12 skills）
 ├── mankiw-microeconomics/    # 《经济学原理（微观分册）》（6 skills）
-└── rich-dad-poor-dad-series/ # 《富爸爸穷爸爸系列》（18 skills）
+├── rich-dad-poor-dad-series/ # 《富爸爸穷爸爸系列》（18 skills）
+└── thinking-fast-and-slow/   # 《思考，快与慢》（28 skills）
 ```
 
 ---

@@ -1,0 +1,59 @@
+{
+  "skill": "expert-intuition-precheck",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "一位炒股二十年的老股民说大盘要涨，让我满仓，能信吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这位老消防队长看了一眼就说楼要塌，让我们撤，听不听",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "老中医说他有九成把握治好我的老毛病，我该信吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "猎头说她的候选人推荐命中率极高，我该怎么验证",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们这批10个人要定录用名单，该怎么评",
+      "expected_behavior": "应激活 formula-over-intuition（结构化评分），不是直觉预检",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "李医生的头衔是什么意思",
+      "expected_behavior": "信息查询",
+      "notes": "诱饵：非判断场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "修车铺老师傅趴下听了一下说发动机没事，能信吗",
+      "expected_behavior": "边界：环境有规律+反馈清晰快——两条件近似满足，倾向采信；应演示判定过程而非一刀切",
+      "notes": "边界：预检通过的场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

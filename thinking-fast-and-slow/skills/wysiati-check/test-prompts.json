@@ -1,0 +1,66 @@
+{
+  "skill": "wysiati-check",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个商业故事逻辑太通顺了，我越想越觉得这家公司能成",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我特别确定这个判断，闭着眼都敢押",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这位分析师讲得头头是道，全都说得通",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "复盘写完我发现整件事完全说得通，早就有迹可循",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下这个API的参数怎么配",
+      "expected_behavior": "纯信息查询",
+      "notes": "诱饵：非判断场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我预测这个项目实际会超支多少",
+      "expected_behavior": "应激活 outside-view（数量预测），不是信心检查",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "今天好累啊",
+      "expected_behavior": "情绪表达，无判断对象",
+      "notes": "诱饵：无判断"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我给客户的报告写好了，怎么显得更有说服力？",
+      "expected_behavior": "边界：可轻量使用——建议输出前自查信息缺口；但用户要的是'显得'可信，应提醒WYSIATI警告被用来反向操纵的风险",
+      "notes": "边界：工具的正反两用"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

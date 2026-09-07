@@ -1,0 +1,59 @@
+{
+  "skill": "wide-frame-trader",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "做短线每天被单笔亏损搞得很痛苦，心态崩了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "今天又丢了一单，我在想要不要干脆把这业务线关了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "有个50%亏100、50%赚200的机会，收益明明划算但我就是不敢接",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "帮我审计一下我最近这几个决定放在一起看是不是互相打架",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "每次到续保险的时候都要重新纠结一遍，太累了",
+      "expected_behavior": "应激活 risk-policy（一次立法），高频重复场景",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "怎么开一个证券账户",
+      "expected_behavior": "操作查询",
+      "notes": "诱饵：流程问答"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这套200万的房子我一辈子大概只买这一次，用交易者思维想想？",
+      "expected_behavior": "边界：真孤立巨大决策——宽框架三条件不满足，不应套用；应转框架检验/四重模式",
+      "notes": "边界：宽框架失效场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

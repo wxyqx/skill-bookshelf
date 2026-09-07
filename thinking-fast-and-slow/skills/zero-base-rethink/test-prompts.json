@@ -1,0 +1,59 @@
+{
+  "skill": "zero-base-rethink",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个创业项目我已经砸进去3年和全部积蓄，还要继续死磕吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "股票套了50%，我想等回本再卖，这样对吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "健身房卡办了3年没去几次，续费纠结死了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "公司那个我自己写的App早过时了，可我就是下不了手关掉",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "行情一直跌，我该不该止损离场？",
+      "expected_behavior": "应激活 fourfold-risk-locator（风险态度定位），纠结点是当下风险决策",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我评估一下这个新项目的市场空间",
+      "expected_behavior": "前瞻分析任务",
+      "notes": "诱饵：非账户污染场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "朋友想把他的二手车过户给我，比市价低一点，我该不该接？",
+      "expected_behavior": "边界：对'我'而言是全新购买决策，无禀赋问题——正常评估即可；提醒他卖方可能有禀赋溢价",
+      "notes": "边界：区分买卖两端"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

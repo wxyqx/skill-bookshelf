@@ -1,0 +1,59 @@
+{
+  "skill": "frame-check",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "销售说'现在不买就是亏'，我被这句话搅得心神不宁",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "老板把裁员叫'优化'，我想把这个决定看清楚",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "方案里写'失败概率5%'，要是写成'成功概率95%'我是不是态度就不一样了？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "帮我检查一下这个定价页有没有在玩措辞把戏",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这个项目我都投了200万了，实在放不下",
+      "expected_behavior": "应激活 zero-base-rethink（沉没成本），不是框架检验",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "'框架效应'这个词什么意思",
+      "expected_behavior": "概念查询",
+      "notes": "诱饵：知识问答"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想说服老婆同意涨价，把这笔钱说成'成本'而不是'损失'是不是更有效？",
+      "expected_behavior": "边界：框架技术可用但涉及对他人使用——应提醒操纵伦理边界",
+      "notes": "边界：伦理边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

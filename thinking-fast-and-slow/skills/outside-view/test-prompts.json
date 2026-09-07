@@ -1,0 +1,59 @@
+{
+  "skill": "outside-view",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们想做个App，团队拍胸脯说3个月上线，靠谱吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "帮我估一下装修实际会花多少钱和时间",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想辞职创业，成功概率大概什么水平",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "大家都说我们项目特殊，不会像同行那样超支延期",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我们提前想想这个方案可能怎么失败",
+      "expected_behavior": "应激活 premortem（事前验尸），不是参考类别预测",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "App开发的正规流程是什么",
+      "expected_behavior": "信息查询",
+      "notes": "诱饵：知识问答"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "下一班地铁还有几分钟",
+      "expected_behavior": "边界：实时数据查询，无参考类问题——不适用",
+      "notes": "诱饵边界：数据可得场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

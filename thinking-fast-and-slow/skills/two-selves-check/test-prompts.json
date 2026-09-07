@@ -1,0 +1,59 @@
+{
+  "skill": "two-selves-check",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "婚礼办盛大点还是省钱实在点，纠结死了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这份工作头衔光鲜但每天很煎熬，要不要接",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "有点想买那台顶级相机，其实用得不多，就是想拥有",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "大家都说'趁着年轻要拼一把不然会后悔'，我该听吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "该选A医疗方案还是B，帮我系统比一比",
+      "expected_behavior": "应激活 dual-ledger（双尺排序框架），不是单次决策核查",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这台相机参数怎么样",
+      "expected_behavior": "产品信息查询",
+      "notes": "诱饵：参数查询"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我就是想为回忆买单，怎么了",
+      "expected_behavior": "边界：目标已声明——认账合法，程序只需确认用户清楚在为谁买单，不需推翻",
+      "notes": "边界：认账场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

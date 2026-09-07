@@ -1,0 +1,59 @@
+{
+  "skill": "interval-calibration",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个项目工期给个范围呗，最坏多久最好多久",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我给客户的预估区间从来没被突破过",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "股价明年有多少概率落在30到50之间？我有八成把握",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "帮我审一下这份预测报告的区间给得靠不靠谱",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我预测下季度销售额的中心值",
+      "expected_behavior": "应激活 four-step-prediction（点预测），不是区间校准",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "查一下历史上沪深300的年波动率",
+      "expected_behavior": "数据查询",
+      "notes": "诱饵：统计查询"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "区间给太宽客户会觉得我不专业，怎么办",
+      "expected_behavior": "边界：这正是书中警告的社会惩罚——应给出'宽区间是诚实'的沟通话术而非收窄区间",
+      "notes": "边界：激励冲突"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

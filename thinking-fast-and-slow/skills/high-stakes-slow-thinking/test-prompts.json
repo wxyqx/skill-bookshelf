@@ -1,0 +1,66 @@
+{
+  "skill": "high-stakes-slow-thinking",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我在想要不要辞职创业，直觉觉得挺靠谱，但家里人都说我冲动",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "帮我看看这份合同要不要签，对方催今天必须定",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队老是临场拍板大决策，我想立一条'什么情况必须慢下来'的规矩",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我打算搬到另一个城市生活，总觉得都想清楚了但又不安",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "今天中午吃什么好呢",
+      "expected_behavior": "日常琐碎选择，应放行直觉",
+      "notes": "诱饵：低风险日常"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "客户开价50万想买我们的技术专利，太低了，我该怎么还价？",
+      "expected_behavior": "应激活 anti-anchoring（反锚定），不是总闸慢思考",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下现在市面上最强的显卡是哪款",
+      "expected_behavior": "纯信息查询",
+      "notes": "诱饵：非决策场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "12块钱的游戏打折买了还没玩，要不要现在就玩掉",
+      "expected_behavior": "低额+可逆，应放行直觉，不需要启动慢思考程序",
+      "notes": "边界：区分严肃决策与日常选择"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

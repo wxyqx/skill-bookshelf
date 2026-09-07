@@ -1,0 +1,59 @@
+{
+  "skill": "dual-ledger",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "选大厂高压岗位还是小公司舒心岗位，帮我系统比一比",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这两个医疗方案哪个对患者更好",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "大家吵'要不要为少数人投入巨额资源'，越吵越乱",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "帮我评估这两个城市定居的长期生活质量",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "婚礼该办盛大还是省钱的，我自己纠结",
+      "expected_behavior": "应激活 two-selves-check（个人决策核查），不是方案排序",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这两个方案的成本各是多少",
+      "expected_behavior": "财务测算",
+      "notes": "诱饵：成本核算"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "两把尺排出来结果一样，还要声明立场吗",
+      "expected_behavior": "边界：一致则无需声明——程序的关键动作只在翻转时触发",
+      "notes": "边界：无翻转场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

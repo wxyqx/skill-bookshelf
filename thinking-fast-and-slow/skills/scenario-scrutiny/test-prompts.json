@@ -1,0 +1,59 @@
+{
+  "skill": "scenario-scrutiny",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个商业计划书一步步讲得特别具体，值得投吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们的项目路线图每一步都能对上，我反而有点不安",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "他给我描述的创业情景细节丰富得像剧本",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "这个咨询方案的情景推演特别有说服力，怎么看",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我估一下这个项目实际要花多少钱",
+      "expected_behavior": "应激活 outside-view（参考类别基线），不是情景拆解",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这个故事的情节怎么样",
+      "expected_behavior": "叙事欣赏而非概率评估",
+      "notes": "诱饵：审美场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "计划就三步，每步都很简单，还需要连乘吗",
+      "expected_behavior": "边界：步骤少且独立时可心算快检——但要确认'简单'不是直觉说的",
+      "notes": "边界：简单结构适配"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

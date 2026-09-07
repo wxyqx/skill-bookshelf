@@ -1,0 +1,52 @@
+{
+  "skill": "premortem",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "方案明天就定了，大家都赞成，我心里有点不踏实",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "团队要上新产品，我想在拍板前把坑找一遍",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "下周评审会，帮我设计一个让大家敢说真话的环节",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "项目刚失败，我们正在组织复盘",
+      "expected_behavior": "应激活 bias-proof-review（事后复盘去偏），方向相反",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我写个会议议程模板",
+      "expected_behavior": "格式化任务",
+      "notes": "诱饵：模板任务"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "就我一个人决策，没有团队，怎么做事前验尸",
+      "expected_behavior": "边界：用个人版（饮水机预演）替代会议版，程序相应简化",
+      "notes": "边界：单人适配"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

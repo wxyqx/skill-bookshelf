@@ -1,0 +1,59 @@
+{
+  "skill": "small-sample-rules",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "新方法试了3单都成了，是不是可以全面推了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "A门店这个月比B门店销售高了一倍，B店长是不是不行",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这家餐厅排队特别长，肯定特别好吃吧",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "他最近5把牌全赢，是不是有诀窍",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "他去年业绩冠军今年回落了，为什么",
+      "expected_behavior": "应激活 regression-to-mean（时间轴回落），不是横截面小样本",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "今年的行业总盘子有多大",
+      "expected_behavior": "大样本统计查询",
+      "notes": "诱饵：大样本数据"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我就面试过一次，但感觉特别准",
+      "expected_behavior": "边界：n=1且是'感觉'——应激活：报n、两端检查、运气优先",
+      "notes": "边界：最典型的小样本场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

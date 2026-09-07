@@ -1,0 +1,59 @@
+{
+  "skill": "rare-events-check",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "新闻说每10000人里有1286人出现副作用，太吓人了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这种大灾难概率极低，我预案里就没列",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "八个队我觉得都有机会夺冠，怎么押",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "0.001%的风险要不要花钱对冲",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "检测呈阳性，我患病的概率多大",
+      "expected_behavior": "应激活 base-rate-first（贝叶斯），有诊断力结构",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "正常体检多久做一次",
+      "expected_behavior": "常规建议查询",
+      "notes": "诱饵：常规建议"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我活了三十年从没见过坠机，所以不用担心",
+      "expected_behavior": "边界：正是'经验模式忽视'——应激活：换到描述模式查数据",
+      "notes": "边界：经验偏差的标准场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

@@ -1,0 +1,59 @@
+{
+  "skill": "peak-end-design",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "客户投诉处理流程怎么设计，能让他下次还来",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "体检流程很长很痛苦，怎么安排体验好一点",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "活动议程怎么收尾能给参与者留下好印象",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "要不要把我们服务的高峰环节砍掉以缩短时长",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这次旅行总体值不值，帮我算算",
+      "expected_behavior": "应激活 two-selves-check（双自我核查），是个人决策不是流程设计",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "把服务手册翻译成英文",
+      "expected_behavior": "翻译任务",
+      "notes": "诱饵：无关任务"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "用户明确说只想越快越好，还要设计渐好结尾吗",
+      "expected_behavior": "边界：声明目标后应选体验自我方案——快速完成，不硬塞收尾环节",
+      "notes": "边界：目标声明优先"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

@@ -1,0 +1,59 @@
+{
+  "skill": "decision-factory",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们团队总在同一类决策上翻车，帮我装一套程序",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "新来的领导想让大家会上敢说真话，怎么设计",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们的复盘全是走过场，怎么改",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "公司的立项评审基本靠拍脑袋，想制度化",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这个方案明天要定，帮我提前找找坑",
+      "expected_behavior": "应激活 premortem（单体工具），不是组织流程设计",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我做一次竞品分析",
+      "expected_behavior": "分析任务",
+      "notes": "诱饵：单次分析"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "五人小团队，值得装一整套决策流程吗",
+      "expected_behavior": "边界：装'轻量版'——先写后议+偏差词汇即可，全套四件套有开销",
+      "notes": "边界：规模适配"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

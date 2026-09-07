@@ -1,0 +1,59 @@
+{
+  "skill": "focusing-illusion",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "搬去大理生活肯定幸福得多",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "升职加薪之后我的人生应该就顺了吧",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "要是我有一辆房车就完美了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "他为了孩子教育搬到学区房，以后肯定不后悔吧",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "选A城市还是B城市定居，帮我系统比较",
+      "expected_behavior": "应激活 dual-ledger（双尺排序），不是单点预测纠偏",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "大理今天天气怎么样",
+      "expected_behavior": "信息查询",
+      "notes": "诱饵：查询"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我的慢性腰疼搬家能不能好",
+      "expected_behavior": "边界：慢性疼痛常驻注意力——聚焦错觉失真小，正常评估即可",
+      "notes": "边界：常驻注意力例外"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

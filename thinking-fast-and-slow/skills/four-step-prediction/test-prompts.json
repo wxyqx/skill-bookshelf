@@ -1,0 +1,59 @@
+{
+  "skill": "four-step-prediction",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这孩子3岁就能自己读绘本了，你估计他高考能考多少分？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这位实习生面试惊艳全场，帮我预测他转正后的业绩",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "帮我估一下下季度销售额，我直觉觉得能做到2000万",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "两个候选人：一个面试惊艳但履历薄，一个履历扎实但面试平平，谁未来表现更好？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "他半年内会不会离职？",
+      "expected_behavior": "应激活 base-rate-first（分类概率），不是数量预测",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "明天天气怎么样",
+      "expected_behavior": "数据查询",
+      "notes": "诱饵：查询类"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我猜我们组一周就能上线，你看呢",
+      "expected_behavior": "边界：低风险可放行直觉；若上线失败代价高则应走四步——判据是错误代价",
+      "notes": "边界：纠偏触发条件"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

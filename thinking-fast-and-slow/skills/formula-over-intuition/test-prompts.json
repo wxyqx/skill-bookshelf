@@ -1,0 +1,59 @@
+{
+  "skill": "formula-over-intuition",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "10个候选人挑3个，几个面试官意见完全相反，怎么办",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们要评估一批供应商，帮我设计评分办法",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我总凭整体好感挑人，事后老后悔",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "评分表算出来B最高，但我就是更想要A，可以改吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这位老工程师说这方案不行，我该信他吗",
+      "expected_behavior": "应激活 expert-intuition-precheck（直觉预检），不是公式程序",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我给女朋友挑个生日礼物",
+      "expected_behavior": "主观偏好、变量无法事实化",
+      "notes": "诱饵：不可事实化场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "就2个候选人进终面，还有必要搞评分表吗",
+      "expected_behavior": "边界：小样本仍可用但成本收益下降——可简化变量数，保留一次只评一项",
+      "notes": "边界：规模适配"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

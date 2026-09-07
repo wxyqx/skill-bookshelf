@@ -1,0 +1,59 @@
+{
+  "skill": "substitution-check",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我觉得这个创业者特别有魅力，这项目应该值得投吧",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "朋友公司倒闭的事刷屏了，我最近总觉得创业很危险",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这候选人面试表现得特别精彩，我觉得他一定能干好",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "这个故事讲得太通了，我觉得它就是真的",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我估一下这次装修实际会花多少钱",
+      "expected_behavior": "应激活 outside-view（数量型预测），不是替代自检",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这两个logo你觉得哪个更好看",
+      "expected_behavior": "主观偏好问题，没有'被替换的原问题'",
+      "notes": "诱饵：审美偏好"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "开会时老板突然让我表态，我怎么才能又快又不被带偏",
+      "expected_behavior": "边界：时间紧迫时可用最小版本——先把问题原文说一遍再答",
+      "notes": "边界：最小动作的适用"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

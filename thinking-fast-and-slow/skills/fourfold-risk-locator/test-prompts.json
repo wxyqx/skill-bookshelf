@@ -1,0 +1,59 @@
+{
+  "skill": "fourfold-risk-locator",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "项目已经亏了40%，要不要再投100万搏一把翻盘？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这个500块的延保要不要买？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "有个机会能赚10万但可能亏5万，我总是下不了决心接",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "股票跌到我设的止损线了，我要不要把线再往下挪一点扛住？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这只股票我从高位买入套了30%，一直不甘心卖",
+      "expected_behavior": "应激活 zero-base-rethink（零基重估），纠结点是买入价绑架",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "市盈率是什么意思",
+      "expected_behavior": "概念查询",
+      "notes": "诱饵：知识问答"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "买不买我都决定了，你别劝",
+      "expected_behavior": "边界：用户已决且只要陪伴——不应强行启动分析程序",
+      "notes": "边界：尊重既有决定"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

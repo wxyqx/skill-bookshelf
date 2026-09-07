@@ -1,0 +1,59 @@
+{
+  "skill": "anti-anchoring",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "对方先报价50万买我们的技术，我觉得太低，该怎么还价？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "老板说这个项目3个月能做完，让我据此排预算，我觉得不对劲",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "赔偿谈判明天开始，对方一上来就抛了个赔偿数字",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我要参与竞标，该怎么设定我的标价？",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我估一下厨房改造到底该花多少钱",
+      "expected_behavior": "应激活 outside-view（参考类别基线），不是反锚定",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "一杯奶茶现在多少钱",
+      "expected_behavior": "数字无关紧要的日常",
+      "notes": "诱饵：低价值场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "朋友随口说他车买成30万，我同款想卖28万，这定价靠谱吗",
+      "expected_behavior": "边界：有锚但金额小、场景轻——口头警报即可，不必走全程序",
+      "notes": "边界：轻度锚定场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}

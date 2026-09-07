@@ -1,0 +1,59 @@
+{
+  "skill": "regression-to-mean",
+  "version": "0.1.0",
+  "source_book": "思考，快与慢（第二版） — 丹尼尔·卡尼曼",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "培训之后团队业绩明显好转，这次培训花得值吗",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我上季度表扬了他，这季度他反而退步了，表扬是不是没用",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "他拿了冠军之后状态就一直下滑，是不是飘了",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "用了个新偏方之后病好多了，是不是偏方有效",
+      "expected_behavior": "应激活本skill并按其E段程序给出具体动作（引用程序步骤而非泛泛建议）",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "A组表现比B组好很多，要不要把B组长换了",
+      "expected_behavior": "应激活 small-sample-rules（横截面小样本归因），不是回归",
+      "notes": "兄弟skill混淆诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "下季度定个什么销售目标合适",
+      "expected_behavior": "目标设定而非归因评估",
+      "notes": "诱饵：规划任务"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "他连续三个月都远超目标，这总不是运气了吧",
+      "expected_behavior": "边界：连续性提供了更多数据但仍需回归折扣——'仍高于平均但低于峰值'是正确预测",
+      "notes": "边界：持续极端的预测"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 至少2条should_not_trigger（含1条同书兄弟skill混淆诱饵，容错为0）+ 1条edge_case。"
+}
