@@ -1,0 +1,52 @@
+{
+  "skill": "enemy-to-ally",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "跨部门合作有个关键stakeholder一直在阻挠我，怎么争取他",
+      "expected_behavior": "应激活 enemy-to-ally, 并引导用户识别对方需求、找到可提供的独特价值、给小恩惠建立利益联盟",
+      "notes": "正面场景：用户明确遇到阻挠者需要争取，是化敌为友的典型情境"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "竞争对手考虑合作，该怎么开始",
+      "expected_behavior": "应激活 enemy-to-ally, 并引导用户分析对方需求、给小恩惠测试反应、建立利益而非感情的联盟",
+      "notes": "正面场景：竞争对手转合作，核心是化敌为友"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "发现朋友在背后搞我，该重新评估信任吗",
+      "expected_behavior": "应激活 enemy-to-ally, 并引导用户理解朋友背叛的人性规律，重新评估是否将朋友转化为基于利益的联盟对象",
+      "notes": "正面场景：朋友背叛触发对'敌人比朋友更忠诚'框架的需求"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学人际交往技巧来交更多朋友",
+      "expected_behavior": "不应激活本 skill, 因为用户需要的是通用社交能力提升，不是将对手转化为盟友的策略",
+      "notes": "诱饵: 通用社交技巧——看似涉及人际关系但不是化敌为友"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "怎么看出新同事的真实意图和弱点",
+      "expected_behavior": "不应激活本 skill, 应激活 people-reading",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——研究他人是分析框架，化敌为友是行动策略"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "对方伤害过我但现在似乎有诚意合作，该给他机会吗",
+      "expected_behavior": "应谨慎激活 enemy-to-ally 但先确认对方是否有根本性利益冲突。若无根本冲突且对方有改变意愿，可尝试给小恩惠测试诚意；若有根本冲突则建议不转化",
+      "notes": "边界: 伤害过的敌人是否可转化取决于利益冲突是否可调和，需先判断再行动"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

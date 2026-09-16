@@ -1,0 +1,52 @@
+{
+  "skill": "patience-shield",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "被跳过两次晋升了，该跳槽还是再等",
+      "expected_behavior": "应激活 patience-shield, 并引导用户识别是主动等待还是消极拖延、评估时机成熟度、设置止损时间",
+      "notes": "正面场景：跳槽还是等待的典型困境，需要耐心盾牌防止冲动决策"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "等审批等得焦躁，该催还是该等",
+      "expected_behavior": "应激活 patience-shield, 并引导用户评估时机成熟度、区分主动等待与消极焦虑、设置止损时间",
+      "notes": "正面场景：等待中焦躁，需要判断是继续等还是行动"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "计划还没做好但忍不住想提前行动",
+      "expected_behavior": "应激活 patience-shield, 并引导用户认识到缺乏耐心会暴露意图犯愚蠢大错，评估准备是否充分",
+      "notes": "正面场景：计划未成熟就想行动，典型的耐心盾牌应用"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学时间管理来提高效率",
+      "expected_behavior": "不应激活本 skill, 因为用户需要的是时间管理效率提升，不是耐心的战略应用",
+      "notes": "诱饵: 时间管理——看似与时间相关但不是耐心的权力策略"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "谈判中处于弱势，该示弱吗",
+      "expected_behavior": "不应激活本 skill, 应激活 strategic-surrender",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——示弱投降是假退让策略，不是真等待"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "等待的成本越来越高，耐心还有意义吗",
+      "expected_behavior": "应分析：如果等待代价已超过行动代价，耐心不再是正确策略。引导用户量化等待成本和行动成本，若等待成本持续上升且无收敛迹象，建议设置止损时间并准备行动",
+      "notes": "边界: 等待成本上升时耐心是否仍然有效——需要量化成本来判断"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

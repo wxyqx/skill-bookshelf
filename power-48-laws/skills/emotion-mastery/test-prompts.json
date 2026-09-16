@@ -1,0 +1,52 @@
+{
+  "skill": "emotion-mastery",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "同事在会上公开指责我，气得想当场反击，怎么办？",
+      "expected_behavior": "应激活 emotion-mastery, 并引导用户识别愤怒的遮蔽效应, 用延迟反应和假装友善策略切断情绪-行动链",
+      "notes": "正面场景: 职场挑衅+愤怒想反击, 情绪正要驱动行动"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我知道这个人有风险但就是喜欢他，无法理性判断，怎么办？",
+      "expected_behavior": "应激活 emotion-mastery, 并引导用户识别'爱'这一情绪正在遮蔽危险信号, 以第三方视角重新评估",
+      "notes": "正面场景: 好感忽视危险信号, 爱这种情绪正在遮蔽判断力"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "关键时刻冷静不下来怎么办？恐惧让我无法思考。",
+      "expected_behavior": "应激活 emotion-mastery, 并引导用户跳出情境用延迟反应切断恐惧-行动链",
+      "notes": "正面场景: 关键时刻+恐惧+无法冷静, 情绪正在影响决策质量"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想提高情商来改善人际关系，有没有系统的方法？",
+      "expected_behavior": "不应激活本 skill, 因为这是情感智力发展和人际敏感度提升, 不是权力框架中的情绪控制",
+      "notes": "诱饵: 通用情商提升, 看似涉及情绪但不涉及权力场景中的情绪-行动链管理"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "开会时我总忍不住说太多，怎么管住嘴让别人重视我？",
+      "expected_behavior": "不应激活本 skill, 应激活 silence-power",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——管不住嘴是外在表达量控制, 沉默威慑法"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我的家人做了让我愤怒的事，该用情绪控制框架吗？",
+      "expected_behavior": "应提示用户: 亲密关系场景下完全压抑情绪会破坏关系基础, 建议区分'不因愤怒做冲动决定'与'完全不表达情绪'。在亲密关系中可以表达情绪但控制情绪驱动行动",
+      "notes": "边界: 亲密关系 vs 权力场景, 情绪控制框架的适用范围"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

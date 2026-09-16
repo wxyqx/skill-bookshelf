@@ -1,0 +1,52 @@
+{
+  "skill": "cost-assessment",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "有人邀我合伙创业零投资只需投入时间，该做吗？",
+      "expected_behavior": "应激活 cost-assessment, 并引导用户不以'零投资'判断，而以代价判断：时间成本（人生苦短）、精神宁静成本（创业压力）、关系风险（合伙人关系可能破裂）、隐藏代价（忘恩负义）。如果代价太昂贵即使目标有价值也放弃",
+      "notes": "正面场景：'零投资只需时间'是典型的需要代价评估的诱饵式机会"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "纠结该不该接受这个合作邀请",
+      "expected_behavior": "应激活 cost-assessment, 并引导用户列出收益后列出三个维度的代价（时间/精神宁静/关系风险），问核心问题'代价是多少'，特别注意隐藏代价",
+      "notes": "正面场景：纠结是否接受合作是代价评估的核心应用场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "做决策总看收益不看代价，怎么改？",
+      "expected_behavior": "应激活 cost-assessment, 并引导用户将决策框架从'我能得到什么'切换为'代价是多少'，以代价可承受程度而非收益诱人程度决定",
+      "notes": "正面场景：用户主动想从收益导向切换到代价导向"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学投资理财来评估项目回报",
+      "expected_behavior": "不应激活本 skill, 因为 这是投资分析领域（ROI/IRR/NPV），不是权力框架的代价评估",
+      "notes": "诱饵: 领域错配——'投资理财评估项目回报'是财务分析，不是权力博弈的代价评估"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "同事好心帮我但搞砸了，该看意图还是结果？",
+      "expected_behavior": "不应激活本 skill, 应激活 result-judgment",
+      "notes": "跨 skill 混淆诱饵: 这是判断他人行动结果（看对方造成的），不是评估自己付出的代价（看自己的）"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "代价很高但收益也很高，该做吗？",
+      "expected_behavior": "应激活 cost-assessment 但提醒用户这是边界场景——作者的核心立场是'如果代价太昂贵即使目标有价值也放弃'，但需要区分：代价是可承受的高（值得冒险）还是不可承受的高（必须放弃）。建议用户特别检查隐藏代价是否被低估",
+      "notes": "边界: 高代价高收益场景——作者偏保守立场，但承认需要区分可承受与不可承受的高代价"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "conceal-intent",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想跳槽但不想让同事和老板察觉，怎么隐藏意图？",
+      "expected_behavior": "应激活 conceal-intent, 并引导用户选择烟幕类型设计假目标掩盖求职准备",
+      "notes": "正面场景: 不想让人知道真实意图+需用日常行为做烟幕"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "谈判中怎么隐藏我的底线和真实优先级？底牌不能露。",
+      "expected_behavior": "应激活 conceal-intent, 并引导用户设计假目标和偶尔表露非核心真实想法以降低怀疑",
+      "notes": "正面场景: 谈判+隐藏底牌+信息不对称需求"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么让竞争对手以为我要做A，实际上我要做B？需要声东击西。",
+      "expected_behavior": "应激活 conceal-intent, 并引导用户选择模式化行为或张扬表演烟幕设计假目标",
+      "notes": "正面场景: 竞争+声东击西+需设计假目标"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想提高演讲说服力，让听众更容易接受我的观点。",
+      "expected_behavior": "不应激活本 skill, 因为这是通用表达和说服技巧提升, 不涉及隐藏真实意图或设计烟幕",
+      "notes": "诱饵: 通用说服力提升, 看似涉及'怎么说'但不涉及信息不对称策略"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我的提案被老板否了，有没有办法让他接受同样的想法？直接说没用。",
+      "expected_behavior": "不应激活本 skill, 应激活 indirect-approach",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——提案被否+换路径是迂回策略, 不是隐藏意图"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "在亲密关系中可以隐藏意图吗？我想给伴侣一个惊喜。",
+      "expected_behavior": "应提示用户: 亲密关系中短暂的善意隐瞒(如惊喜)尚可, 但涉及重要决策的长期烟幕会破坏信任基础。建议区分'一次性善意隐瞒'与'持续性意图隐藏'",
+      "notes": "边界: 亲密关系 vs 权力场景, 烟幕策略的适用范围和信任成本"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

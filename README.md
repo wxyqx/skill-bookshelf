@@ -10,7 +10,7 @@
 
 ## 目录总览
 
-**9 本书 · 114 个 skills**（最后更新：2026-09-07）
+**10 本书 · 129 个 skills**（最后更新：2026-09-16）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 目录 |
 |---|---|---:|---|---|
@@ -23,6 +23,7 @@
 | 《经济学原理（微观分册）》 | 曼昆 · 2020 | 经济学 / 决策分析 | 6 | [`mankiw-microeconomics/`](./mankiw-microeconomics/) |
 | 《富爸爸穷爸爸系列》*Rich Dad Poor Dad* | 罗伯特·T·清崎 · 2021 | 财商 / 投资 / 创业 | 18 | [`rich-dad-poor-dad-series/`](./rich-dad-poor-dad-series/) |
 | 《思考，快与慢》*Thinking, Fast and Slow* | 卡尼曼 · 2025 | 认知偏差 / 判断决策 | 28 | [`thinking-fast-and-slow/`](./thinking-fast-and-slow/) |
+| 《权力的48条法则》*The 48 Laws of Power* | 罗伯特·格林 · 1998 | 权力 / 策略 / 人际 | 15 | [`power-48-laws/`](./power-48-laws/) |
 
 ---
 
@@ -82,6 +83,12 @@
 - **一句话**：判断与选择由爱编故事的快速直觉（系统1）主导，负责怀疑与统计的慢思考（系统2）天性懒惰，因此错误是系统性、可预测的——本书提供诊断词汇与程序性纠偏工具。
 - **Skills**：`substitution-check` · `wysiati-check` · `base-rate-first` · `availability-check` · `scenario-scrutiny` · `rare-events-check` · `anti-anchoring` · `high-stakes-slow-thinking` · `small-sample-rules` · `regression-to-mean` · `outside-view` · `four-step-prediction` · `interval-calibration` · `expert-intuition-precheck` · `formula-over-intuition` · `premortem` · `bias-proof-review` · `frame-check` · `fourfold-risk-locator` · `wide-frame-trader` · `risk-policy` · `zero-base-rethink` · `two-selves-check` · `peak-end-design` · `focusing-illusion` · `dual-ledger` · `independent-judgment` · `decision-factory`
 
+### 10. 《权力的48条法则》 — *The 48 Laws of Power* · [`power-48-laws/`](./power-48-laws/)
+
+- **作者**：罗伯特·格林（Robert Greene）· 1998
+- **一句话**：权力是一场文明化的战争——你必须学会用迂回、隐蔽、耐心的手段操控人心与局势，而非依赖暴力或直白的力量对抗。
+- **Skills**：`indirect-approach` · `emotion-mastery` · `conceal-intent` · `silence-power` · `reputation-strategy` · `enemy-to-ally` · `manage-superior` · `result-judgment` · `patience-shield` · `people-reading` · `strategic-surrender` · `detect-deception` · `command-attention` · `selective-honesty` · `cost-assessment`
+
 ---
 
 ## 安装
@@ -116,7 +123,8 @@ skill-bookshelf/
 ├── poor-charlies-almanack/   # 《穷查理宝典》（12 skills）
 ├── mankiw-microeconomics/    # 《经济学原理（微观分册）》（6 skills）
 ├── rich-dad-poor-dad-series/ # 《富爸爸穷爸爸系列》（18 skills）
-└── thinking-fast-and-slow/   # 《思考，快与慢》（28 skills）
+├── thinking-fast-and-slow/   # 《思考，快与慢》（28 skills）
+└── power-48-laws/            # 《权力的48条法则》（15 skills）
 ```
 
 ---

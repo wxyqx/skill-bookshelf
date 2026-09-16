@@ -1,0 +1,52 @@
+{
+  "skill": "result-judgment",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "同事好心帮我但搞砸了，该追究吗",
+      "expected_behavior": "应激活 result-judgment, 并引导用户列出行动结果、剥离好意标签、以损害程度而非善意程度决定是否追究",
+      "notes": "正面场景：好心办坏事的典型困境，核心是以结果还是意图来判断"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "对手说他是善意的，能信吗",
+      "expected_behavior": "应激活 result-judgment, 并引导用户看对方行动结果而非言辞表态，以结果决定应对策略",
+      "notes": "正面场景：面对对手善意表态需要辨别真伪，以结果论"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "复盘失败合作时，纠结对方是不是故意的",
+      "expected_behavior": "应激活 result-judgment, 并引导用户放下意图纠结，以实际造成的损害/收益结果来决定复盘结论和后续策略",
+      "notes": "正面场景：复盘时纠结意图，需要切换到结果导向"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学批判性思维来提高判断力",
+      "expected_behavior": "不应激活本 skill, 因为用户需要的是通用思维训练，不是权力框架下以结果替代意图的判断方法",
+      "notes": "诱饵: 通用批判性思维——看似涉及判断力但不是结果导向的权力框架"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这个合作机会的代价太大该不该做",
+      "expected_behavior": "不应激活本 skill, 应激活 cost-assessment",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——评估自己行动代价是 cost-assessment，不是 result-judgment"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "家人出于好意但造成了实际伤害，该用结果导向吗",
+      "expected_behavior": "应谨慎处理：结果导向可用于评估损害程度和决定保护措施，但亲密关系中需要兼顾意图理解以修复信任。建议先用结果导向评估损害，再结合意图理解处理情感层面",
+      "notes": "边界: 亲密关系中的好意伤害——结果导向可用来评估损害，但纯结果导向会破坏关系修复"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "selective-honesty",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "需要向客户承认一个产品缺陷，怎么利用这个劣势？",
+      "expected_behavior": "应激活 selective-honesty, 并建议主动坦承一个小缺陷来解除对方防备，对方会因为'坦诚'而信任你在其他方面也说了真话，然后利用信任窗口推销核心优势",
+      "notes": "正面场景：典型的选择性诚实缴械——承认小缺陷换取信任窗口"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "谈判中怎么建立信任窗口来推进？",
+      "expected_behavior": "应激活 selective-honesty, 并建议选择一个无关痛痒的内容坦诚（小缺点/显而易见的秘密/不影响大局的真实想法），在关键时刻使用，观察对方放下戒心后暴露的信息",
+      "notes": "正面场景：谈判中需要建立信任窗口是选择性诚实的核心应用场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么让人对我敞开心扉？",
+      "expected_behavior": "应激活 selective-honesty, 并建议偶尔表露真实想法以示坦诚，诱使对方推心置腹——用坦诚换坦诚",
+      "notes": "正面场景：想让有戒心的人敞开心扉，用选择性诚实打开缺口"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学真诚沟通来改善关系",
+      "expected_behavior": "不应激活本 skill, 因为 这是真诚沟通与品格修养，不是权力框架的选择性诚实缴械",
+      "notes": "诱饵: 意图错配——'真诚沟通'是道德选择，不是把诚实当权力工具"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "想跳槽但不想让人知道真实意图",
+      "expected_behavior": "不应激活本 skill, 应激活 conceal-intent",
+      "notes": "跨 skill 混淆诱饵: 这是隐藏真实目的（不给什么），不是选择性给小真话（给什么）"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "承认缺陷后对方反而更不信任了，哪里出了问题？",
+      "expected_behavior": "应激活 selective-honesty 并诊断失败原因——可能选择了过于核心的缺陷坦诚（暴露了底牌），或时机不对（过早或过晚），或对方也是识破策略的高手。提醒：完全诚实和完全不诚实一样危险（ce12）",
+      "notes": "边界: 选择性诚实失败的回溯——可能是选错了坦诚内容或时机"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

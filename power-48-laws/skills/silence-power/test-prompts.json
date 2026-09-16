@@ -1,0 +1,52 @@
+{
+  "skill": "silence-power",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我刚当上新团队leader，怎么建立权威？开会老被忽视。",
+      "expected_behavior": "应激活 silence-power, 并引导用户用简短回应和刻意停顿制造敬畏感和距离感",
+      "notes": "正面场景: 新leader建立权威+开会被忽视, 需要沉默策略"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "开会时我总忍不住说太多，怎么管住嘴？感觉暴露了太多信息。",
+      "expected_behavior": "应激活 silence-power, 并引导用户用'让对方先说'策略控制输出量并观察对方暴露",
+      "notes": "正面场景: 管不住嘴+多言暴露信息, 需要沉默控制输出"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "谈判中怎么让对方先亮底牌？我不想先表态。",
+      "expected_behavior": "应激活 silence-power, 并引导用户用沉默迫使对方在不安中自我暴露真实底线",
+      "notes": "正面场景: 谈判+让对方先亮底牌, 沉默作为获取信息工具"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想提高公开演讲能力，让台上表现更有感染力。",
+      "expected_behavior": "不应激活本 skill, 因为这是演讲技巧和表达能力提升, 不是沉默策略",
+      "notes": "诱饵: 演讲技巧, 看似涉及'怎么说'但不需要沉默策略"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "同事在会上公开指责我，气得想当场反击，怎么办？",
+      "expected_behavior": "不应激活本 skill, 应激活 emotion-mastery",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——愤怒想反击是情绪控制问题, 不是沉默策略"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "老板问我一个直接的问题，我该沉默吗？",
+      "expected_behavior": "应提示用户: 直接事实性问题应直接回答, 沉默会让对方觉得你在隐瞒。沉默适用于立场性/开放性问题而非事实性问题。建议区分问题类型再决定是否沉默",
+      "notes": "边界: 事实性问题 vs 立场性问题, 沉默的适用性取决于问题类型"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

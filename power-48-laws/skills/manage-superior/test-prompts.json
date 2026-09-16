@@ -1,0 +1,52 @@
+{
+  "skill": "manage-superior",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "刚完成大项目全员称赞，但直属上司最近对我态度微妙",
+      "expected_behavior": "应激活 manage-superior, 并引导用户评估上司不安全感程度、选择隐藏策略（故作天真/归功上司/犯小错）",
+      "notes": "正面场景：才华外露导致上司态度变化，典型的不盖过上司光芒情境"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我比上司能力强学历高，怎么相处",
+      "expected_behavior": "应激活 manage-superior, 并引导用户把创意归到上司头上、故作天真请教、避免才华外露",
+      "notes": "正面场景：能力优势带来的关系压力，核心是隐藏才华"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "新老板好像不太喜欢我，不知道哪里出了问题",
+      "expected_behavior": "应激活 manage-superior, 并引导用户评估新上司的不安全感来源，选择策略消除威胁感",
+      "notes": "正面场景：上司态度变化需要向上管理"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学向上管理来改善和老板的关系",
+      "expected_behavior": "不应激活本 skill, 因为用户需要的是通用职场建议，没有体现才华盖过上司的具体权力困境",
+      "notes": "诱饵: 通用向上管理——看似相关但缺少权力不对等的具体困境"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "开会时我总忍不住说太多暴露信息",
+      "expected_behavior": "不应激活本 skill, 应激活 silence-power",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——说太多是沉默法则，不是不盖过上司"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "上司明显在犯错，我该盖过他来纠正吗",
+      "expected_behavior": "应谨慎分析：如果上司地位稳固则不应盖过（用故作天真方式提醒）；如果上司正在坠落则可适度展露。但纠正方式应优先用请教而非直接指出",
+      "notes": "边界: 上司犯错时的处理——需要判断上司地位是否稳固来决定策略"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

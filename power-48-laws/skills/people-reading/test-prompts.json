@@ -1,0 +1,52 @@
+{
+  "skill": "people-reading",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "怎么看出新同事的真实意图和弱点",
+      "expected_behavior": "应激活 people-reading, 并引导用户收集言行信息、识别弱点类型、设计小测试验证、建立心理档案",
+      "notes": "正面场景：需要看透他人真实意图，典型的识人需求"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "即将进入新团队，如何快速了解权力格局",
+      "expected_behavior": "应激活 people-reading, 并引导用户观察言行不一致、识别关键人物弱点、建立权力图谱",
+      "notes": "正面场景：新环境需要快速识人，核心是研究他人方法论"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我总看错人，怎么提高识人能力",
+      "expected_behavior": "应激活 people-reading, 并引导用户系统化收集信息、识别弱点类型、设计验证测试、建立心理档案",
+      "notes": "正面场景：看错人的困扰，需要系统性的识人方法"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学心理学基础来了解人性",
+      "expected_behavior": "不应激活本 skill, 因为用户需要的是学术心理学学习，不是权力框架下的识人与弱点识别方法",
+      "notes": "诱饵: 学术心理学——看似涉及了解人性但不是权力框架的识人策略"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "阻挠我的对手该怎么争取",
+      "expected_behavior": "不应激活本 skill, 应激活 enemy-to-ally",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——争取对手是化敌为友的行动策略，不是研究他人的分析方法"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "面对真诚待我的人，还要研究吗",
+      "expected_behavior": "应谨慎处理：研究中性原则建议仍保持观察但不预设恶意。对于真诚的人，研究可以简化为'持续观察言行一致性'而非'寻找弱点'。核心是研究方法不变，但研究目的从'找操控杠杆'调整为'验证信任是否合理'",
+      "notes": "边界: 面对真诚者是否研究——研究方法适用但目的不同，需区分'研究'和'怀疑'"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

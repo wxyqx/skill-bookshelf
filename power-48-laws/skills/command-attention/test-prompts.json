@@ -1,0 +1,52 @@
+{
+  "skill": "command-attention",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "部门里最资历浅，开会总被忽视",
+      "expected_behavior": "应激活 command-attention, 并建议用户绝对不要让自己淹没在人海中，通过制造话题/创造独特形象/建立神秘感来吸引注意力，提醒被遗忘比被攻击更糟",
+      "notes": "正面场景：资历浅但被忽视，典型的注意力不足问题"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "产品上线了但没人关注",
+      "expected_behavior": "应激活 command-attention, 并建议通过争议性观点或大胆行动制造话题，让产品被记住——任何知名度都比无人问津好",
+      "notes": "正面场景：产品无人关注，需要吸引注意力"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "害怕争议所以一直低调，但发现正在被遗忘",
+      "expected_behavior": "应激活 command-attention, 并提醒用户被遗忘是最悲惨的命运（ce15），比被攻击更糟，建议选择可承受的争议来重新获得存在感",
+      "notes": "正面场景：因害怕争议而低调导致被遗忘，正是作者警告的失败模式"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学个人品牌营销来推广产品",
+      "expected_behavior": "不应激活本 skill, 因为 这是营销策略领域，不是权力框架的注意力管理",
+      "notes": "诱饵: 领域错配——'个人品牌营销'是商业营销，不是权力博弈的引人注目策略"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "刚加入新公司前90天怎么建立口碑？",
+      "expected_behavior": "不应激活本 skill, 应激活 reputation-strategy",
+      "notes": "跨 skill 混淆诱饵: 这是长期评价经营（被怎么评价），不是短期注意力获取（被不被看到）"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "争议会损害我的专业形象，该冒这个险吗？",
+      "expected_behavior": "应激活 command-attention 但提醒用户这是边界场景——在高信任行业（医疗/金融/法律等），负面关注可能是毁灭性的。建议评估: 行业对争议的容忍度多高？争议是否触及合规底线？如果代价不可承受则不应使用此策略",
+      "notes": "边界: 负面关注在特定行业可能是毁灭性的，与'任何关注都比无关注好'的核心假设冲突"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

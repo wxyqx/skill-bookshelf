@@ -1,0 +1,52 @@
+{
+  "skill": "detect-deception",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "新同事总说自己不懂政治只想干活，能信吗？",
+      "expected_behavior": "应激活 detect-deception, 并建议用户高度警惕——声称不玩权术的人通常是最精于权术的，检查对方是否反复强调不懂政治、是否公开示弱但利益不受损、行动结果是否总是对其有利",
+      "notes": "正面场景：典型的'声称天真'的识别需求"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "有人总是站在道德高地发言，是不是在伪装？",
+      "expected_behavior": "应激活 detect-deception, 并建议对比对方的道德主张与实际行动结果，检查'平等'策略是否服务于实际利益分配权",
+      "notes": "正面场景：以道德高地发言是天真伪装的核心信号之一"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这人看起来很天真，总觉得哪里不对",
+      "expected_behavior": "应激活 detect-deception, 并引导用户用四种识别信号系统化检测：是否反复强调不玩政治、是否以道德高地发言、是否公开示弱但利益不受损、声称天真但行动结果总是对其有利",
+      "notes": "正面场景：用户直觉感到不对但不确定，需要系统化识别框架"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学反诈骗技巧来保护自己",
+      "expected_behavior": "不应激活本 skill, 因为 这是反诈骗教育（法律/金融领域），不是权力框架的伪装识别",
+      "notes": "诱饵: 领域错配——'反诈骗'是法律/金融教育，不是权力博弈中的天真伪装识别"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "怎么看出新同事的真实意图和弱点？",
+      "expected_behavior": "不应激活本 skill, 应激活 people-reading",
+      "notes": "跨 skill 混淆诱饵: 这是通用研究他人（看透所有人），不是特定检测天真伪装（谁在演）"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "一个人确实很谦虚但也确实获益了，是伪装还是巧合？",
+      "expected_behavior": "应激活 detect-deception 但提醒用户这是边界模糊场景——谦虚+获益既可能是伪装也可能是真诚的人自然获益。建议用'行动结果是否系统性对其有利'来判断：偶尔获益可能是巧合，系统性获益则更可能是伪装",
+      "notes": "边界: 真诚谦虚与伪装谦虚的区分——作者本身承认这很难判断，需要看获益的系统性"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

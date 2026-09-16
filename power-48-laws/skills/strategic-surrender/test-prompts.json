@@ -1,0 +1,52 @@
+{
+  "skill": "strategic-surrender",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "谈判中对方明显强势，怎么获得有利条件？",
+      "expected_behavior": "应激活 strategic-surrender, 并建议用户评估实力差距后选择示弱形式（装不太懂行/假装需要指导/表面投降），让对方放松警惕暴露更多信息，等待时机反击",
+      "notes": "正面场景：弱势谈判中需要用示弱换取对方松懈"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "对手太强了直接对抗会输，怎么办？",
+      "expected_behavior": "应激活 strategic-surrender, 并建议通过装傻或展示假弱点让对方低估用户，暗中等待对手自身衰弱或犯错再反击",
+      "notes": "正面场景：面对强势对手需要战略性退让"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么让对手低估我？",
+      "expected_behavior": "应激活 strategic-surrender, 并建议选择示弱形式（假装不太懂行/假装需要指导/故意展示小弱点），观察对方松懈后暴露的信息和弱点",
+      "notes": "正面场景：主动想让对手低估自己，典型的示弱策略意图"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想学谦卑来改善人际关系",
+      "expected_behavior": "不应激活本 skill, 因为 这是品格修养与真诚的人际关系改善，不是策略性示弱以获取权力优势",
+      "notes": "诱饵: 品格修养类——看似涉及'谦卑/示弱'但意图是真诚的人际改善而非权力策略"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "被跳过晋升了该跳槽还是再等等？",
+      "expected_behavior": "不应激活本 skill, 应激活 patience-shield",
+      "notes": "跨 skill 混淆诱饵: 这是时机判断问题（该不该等），不是示弱策略问题（该不该演弱）"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "对方也在示弱，我们都在演吗？",
+      "expected_behavior": "应激活 strategic-surrender 但同时提醒用户对方可能也在使用示弱策略（ce11 陷阱），建议评估对方是否是示弱高手，如果是则示弱没有信息收割价值，需要改用其他策略",
+      "notes": "边界: 双方都在示弱时，策略失效——这是作者明确警告的失败模式"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}

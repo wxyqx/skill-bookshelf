@@ -1,0 +1,52 @@
+{
+  "skill": "reputation-strategy",
+  "version": "0.1.0",
+  "source_book": "《权力的48条法则》 — 罗伯特·格林",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "刚加入新公司，前90天怎么建立口碑和名声？",
+      "expected_behavior": "应激活 reputation-strategy, 并引导用户选一种特质集中展示, 慢慢打基础让声誉先于自己工作",
+      "notes": "正面场景: 新加入团队+需建立声誉, 典型声誉建立触发"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "有人在背后抹黑我，声誉被攻击了，怎么应对？",
+      "expected_behavior": "应激活 reputation-strategy, 并引导用户不拼命自辩, 预测攻击方向并结交形象好的人漂白",
+      "notes": "正面场景: 声誉被攻击+需防御, 典型声誉防御触发"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "对手在行业里声望很高，怎么削弱他的影响力？",
+      "expected_behavior": "应激活 reputation-strategy, 并引导用户撒播怀疑种子, 用嘲讽而非正面冲突, 不回击过头",
+      "notes": "正面场景: 面对有声望的对手+需削弱对方, 典型声誉攻击触发"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想做个人品牌运营，扩大社交媒体影响力。",
+      "expected_behavior": "不应激活本 skill, 因为这是品牌运营和流量增长策略, 不是权力框架中的声誉管理",
+      "notes": "诱饵: 个人品牌运营, 看似涉及'名声'但是营销策略而非权力框架"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "开会没人注意我，怎么让别人听到我的声音？",
+      "expected_behavior": "不应激活本 skill, 应激活 command-attention",
+      "notes": "跨 skill 混淆诱饵: 防止同书 skill 互相抢调用——让别人注意到你是注意力获取, 不是声誉管理"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我的产品确实有质量问题，该用声誉策略掩盖吗？",
+      "expected_behavior": "应提示用户: 声誉是放大器不是替代品, 产品本身有问题则声誉迟早崩塌。建议先解决产品质量问题, 声誉策略只能争取时间但不能替代实质改进",
+      "notes": "边界: 声誉 vs 实质能力, 声誉策略不能替代产品质量本身"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少3条should_trigger + 2条should_not_trigger + 1条edge_case。其中至少1条should_not_trigger是同书兄弟skill的混淆场景。"
+}
