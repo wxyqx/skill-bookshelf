@@ -21,35 +21,50 @@
 | 阶段 | 名称 | 状态 | 产出文件 |
 |---|---|---|---|
 | 0 | 整书理解 (Adler) | ✅ 完成 | `BOOK_OVERVIEW.md` |
-| 1 | 并行提取 | ✅ 完成 | `candidates/` (5 个文件) |
-| 1.5 | 三重验证 | ⏳ 进行中 | `verified.md` + `rejected/` |
-| 2 | RIA++ 构造 skill | ⏳ 待开始 | `<skill-slug>/SKILL.md` |
-| 3 | Zettelkasten 链接 | ⏳ 待开始 | `INDEX.md` + `GLOSSARY.md` |
-| 4 | 压力测试 | ⏳ 待开始 | `test-prompts.json` + `test-results.md` |
-| 5 | 交付 | ⏳ 待开始 | `DIGEST.md` + 安装到 `.trae/skills/` |
+| 1 | 并行提取 | ✅ 完成 | `candidates/` (5 个文件, 151 个候选) |
+| 1.5 | 三重验证 | ✅ 完成 | `verified.md` (15 个通过) + `rejected/REJECTED.md` |
+| 2 | RIA++ 构造 skill | ✅ 完成 | 15 个 skill 目录 (各含 `SKILL.md` + `test-prompts.json`) |
+| 3 | Zettelkasten 链接 | ✅ 完成 | `INDEX.md` + `GLOSSARY.md` |
+| 4 | 压力测试 | ✅ 完成 | `test-results.md` (90/90 = 100% 通过) |
+| 5 | 交付 | ✅ 完成 | `DIGEST.md` + 15 个 skill 已安装到 `.trae/skills/` |
 
 ## 目录结构
 
 ```
 power-48-laws/
 ├── README.md                  ← 本文件
-├── full-text.txt              ← 原始文本 (EPUB 转换)
-├── BOOK_OVERVIEW.md            ← 阶段0: 整书结构/批判/应用潜力
-├── candidates/                 ← 阶段1: 原始候选池
-│   ├── frameworks.md           (25 个框架候选)
-│   ├── principles.md           (63 条原则: 48条法则 + 15条子原则)
-│   ├── cases.md                (30 个历史案例)
-│   ├── counter-examples.md     (15 个反例/失败模式)
-│   └── glossary.md             (18 条关键术语)
-├── rejected/                  ← 阶段1.5: 淘汰单元 + 原因
-├── verified.md                ← 阶段1.5: 通过三重验证的候选 (待生成)
-├── INDEX.md                   ← 阶段3: skill 总览 + 引用图 (待生成)
-├── GLOSSARY.md                ← 阶段3: 共享术语词典 (待生成)
-├── DIGEST.md                  ← 阶段5: 面向读者的精华长文 (待生成)
-└── <skill-slug>/              ← 阶段2: 各个独立 skill (待生成)
-    ├── SKILL.md
-    ├── test-prompts.json
-    └── test-results.md
+├── docs/
+│   ├── BOOK_OVERVIEW.md        ← 阶段0: 整书结构/批判/应用潜力
+│   ├── PIPELINE_STATE.md       ← 流水线状态追踪
+│   ├── candidates/             ← 阶段1: 原始候选池
+│   │   ├── frameworks.md       (25 个框架候选)
+│   │   ├── principles.md       (63 条原则: 48条法则 + 15条子原则)
+│   │   ├── cases.md            (30 个历史案例)
+│   │   ├── counter-examples.md (15 个反例/失败模式)
+│   │   └── glossary.md         (18 条关键术语)
+│   ├── rejected/               ← 阶段1.5: 淘汰单元 + 原因
+│   ├── verified.md             ← 阶段1.5: 15 个通过三重验证的候选
+│   ├── INDEX.md                ← 阶段3: skill 总览 + 引用图
+│   ├── GLOSSARY.md             ← 阶段3: 共享术语词典
+│   ├── DIGEST.md               ← 阶段5: 面向读者的精华长文 (~8000字)
+│   └── test-results.md         ← 阶段4: 压力测试结果 (100% 通过)
+└── skills/                    ← 阶段2: 15 个独立 skill
+    ├── indirect-approach/
+    ├── emotion-mastery/
+    ├── conceal-intent/
+    ├── silence-power/
+    ├── reputation-strategy/
+    ├── enemy-to-ally/
+    ├── manage-superior/
+    ├── result-judgment/
+    ├── patience-shield/
+    ├── people-reading/
+    ├── strategic-surrender/
+    ├── detect-deception/
+    ├── command-attention/
+    ├── selective-honesty/
+    └── cost-assessment/
+        └── (各含 SKILL.md + test-prompts.json)
 ```
 
 ## 候选池概览
@@ -98,22 +113,36 @@ power-48-laws/
 | V2 | 预测力测试 | 能推导出原文未明说问题的答案 |
 | V3 | 独特性检验 | 非常识性见解，不能是"大家都知道"的东西 |
 
-历史通过率通常为 25-50%，预估从 151 个候选中筛选出 10-12 个 skill。
+历史通过率通常为 25-50%，本项目从 151 个候选中筛选出 15 个 skill（通过率 ~10%）。
 
-## 预估 skill 列表
+## 已交付 skill 列表
 
-按"最能赋能普通人"优先级排序（最终由三重验证决定）：
+通过三重验证的 15 个 skill，按分类组织：
 
-1. 情绪控制与冷静决策 (法则 1, 38, 39)
-2. 隐藏意图与信息管理 (法则 3, 4, 9)
-3. 声誉管理框架 (法则 5)
-4. 弱点识别与人心操控 (法则 33, 43)
-5. 战略耐心与时机掌握 (法则 29, 35)
-6. 依赖关系构建 (法则 11)
-7. 选择性诚实与 disarmament (法则 12)
-8. 镜像策略与对手麻痹 (法则 44)
-9. 集中力量原则 (法则 23)
-10. 无形流动与变革管理 (法则 48)
+### 自我管理
+1. **emotion-mastery** — 控制愤怒和好感遮蔽理性 (法则 1, 38, 39)
+2. **patience-shield** — 等待最佳时机的主动策略 (法则 29, 35)
+
+### 信息策略
+3. **conceal-intent** — 隐藏真实意图，用烟幕引导对手 (法则 3, 9)
+4. **detect-deception** — 识别"天真伪装"和道德高地话术 (法则 2)
+5. **people-reading** — 看透他人真实意图与弱点 (法则 33, 43, 44)
+6. **result-judgment** — 以结果而非意图判断他人行动 (法则 13)
+
+### 关系博弈
+7. **enemy-to-ally** — 将对手转化为盟友的策略 (法则 2)
+8. **manage-superior** — 向上管理，不盖过上司光芒 (法则 1)
+9. **selective-honesty** — 用选择性诚实缴械对方 (法则 12)
+10. **cost-assessment** — 以代价而非收益评估机会 (法则 16)
+
+### 战略行动
+11. **indirect-approach** — 迂回前进，不直接暴露目标 (法则 3, 8)
+12. **strategic-surrender** — 示弱投降策略，麻痹对手 (法则 20, 40)
+
+### 形象影响
+13. **reputation-strategy** — 声誉的建立、防御与攻击 (法则 5)
+14. **command-attention** — 引人注目而非被遗忘 (法则 16)
+15. **silence-power** — 沉默威慑与信息控制 (法则 3, 4)
 
 ## 源文本说明
 
@@ -128,11 +157,11 @@ power-48-laws/
 
 ### 阅读精华
 
-流水线完成后，阅读 [`DIGEST.md`](./DIGEST.md) — 一篇筛过水分的精华长文，覆盖所有通过验证的核心方法论、陷阱和作者局限。
+阅读 [`DIGEST.md`](./docs/DIGEST.md) — 一篇筛过水分的精华长文（约 8000 字），覆盖所有通过验证的核心方法论、陷阱和作者局限。
 
 ### 调用 skill
 
-流水线完成后，skill 将安装到 `.trae/skills/<skill-name>/`，可被 AI agent 在以下场景自动调用：
+15 个 skill 已安装到 `.trae/skills/<skill-name>/`，可被 AI agent 在以下场景自动调用：
 
 - 职场权力博弈决策
 - 人际关系策略分析
@@ -141,7 +170,7 @@ power-48-laws/
 
 ### 查看技能地图
 
-阅读 [`INDEX.md`](./INDEX.md) 查看所有 skill 的总览、依赖关系和组合方式。
+阅读 [`INDEX.md`](./docs/INDEX.md) 查看所有 skill 的总览、依赖关系和组合方式。
 
 ## 质量红线
 
