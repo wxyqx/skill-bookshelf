@@ -9,7 +9,7 @@
 - **出版年**: 1998 (中文译本 2007)
 - **一句话主旨**: 权力是一场文明化的战争——你必须学会用迂回、隐蔽、耐心的手段操控人心与局势，而非依赖暴力或直白的力量对抗。
 - **整书理解**: 见 [BOOK_OVERVIEW.md](./BOOK_OVERVIEW.md)
-- **精华长文** (不读全书看这篇): [DIGEST.md](./DIGEST.md) (待生成)
+- **精华长文** (不读全书看这篇): [DIGEST.md](./DIGEST.md) (~8000字)
 - **术语词典**: [GLOSSARY.md](./GLOSSARY.md)
 
 ---
@@ -18,33 +18,33 @@
 
 ### 自我管理 (Self-Management)
 
-- [`emotion-mastery`](./emotion-mastery/SKILL.md) — 控制愤怒/爱/恐惧三大致命情绪，情绪反应=失控=失去权力
-- [`patience-shield`](./patience-shield/SKILL.md) — 耐心不是被动等待而是主动防御技能，防止犯下愚蠢大错
-- [`cost-assessment`](./cost-assessment/SKILL.md) — 不以收益判断而以代价判断，含精神宁静和时间成本
+- [`emotion-mastery`](../skills/emotion-mastery/SKILL.md) — 控制愤怒/爱/恐惧三大致命情绪，情绪反应=失控=失去权力
+- [`patience-shield`](../skills/patience-shield/SKILL.md) — 耐心不是被动等待而是主动防御技能，防止犯下愚蠢大错
+- [`cost-assessment`](../skills/cost-assessment/SKILL.md) — 不以收益判断而以代价判断，含精神宁静和时间成本
 
 ### 信息与表达策略 (Information & Expression)
 
-- [`conceal-intent`](./conceal-intent/SKILL.md) — 五种烟幕系统化隐藏真实意图，最高明的骗子用诚实掩护欺骗
-- [`silence-power`](./silence-power/SKILL.md) — 说得越少越有权，沉默迫使对方自我防御暴露弱点
-- [`selective-honesty`](./selective-honesty/SKILL.md) — 用小真话缴械对方防备，诚实是权力工具而非道德选择
-- [`detect-deception`](./detect-deception/SKILL.md) — 识别"天真/道德/不玩权术"伪装下的权力策略
+- [`conceal-intent`](../skills/conceal-intent/SKILL.md) — 五种烟幕系统化隐藏真实意图，最高明的骗子用诚实掩护欺骗
+- [`silence-power`](../skills/silence-power/SKILL.md) — 说得越少越有权，沉默迫使对方自我防御暴露弱点
+- [`selective-honesty`](../skills/selective-honesty/SKILL.md) — 用小真话缴械对方防备，诚实是权力工具而非道德选择
+- [`detect-deception`](../skills/detect-deception/SKILL.md) — 识别"天真/道德/不玩权术"伪装下的权力策略
 
 ### 关系与权力博弈 (Relationships & Power Play)
 
-- [`manage-superior`](./manage-superior/SKILL.md) — 上司的不安全感决定你的隐藏程度，四种伪装方法
-- [`enemy-to-ally`](./enemy-to-ally/SKILL.md) — 敌人比朋友更忠诚，忘恩负义是人性规律非道德缺陷
-- [`people-reading`](./people-reading/SKILL.md) — 不区分"应研究的"和"可信赖的"——研究每一个人
+- [`manage-superior`](../skills/manage-superior/SKILL.md) — 上司的不安全感决定你的隐藏程度，四种伪装方法
+- [`enemy-to-ally`](../skills/enemy-to-ally/SKILL.md) — 敌人比朋友更忠诚，忘恩负义是人性规律非道德缺陷
+- [`people-reading`](../skills/people-reading/SKILL.md) — 不区分"应研究的"和"可信赖的"——研究每一个人
 
 ### 战略行动 (Strategic Action)
 
-- [`indirect-approach`](./indirect-approach/SKILL.md) — 直接路线本身就是陷阱，权力必须迂回获取
-- [`strategic-surrender`](./strategic-surrender/SKILL.md) — 示弱是策略性欺骗，投降是等待时机的手段
-- [`result-judgment`](./result-judgment/SKILL.md) — 道德判断是聚积力量的借口，只看行动结果
+- [`indirect-approach`](../skills/indirect-approach/SKILL.md) — 直接路线本身就是陷阱，权力必须迂回获取
+- [`strategic-surrender`](../skills/strategic-surrender/SKILL.md) — 示弱是策略性欺骗，投降是等待时机的手段
+- [`result-judgment`](../skills/result-judgment/SKILL.md) — 道德判断是聚积力量的借口，只看行动结果
 
 ### 形象与影响力 (Image & Influence)
 
-- [`reputation-strategy`](./reputation-strategy/SKILL.md) — 声誉是攻防武器：可建立、可攻击对手、可漂白
-- [`command-attention`](./command-attention/SKILL.md) — 被人攻击好过无人问津，任何知名度都带权力
+- [`reputation-strategy`](../skills/reputation-strategy/SKILL.md) — 声誉是攻防武器：可建立、可攻击对手、可漂白
+- [`command-attention`](../skills/command-attention/SKILL.md) — 被人攻击好过无人问津，任何知名度都带权力
 
 ---
 
