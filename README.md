@@ -10,7 +10,7 @@
 
 ## 目录总览
 
-**10 本书 · 129 个 skills**（最后更新：2026-09-16）
+**11 本书 · 136 个 skills**（最后更新：2026-09-19）
 
 | 书名 | 作者 / 年份 | 主题 | Skills | 目录 |
 |---|---|---:|---|---|
@@ -24,6 +24,7 @@
 | 《富爸爸穷爸爸系列》*Rich Dad Poor Dad* | 罗伯特·T·清崎 · 2021 | 财商 / 投资 / 创业 | 18 | [`rich-dad-poor-dad-series/`](./rich-dad-poor-dad-series/) |
 | 《思考，快与慢》*Thinking, Fast and Slow* | 卡尼曼 · 2025 | 认知偏差 / 判断决策 | 28 | [`thinking-fast-and-slow/`](./thinking-fast-and-slow/) |
 | 《权力的48条法则》*The 48 Laws of Power* | 罗伯特·格林 · 1998 | 权力 / 策略 / 人际 | 15 | [`power-48-laws/`](./power-48-laws/) |
+| 《稀缺》*Scarcity* | 穆来纳森、沙菲尔 · 2022 | 稀缺 / 带宽 / 决策 | 7 | [`scarcity/`](./scarcity/) |
 
 ---
 
@@ -89,6 +90,12 @@
 - **一句话**：权力是一场文明化的战争——你必须学会用迂回、隐蔽、耐心的手段操控人心与局势，而非依赖暴力或直白的力量对抗。
 - **Skills**：`indirect-approach` · `emotion-mastery` · `conceal-intent` · `silence-power` · `reputation-strategy` · `enemy-to-ally` · `manage-superior` · `result-judgment` · `patience-shield` · `people-reading` · `strategic-surrender` · `detect-deception` · `command-attention` · `selective-honesty` · `cost-assessment`
 
+### 11. 《稀缺：我们是如何陷入贫穷与忙碌的》 — *Scarcity* · [`scarcity/`](./scarcity/)
+
+- **作者**：塞德希尔·穆来纳森（Sendhil Mullainathan）、埃尔德·沙菲尔（Eldar Shafir）· 2022（原版约 2013）
+- **一句话**：稀缺会俘获大脑，造成管窥心态与带宽负担，通过借用、杂耍等行为自我强化成难以逃脱的陷阱——应对之道不是靠意志力，而是靠设计环境与系统。
+- **Skills**：`bandwidth-management` · `tunneling-decision-check` · `borrowing-vigilance-checklist` · `pull-into-tunnel` · `slack-building-strategy` · `abundance-planning` · `scarcity-trap-escape`
+
 ---
 
 ## 安装
@@ -96,7 +103,7 @@
 一次性安装**所有书**的 skills，或只装某一本：
 
 ```bash
-# 一次性安装全部 114 个 skills（用户级，所有项目可用）
+# 一次性安装全部 136 个 skills（用户级，所有项目可用）
 for d in */skills; do cp -r "$d"/* ~/.claude/skills/; done
 
 # 或只装某一本（以心流为例）
@@ -124,7 +131,8 @@ skill-bookshelf/
 ├── mankiw-microeconomics/    # 《经济学原理（微观分册）》（6 skills）
 ├── rich-dad-poor-dad-series/ # 《富爸爸穷爸爸系列》（18 skills）
 ├── thinking-fast-and-slow/   # 《思考，快与慢》（28 skills）
-└── power-48-laws/            # 《权力的48条法则》（15 skills）
+├── power-48-laws/            # 《权力的48条法则》（15 skills）
+└── scarcity/                 # 《稀缺》（7 skills）
 ```
 
 ---

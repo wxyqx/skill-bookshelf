@@ -1,0 +1,48 @@
+{
+  "skill": "pull-into-tunnel",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我知道健身很重要，但总是忘了去，办了健身卡也没去几次，怎么办",
+      "expected_behavior": "调用 pull-into-tunnel，解释重要但不紧急的事落在管子外被忽略，给出拉入管子的具体方法",
+      "notes": "正面场景：典型的'知道重要但做不到'，重要但不紧急"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我想让用户更多地使用我们的储蓄功能，但他们总是说忘了，有什么办法吗",
+      "expected_behavior": "调用 pull-into-tunnel，从行为设计角度给出提醒、默认选项等方案",
+      "notes": "正面场景：产品设计中的行为引导问题"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "每个月都想存钱，但到月底就花光了，怎么才能坚持储蓄",
+      "expected_behavior": "调用 pull-into-tunnel，建议自动储蓄等一次性行动方案",
+      "notes": "正面场景：坚持储蓄困难"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我根本不想健身，太累了",
+      "expected_behavior": "动机问题，不是注意力问题。拉入管子法只适用于'想做但做不到'的情况",
+      "notes": "诱饵：用户明确不想做，是动机问题不是管窥问题"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "项目明天就上线了，我总觉得漏了什么重要的事",
+      "expected_behavior": "应触发 tunneling-decision-check，而不是 pull-into-tunnel",
+      "notes": "跨skill混淆测试：紧急状态下的盲区检查，不是习惯养成问题"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想戒烟但总是失败",
+      "expected_behavior": "边界场景：如果是'想戒但管不住自己'（执行控制力+环境触发）则部分适用；如果是成瘾问题则需要专业帮助",
+      "notes": "边界：习惯养成 vs 成瘾问题"
+    }
+  ]
+}

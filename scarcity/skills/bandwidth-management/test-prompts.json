@@ -1,0 +1,48 @@
+{
+  "skill": "bandwidth-management",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "最近总觉得脑子转不动，注意力不集中，老是忘事，是不是年纪大了变笨了",
+      "expected_behavior": "调用 bandwidth-management，解释可能是带宽负担而非能力下降，并给出带宽管理建议",
+      "notes": "正面场景：典型的带宽不足抱怨，自我归因于能力"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我发现早上做事情效率特别高，一到下午就不行了，怎么回事",
+      "expected_behavior": "调用 bandwidth-management，解释带宽的周期性波动，建议根据带宽安排任务",
+      "notes": "正面场景：观察到了带宽波动但不知道原因"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "为什么我压力一大就管不住嘴，明知道要减肥还是忍不住吃垃圾食品",
+      "expected_behavior": "调用 bandwidth-management，解释执行控制力是带宽的一部分，压力消耗带宽导致自控力下降",
+      "notes": "正面场景：自控力下降，属于执行控制力不足"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我连续熬了三个通宵，困得不行",
+      "expected_behavior": "纯生理疲劳，需要睡觉而不是带宽管理",
+      "notes": "诱饵：纯粹的睡眠不足，不是带宽管理问题"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "项目明天就上线了，我总觉得哪里漏了什么但想不起来",
+      "expected_behavior": "应触发 tunneling-decision-check，而不是 bandwidth-management",
+      "notes": "跨skill混淆测试：这是管窥盲区问题，不是带宽总量问题"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我最近心情很差，什么都不想做",
+      "expected_behavior": "边界场景：如果是抑郁等临床问题应建议专业帮助；如果是压力导致的带宽消耗则触发。需要先判断严重程度",
+      "notes": "边界：情绪低落可能是临床问题也可能是带宽问题"
+    }
+  ]
+}

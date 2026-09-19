@@ -1,0 +1,48 @@
+{
+  "skill": "slack-building-strategy",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们团队人手上安排得满满的，但还是天天加班，效率反而越来越低，怎么回事",
+      "expected_behavior": "调用 slack-building-strategy，解释100%利用反而降低效率，建议构建时间余闲",
+      "notes": "正面场景：团队满负荷但效率低，典型的余闲不足问题"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我把日程排得满满的，结果一个小意外就毁掉了全天计划，怎么办",
+      "expected_behavior": "调用 slack-building-strategy，指出日程太满没有缓冲，建议预留空白时间",
+      "notes": "正面场景：个人时间排满导致脆弱性"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "为什么我总是月光，稍微有点意外就没钱了，感觉永远存不下钱",
+      "expected_behavior": "调用 slack-building-strategy，解释财务余闲的重要性，建议建立应急储蓄",
+      "notes": "正面场景：财务缓冲不足"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我做一个详细的每日时间管理计划",
+      "expected_behavior": "时间规划问题，不一定是余闲不足问题",
+      "notes": "诱饵：普通时间管理，不涉及稀缺/脆弱性"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我越忙越乱，感觉陷入了恶性循环走不出来",
+      "expected_behavior": "应触发 scarcity-trap-escape，而不是 slack-building-strategy",
+      "notes": "跨skill混淆测试：已经陷入陷阱需要系统性方案，不只是建余闲"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "项目deadline很紧，大家都在赶进度，还能留余闲吗",
+      "expected_behavior": "边界场景：短期冲刺可以暂时牺牲余闲，但要设定期限且事后恢复。需要澄清是短期还是常态",
+      "notes": "边界：短期冲刺 vs 长期常态"
+    }
+  ]
+}

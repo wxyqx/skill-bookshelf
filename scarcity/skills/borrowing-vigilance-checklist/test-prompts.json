@@ -1,0 +1,48 @@
+{
+  "skill": "borrowing-vigilance-checklist",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个月钱不够花了，想借点网贷周转一下，下个月就还，应该可以吧",
+      "expected_behavior": "调用 borrowing-vigilance-checklist，引导用户计算真实利息、寻找替代方案",
+      "notes": "正面场景：典型的'先借点渡难关'，管窥下的借用冲动"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "项目来不及了，我打算先赶个粗糙版本上线，后面再优化，你觉得呢",
+      "expected_behavior": "调用 borrowing-vigilance-checklist，指出这是时间上的借用（技术债务），需要评估返工成本",
+      "notes": "正面场景：时间维度的借用，质量换速度"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "用信用卡分期买个东西，每月才还几百块，感觉挺划算的",
+      "expected_behavior": "调用 borrowing-vigilance-checklist，帮用户算清分期的真实利率和总成本",
+      "notes": "正面场景：消费信贷，低估真实成本"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我比较一下房贷的几种还款方式",
+      "expected_behavior": "良性债务/投资性借贷，不是管窥下的冲动借用",
+      "notes": "诱饵：理性规划的借贷，不是借用警觉的场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我感觉越忙越乱，一直在赶进度，走不出来了",
+      "expected_behavior": "应触发 scarcity-trap-escape，而不是 borrowing-vigilance-checklist",
+      "notes": "跨skill混淆测试：已经陷入系统性陷阱，需要完整路线图"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想贷款创业，你觉得可行吗",
+      "expected_behavior": "边界场景：创业贷款是投资性借贷还是消费性借用？如果有明确商业计划和回报预期，属于理性投资；如果是冲动创业、没算过账，则适用借用警觉",
+      "notes": "边界：投资性借贷 vs 冲动借用"
+    }
+  ]
+}

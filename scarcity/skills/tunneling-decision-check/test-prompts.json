@@ -1,0 +1,55 @@
+{
+  "skill": "tunneling-decision-check",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "项目明天就要上线了，但我总觉得哪里不对劲，又说不上来。这几天一直在赶进度，感觉脑子都转不动了",
+      "expected_behavior": "调用 tunneling-decision-check，指出用户可能处于管窥状态，引导做盲区检查",
+      "notes": "正面场景：时间稀缺+赶进度，典型的管窥决策场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "回头看上次的决定，觉得自己当时怎么那么蠢，明明那么明显的问题居然没看到",
+      "expected_behavior": "调用 tunneling-decision-check，用管窥理论解释为什么会忽略，并建议下次如何预防",
+      "notes": "正面场景：事后回顾决策失误，典型的管窥后知后觉"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "月底了钱不够花，我得决定先不付哪笔账单。这个月开销太大了",
+      "expected_behavior": "调用 tunneling-decision-check，提醒金钱稀缺下的管窥可能导致忽视长期影响",
+      "notes": "正面场景：金钱稀缺下的财务决策"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我算一下这个投资的年化收益率是多少",
+      "expected_behavior": "纯计算问题，不需要管窥决策校验",
+      "notes": "诱饵：纯信息/计算查询"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我感觉最近脑子不够用，总是忘事，效率特别低",
+      "expected_behavior": "应触发 bandwidth-management，而不是 tunneling-decision-check",
+      "notes": "跨skill混淆测试：这是带宽问题，不是管窥决策问题"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "想借点钱周转一下，下个月发工资就还",
+      "expected_behavior": "应触发 borrowing-vigilance-checklist，而不是 tunneling-decision-check",
+      "notes": "跨skill混淆测试：明确涉及借钱，应用借用警觉清单"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我在考虑要不要换工作，列了很多 pros and cons",
+      "expected_behavior": "边界场景：如果用户处于稀缺状态（如被裁压力、经济紧张）则触发；如果是从容考虑则不触发。需要先询问更多信息",
+      "notes": "边界：换工作决策本身不是管窥场景，但如果有时间/金钱压力则是"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "skill": "abundance-planning",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "每个月发工资的时候觉得钱挺多的，怎么到月底就没了，每次都这样",
+      "expected_behavior": "调用 abundance-planning，解释充裕-稀缺循环，建议发薪日做一次性锁定",
+      "notes": "正面场景：典型的月初充裕月底稀缺周期"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "项目刚开始的时候时间还挺多的，怎么到后期就天天熬夜赶工，每个项目都这样",
+      "expected_behavior": "调用 abundance-planning，指出前期浪费、后期救火的周期，建议前期就做规划和锁定",
+      "notes": "正面场景：项目前期摸鱼后期熬夜的周期"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "刚放完假状态特别好，怎么利用这段时间做点有意义的事",
+      "expected_behavior": "调用 abundance-planning，建议在状态好（带宽充裕）的时候做一次性投入，为状态差的时候做准备",
+      "notes": "正面场景：主动意识到状态好，想利用起来"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "月底没钱了怎么办啊",
+      "expected_behavior": "已经处于稀缺期了，应该用借用警觉或带宽管理，而不是充裕期规划",
+      "notes": "诱饵：已经在稀缺谷底了，不是充裕期"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想存点钱但总是存不下，有什么好办法吗",
+      "expected_behavior": "应触发 pull-into-tunnel（重要事项拉入管子法），而不是 abundance-planning",
+      "notes": "跨skill混淆测试：储蓄习惯养成问题，拉入管子法更直接"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我拿到了一笔奖金，应该怎么用",
+      "expected_behavior": "边界场景：如果是一次性收入，充裕期配置法适用（用这笔钱建缓冲、做一次性投入）；但也可能涉及更广泛的理财规划",
+      "notes": "边界：意外收入的处理"
+    }
+  ]
+}

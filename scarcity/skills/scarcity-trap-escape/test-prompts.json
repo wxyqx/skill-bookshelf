@@ -1,0 +1,48 @@
+{
+  "skill": "scarcity-trap-escape",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我感觉越忙越穷越穷越忙，永远在赶进度，好像陷进去了走不出来",
+      "expected_behavior": "调用 scarcity-trap-escape，诊断稀缺陷阱并给出分步骤逃离路线图",
+      "notes": "正面场景：典型的稀缺陷阱自述，恶性循环"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我同时欠着好几张信用卡，每个月都在倒卡，越还欠得越多，怎么办",
+      "expected_behavior": "调用 scarcity-trap-escape，诊断债务陷阱并给出逃离方案",
+      "notes": "正面场景：债务循环，典型的稀缺陷阱"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们团队永远在救火，问题一个接一个，永远没时间做改进，怎么打破这个循环",
+      "expected_behavior": "调用 scarcity-trap-escape，分析组织层面的救火陷阱，给出破局方法",
+      "notes": "正面场景：组织救火模式，稀缺陷阱的组织形态"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我最近有点忙，过了这阵就好了",
+      "expected_behavior": "暂时的忙不是稀缺陷阱。只有长期循环才是",
+      "notes": "诱饵：短期压力，不是陷阱"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想借点钱周转一下，帮我看看合不合算",
+      "expected_behavior": "应触发 borrowing-vigilance-checklist，而不是 scarcity-trap-escape",
+      "notes": "跨skill混淆测试：单次借用决策，用借用警觉清单即可"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我刚失业了，存款不多，有点慌",
+      "expected_behavior": "边界场景：刚遇到挫折，还没形成循环。此时用余闲/充裕期的思路可能更合适；如果持续很久则进入陷阱",
+      "notes": "边界：单次危机 vs 长期陷阱"
+    }
+  ]
+}
